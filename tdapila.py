@@ -1,7 +1,8 @@
 import random
-max = 10
+max = 20
 
-class pila():
+
+class Pila():
 
     def __init__(self):
         self.tope = -1
@@ -15,7 +16,7 @@ def cargautomatica(pila):
         dato = random.randint(0, 10)
         apilar(pila, dato)
 
-        
+
 def apilar(pila, dato):
     pila.tope += 1
     pila.datos[pila.tope] = dato
@@ -49,3 +50,16 @@ def barrido(pila):
         dato = desapilar(pila)
         print(dato)
         apilar(paux, dato)
+
+
+def invertir(pila, paux):
+    while not pila_vacia(pila):
+        dato = desapilar(pila)
+        print(dato)
+        apilar(paux, dato)
+
+
+def randString(largo):
+    letras = 'abcdefghijklmnopqrstuvwxyz'
+    for i in range(largo):
+        return ''.join((random.choice(letras) for i in range(largo)))
