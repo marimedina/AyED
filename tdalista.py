@@ -27,8 +27,10 @@ def insertar(lista, dato):
     lista.tamanio += 1
 
 
+ 
+
 def eliminar(lista, clave):
-    
+
 
 
 def barrido(lista):
