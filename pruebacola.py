@@ -1,14 +1,16 @@
-from tdacola import cargautomatica, cola_llena, cola_vacia, arribo, atencion
+from tdacola import cargautomatica1, cola_llena, cola_vacia, arribo, atencion
 from tdacola import Cola, mover_al_final, barrido, cargaAutoStr
-'''from tdapila import '''
+from tdapila import invertir, apilar, Pila, desapilar, pila_vacia
 c = Cola()
 c1 = Cola()
 c2 = Cola()
+p = Pila()
+p1 = Pila()
 
 
 # ejcarpeta
 '''
-cargautomatica(c)
+cargautomatica1(c)
 print(c.datos)
 while not cola_vacia(c):
     aux = atencion(c)
@@ -31,18 +33,47 @@ while not cola_vacia(c):
 print(c1.datos)'''
 
 
-
 # ej2
+'''cargautomatica1(c)
+print(c.datos)
+while not cola_vacia(c):
+    dato = atencion(c)
+    apilar(p, dato)
+while not pila_vacia(p):
+    dat = desapilar(p)
+    arribo(c1, dat)
+print(c1.datos)'''
 
 
-# ej3
-
-
+# ej3  SIEMPRE MUESTRA QUE NO ES PALINDROMO
+'''palabra = 'neuquen'
+for elemento in palabra:
+    arribo(c, elemento)
+print(c.datos)
+while not cola_vacia(c):
+    dato = atencion(c)
+    apilar(p, dato)
+invertir(p, p1)
+print(p1.datos)
+flag = False
+while not pila_vacia(p):
+    aux = desapilar(p)
+    dat = desapilar(p1)
+    if aux == dat:
+        flag = True
+    else:
+        flag = False
+if flag:
+    print('Es palindromo')
+else:
+    print('No es palindromo')'''
 
 
 # ej4
-cargautomatica(c)
+# num = '123456789'
+cargautomatica1(c)
 print(c.datos)
 while not cola_vacia(c):
     aux = atencion(c)
-    if 
+    
+print(c1.datos)

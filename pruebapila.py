@@ -14,10 +14,10 @@ p3 = Pila()
 
 
 # pruebadebarrido
-'''cargautomatica(p)
+cargautomatica(p)
 print(p.datos)
-barrido(p)
-print(p.datos)'''
+invertir(p, p1)
+print(p1.datos)
 
 
 # ej1

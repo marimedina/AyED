@@ -57,7 +57,6 @@ def barrido(pila):
 def invertir(pila, paux):
     while not pila_vacia(pila):
         dato = desapilar(pila)
-        print(dato)
         apilar(paux, dato)
 
 

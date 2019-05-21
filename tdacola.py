@@ -1,5 +1,6 @@
-max = 10
+max = 20
 import random
+#from tdapila import apilar, Pila
 
 
 class Cola():
@@ -12,7 +13,7 @@ class Cola():
         self.tamanio = 0
 
 
-def cargautomatica(cola):
+def cargautomatica1(cola):
     while not cola_llena(cola):
         dato = random.randint(0, 10)
         arribo(cola, dato)
@@ -63,7 +64,7 @@ def cargaAutoStr(cola):
     abc = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     while (not cola_llena(cola)):
         arribo(cola, random.choice(abc))
-        
+
 '''def randString(largo):
     letras = 'abcdefghijklmnopqrstuvwxyz'
     for i in range(largo):
