@@ -1,6 +1,7 @@
 from tdacola import cargautomatica1, cola_llena, cola_vacia, arribo, atencion
 from tdacola import Cola, mover_al_final, barrido, cargaAutoStr
 from tdapila import invertir, apilar, Pila, desapilar, pila_vacia
+from tdapila import cargautomatica
 c = Cola()
 c1 = Cola()
 c2 = Cola()
@@ -46,7 +47,7 @@ print(c1.datos)'''
 
 
 # ej3  SIEMPRE MUESTRA QUE NO ES PALINDROMO
-'''palabra = 'neuquen'
+palabra = 'neuquen'
 for elemento in palabra:
     arribo(c, elemento)
 print(c.datos)
@@ -60,20 +61,26 @@ while not pila_vacia(p):
     aux = desapilar(p)
     dat = desapilar(p1)
     if aux == dat:
-        flag = True
+        
     else:
         flag = False
-if flag:
-    print('Es palindromo')
-else:
-    print('No es palindromo')'''
 
 
 # ej4
 # num = '123456789'
-cargautomatica1(c)
+'''cargautomatica1(c)
 print(c.datos)
 while not cola_vacia(c):
     aux = atencion(c)
-    
-print(c1.datos)
+
+print(c1.datos)'''
+
+
+# ej5
+'''cargautomatica1(c)
+while not cola_vacia(c):
+    dato = atencion(c)
+    apilar(p, dato)
+print(p.datos)
+invertir(p, p1)
+print(p1.datos)'''

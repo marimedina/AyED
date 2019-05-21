@@ -55,3 +55,7 @@ def barrido(lista):
 
 def lista_vacia(lista):
     return lista.tamanio == 0
+
+
+def busqueda(lista, clave, posicion):
+    

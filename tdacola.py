@@ -1,6 +1,5 @@
 max = 20
 import random
-#from tdapila import apilar, Pila
 
 
 class Cola():
