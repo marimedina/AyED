@@ -28,7 +28,22 @@ def insertar(lista, dato):
 
 
 def eliminar(lista, clave):
-
+    dato = None
+    if lista.inicio.info == clave:
+        dato = lista.inicio.info
+        lista.inicio = lista.inicio.sig
+        lista.tamanio -= 1
+    else:
+        ant = lista.inicio
+        act = lista.inicio.sig
+        while (act is not None) and (act.info < clave):
+            ant = ant.sig
+            act = act.sig
+        if (act is not None) and (act.info == clave):
+            dato = act.info
+            ant.sig = act.sig
+            lista.tamanio -= 1
+    return dato
 
 
 def barrido(lista):
@@ -36,3 +51,7 @@ def barrido(lista):
     while aux is not None:
         print(aux.info)
         aux = aux.sig
+
+
+def lista_vacia(lista):
+    return lista.tamanio == 0
