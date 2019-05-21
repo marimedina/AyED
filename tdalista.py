@@ -28,7 +28,7 @@ def insertar(lista, dato):
 
 
 def eliminar(lista, clave):
-    
+
 
 
 def barrido(lista):
