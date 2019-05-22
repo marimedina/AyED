@@ -46,34 +46,43 @@ while not pila_vacia(p):
 print(c1.datos)'''
 
 
-# ej3  SIEMPRE MUESTRA QUE NO ES PALINDROMO
-palabra = 'neuquen'
-for elemento in palabra:
-    arribo(c, elemento)
-print(c.datos)
+# ej3
+'''palabra = 'casa'
+for letra in palabra:
+    arribo(c, letra)
+    apilar(p, letra)
+palindromo = True
 while not cola_vacia(c):
     dato = atencion(c)
-    apilar(p, dato)
-invertir(p, p1)
-print(p1.datos)
-flag = False
-while not pila_vacia(p):
-    aux = desapilar(p)
-    dat = desapilar(p1)
-    if aux == dat:
-        
-    else:
-        flag = False
-
+    if dato != desapilar(p):
+        palindromo = False
+    arribo(c1, dato)
+if palindromo:
+    print('es palindromo')
+else:
+    print('no es palindromo')'''
 
 # ej4
-# num = '123456789'
+# ESTA MAL, ACOMODAR
 '''cargautomatica1(c)
 print(c.datos)
+primo = True
 while not cola_vacia(c):
     aux = atencion(c)
-
+    if aux < 2:
+        print('es primo')
+        arribo(c1, aux)
+    elif aux == 2:
+        print('es primo')
+        arribo(c1, aux)
+    else:
+        i = 2
+        while (i < aux) and primo:
+            if aux % i == 0:
+                print('no es primo')
+            i += 1
 print(c1.datos)'''
+
 
 
 # ej5
@@ -84,3 +93,6 @@ while not cola_vacia(c):
 print(p.datos)
 invertir(p, p1)
 print(p1.datos)'''
+
+
+# ej6
