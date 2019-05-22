@@ -62,8 +62,8 @@ if palindromo:
 else:
     print('no es palindromo')'''
 
-# ej4
-cargautomatica1(c)
+# ej4 MAL MAL MAL
+'''cargautomatica1(c)
 print(c.datos)
 while not cola_vacia(c):
     aux = atencion(c)
@@ -72,9 +72,12 @@ while not cola_vacia(c):
     else:
         if aux == 2:
             arribo(c1, aux)
-#terminar
+        else:
+            for i in range(2, aux):
+                if (aux % i != 0) and (aux != i):
+                    arribo(c1, aux)
+print(c1.datos)'''
 
-print(c1.datos)
 
 # ej5
 '''cargautomatica1(c)
@@ -87,3 +90,13 @@ print(p1.datos)'''
 
 
 # ej6
+cargautomatica1(c)
+print(c.datos)
+num = 5
+cont = 0
+while not cola_vacia(c):
+    dato = atencion(c)
+    if (dato == num):
+        cont += 1
+        arribo(c, dato)
+print('Cantidad de ocurrencias: ' + str(cont))

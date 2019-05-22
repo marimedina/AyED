@@ -21,7 +21,7 @@ print(p1.datos)
 
 
 # ej1
-'''cargautomatica(p)
+cargautomatica(p)
 print(p.datos)
 paux = Pila()
 num = 5
@@ -34,7 +34,7 @@ while not pila_vacia(p):
 print('Cantidad de ocurrencias:', cont)
 while not pila_vacia(paux):
     apilar(p, desapilar(paux))
-print(p.datos)'''
+print(p.datos)
 
 
 # ej2
