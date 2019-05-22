@@ -89,8 +89,8 @@ invertir(p, p1)
 print(p1.datos)'''
 
 
-# ej6
-cargautomatica1(c)
+# ej6 NO MUESTRA LOS PRINT
+'''cargautomatica1(c)
 print(c.datos)
 num = 5
 cont = 0
@@ -98,5 +98,4 @@ while not cola_vacia(c):
     dato = atencion(c)
     if (dato == num):
         cont += 1
-        arribo(c, dato)
-print('Cantidad de ocurrencias: ' + str(cont))
+        arribo(c, dato)'''
