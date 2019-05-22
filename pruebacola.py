@@ -63,27 +63,18 @@ else:
     print('no es palindromo')'''
 
 # ej4
-# ESTA MAL, ACOMODAR
-'''cargautomatica1(c)
+cargautomatica1(c)
 print(c.datos)
-primo = True
 while not cola_vacia(c):
     aux = atencion(c)
     if aux < 2:
-        print('es primo')
-        arribo(c1, aux)
-    elif aux == 2:
-        print('es primo')
         arribo(c1, aux)
     else:
-        i = 2
-        while (i < aux) and primo:
-            if aux % i == 0:
-                print('no es primo')
-            i += 1
-print(c1.datos)'''
+        if aux == 2:
+            arribo(c1, aux)
+#terminar
 
-
+print(c1.datos)
 
 # ej5
 '''cargautomatica1(c)
