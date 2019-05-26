@@ -14,7 +14,7 @@ class Cola():
 
 def cargautomatica1(cola):
     while not cola_llena(cola):
-        dato = random.randint(0, 10)
+        dato = random.randint(0, 20)
         arribo(cola, dato)
 
 

@@ -2,7 +2,7 @@ from tdacola import cargautomatica1, cola_llena, cola_vacia, arribo, atencion
 from tdacola import Cola, mover_al_final, barridoc, cargaAutoStr
 from tdacola import tamanioc
 from tdapila import invertir, apilar, Pila, desapilar, pila_vacia
-from tdapila import cargautomatica
+from tdapila import cargautomatica, listaRandom
 c = Cola()
 c1 = Cola()
 c2 = Cola()
@@ -116,7 +116,7 @@ print('Cola sin elemento en posicion: ' + str(pos))
 barridoc(c1)'''
 
 
-# ej8 NO ANDA 
+# ej8 NO ANDAAAAAAAAAAAAAAAA
 '''cargautomatica1(c)
 print(c.datos)
 num = 6
@@ -126,3 +126,23 @@ arribo(c1, num)
 while not cola_vacia(c):
     arribo(c1, atencion(c))
 print(c1.datos)'''
+
+
+# ej9 PARA ESTE CAMBIAR CARGA AUTOMATICA (-50,50)
+'''cargautomatica1(c)
+print(c.datos)
+min = c.frente
+max = c.frente
+cont = 0
+while not cola_vacia(c):
+    aux = atencion(c)
+    if aux <= min:
+        min = aux
+    elif aux > max:
+        max = aux
+    arribo(c1, aux)
+    if aux < 0:
+        cont += 1
+rango = max - min
+print('rango: ' + str(rango))
+print('cantidad de numero negativos: ' + str(cont))'''
