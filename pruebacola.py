@@ -1,5 +1,6 @@
 from tdacola import cargautomatica1, cola_llena, cola_vacia, arribo, atencion
-from tdacola import Cola, mover_al_final, barrido, cargaAutoStr
+from tdacola import Cola, mover_al_final, barridoc, cargaAutoStr
+from tdacola import tamanioc
 from tdapila import invertir, apilar, Pila, desapilar, pila_vacia
 from tdapila import cargautomatica
 c = Cola()
@@ -89,14 +90,39 @@ invertir(p, p1)
 print(p1.datos)'''
 
 
-# ej6 NO MUESTRA LOS PRINT
-cargautomatica1(c)
-print(c.datos)
+# ej6
+'''cargautomatica1(c)
+barridoc(c)
 num = 5
 cont = 0
-while not cola_vacia(c):
+for i in range(0, tamanioc(c)):
     dato = atencion(c)
     if (dato == num):
         cont += 1
-        arribo(c, dato)
-print('cantidad de ocurrencias: ' + cont)
+    arribo(c, dato)
+print('cantidad de ocurrencias: ' + str(cont))'''
+
+
+# ej7
+'''cargautomatica1(c)
+barridoc(c)
+pos = 6
+for i in range(0, tamanioc(c)):
+    if i == pos:
+        atencion(c)
+    else:
+        arribo(c1, atencion(c))
+print('Cola sin elemento en posicion: ' + str(pos))
+barridoc(c1)'''
+
+
+# ej8 NO ANDA 
+'''cargautomatica1(c)
+print(c.datos)
+num = 6
+while not cola_vacia(c) and (c.frente < num):
+    arribo(c1, atencion(c))
+arribo(c1, num)
+while not cola_vacia(c):
+    arribo(c1, atencion(c))
+print(c1.datos)'''

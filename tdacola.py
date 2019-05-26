@@ -43,7 +43,11 @@ def cola_llena(cola):
     return cola.tamanio == max
 
 
-def barrido(cola):
+def tamanioc(cola):
+    return cola.tamanio
+
+
+def barridoc(cola):
     caux = Cola()
     while not cola_vacia(cola):
         aux = atencion(cola)
@@ -63,6 +67,18 @@ def cargaAutoStr(cola):
     abc = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     while (not cola_llena(cola)):
         arribo(cola, random.choice(abc))
+
+
+'''def ordencrec(cola):
+    num = int(input("Ingrese el numero que desea agregar: "))
+    cola1 = Cola()
+    while not cola_vacia(cola) and (cola.frente < num):
+        arribo(cola1, atencion(cola))
+    arribo(cola1, num)
+    while not cola_vacia(cola):
+        arribo(cola1, atencion(cola))'''
+
+
 
 '''def randString(largo):
     letras = 'abcdefghijklmnopqrstuvwxyz'
