@@ -1,11 +1,13 @@
 from tdacola import cargautomatica1, cola_llena, cola_vacia, arribo, atencion
 from tdacola import Cola, mover_al_final, barridoc, cargaAutoStr
-from tdacola import tamanioc
+#from tdacola import
 from tdapila import invertir, apilar, Pila, desapilar, pila_vacia
 from tdapila import cargautomatica, listaRandom
 c = Cola()
 c1 = Cola()
 c2 = Cola()
+c3 = Cola()
+c4 = Cola()
 p = Pila()
 p1 = Pila()
 
@@ -130,7 +132,7 @@ print(c1.datos)'''
 
 # ej9 PARA ESTE CAMBIAR CARGA AUTOMATICA (-50,50)
 '''cargautomatica1(c)
-print(c.datos)
+barridoc(c)
 min = c.frente
 max = c.frente
 cont = 0
@@ -146,3 +148,66 @@ while not cola_vacia(c):
 rango = max - min
 print('rango: ' + str(rango))
 print('cantidad de numero negativos: ' + str(cont))'''
+
+
+# ej10 ARREGLARRRRRRRRRR
+'''n = 5
+arribo(c, 0)
+if n == 1:
+    arribo(c, 1)
+elif n > 1:
+    arribo(c, 1)
+    while not cola_llena(c) and (c.tamanio <= n):
+        aux = atencion(c)
+        dato = c.final
+        arribo(c, aux)
+        arribo(c, (aux + dato))
+barridoc(c)'''
+
+
+# ej14
+cargautomatica1(c)
+print(c.datos)
+cargautomatica1(c1)
+print(c1.datos)
+# Parte A
+if c.tamanio == c1.tamanio:
+    print('Ambas colas tienen la misma cantidad de elementos')
+else:
+    print('No poseen la misma cantidad de elementos')
+
+# Parte B
+iguales = False
+while not cola_vacia(c):
+    aux = atencion(c)
+    while not cola_vacia(c1):
+        dat = atencion(c1)
+        if aux == dat:
+            iguales = True
+        else:
+            iguales = False
+        arribo(c3, dat)
+    arribo(c4, aux)
+if iguales:
+    print('Colas iguales')
+else:
+    print('Colas distintas')
+
+# Parte C
+sum = 0
+sum1 = 0
+while not cola_vacia(c4):
+    aux = atencion(c4)
+    sum = sum + aux
+while not cola_vacia(c3):
+    dat = atencion(c3)
+    sum1 = sum + dat
+if sum < sum1:
+    print('La primera cola es la mayor')
+else:
+    print('La segunda cola es la mayor')
+
+
+# Parte E
+while not cola_vacia(c3):
+    
