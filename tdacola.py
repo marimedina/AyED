@@ -21,7 +21,7 @@ def cargautomatica1(cola):
 def cargacaract(cola):
     caract = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.;/*-+=%#!?"
     while not cola_llena(cola):
-        arribo(cola, random.randint(0, 10))
+        arribo(cola, random.randint(0, 20))
         arribo(cola, random.choice(caract))
 
 

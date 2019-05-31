@@ -165,20 +165,32 @@ elif n > 1:
 barridoc(c)'''
 
 
-# ej12 MAL
-'''cargacaract(c)
+# ej12
+cargacaract(c)
 print(c.datos)
 caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.;/*-+=%#!?"
-num = "0123456789"
+# Parte A
 while not cola_vacia(c):
     aux = atencion(c)
-    for elemento in num:
-        if aux == elemento:
+    for i in range(0, 21):
+        if aux == i:
             arribo(c1, aux)
-    else:
-        arribo(c2, aux)
+    for elemento in caracteres:
+        if aux == elemento:
+            arribo(c2, aux)
 print(c1.datos)
-print(c2.datos)'''
+print(c2.datos)
+
+# Parte B
+letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+cont = 0
+while not cola_vacia(c2):
+    aux = atencion(c2)
+    for elemento in letras:
+        if aux == elemento:
+            cont += 1
+    arribo(c4, aux)
+print('Hay ' + str(cont) + ' letras en la segunda cola')
 
 
 # ej14
