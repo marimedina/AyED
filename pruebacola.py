@@ -1,6 +1,6 @@
 from tdacola import cargautomatica1, cola_llena, cola_vacia, arribo, atencion
 from tdacola import Cola, mover_al_final, barridoc, cargaAutoStr
-#from tdacola import
+from tdacola import cargacaract
 from tdapila import invertir, apilar, Pila, desapilar, pila_vacia
 from tdapila import cargautomatica, listaRandom
 c = Cola()
@@ -165,8 +165,24 @@ elif n > 1:
 barridoc(c)'''
 
 
+# ej12 MAL
+'''cargacaract(c)
+print(c.datos)
+caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.;/*-+=%#!?"
+num = "0123456789"
+while not cola_vacia(c):
+    aux = atencion(c)
+    for elemento in num:
+        if aux == elemento:
+            arribo(c1, aux)
+    else:
+        arribo(c2, aux)
+print(c1.datos)
+print(c2.datos)'''
+
+
 # ej14
-cargautomatica1(c)
+'''cargautomatica1(c)
 print(c.datos)
 cargautomatica1(c1)
 print(c1.datos)
@@ -208,6 +224,36 @@ else:
     print('La segunda cola es la mayor')
 
 
-# Parte E
-while not cola_vacia(c3):
-    
+# Parte E ARREGLAR
+mult2 = False
+multiplo2 = False
+mult3 = False
+multiplo2 = False
+while not cola_vacia(c3) and not cola_vacia(c4):
+    dato = atencion(c3)
+    dato1 = atencion(c4)
+    if dato % 2 == 0:
+        mult2 = True
+    elif dato1 % 2 == 0:
+        multiplo2 = True
+    arribo(c, dato)
+    arribo(c1, dato1)
+
+while not cola_vacia(c) and not cola_vacia(c1):
+    dato = atencion(c)
+    dato1 = atencion(c1)
+    if dato % 3 == 0:
+        mult3 = True
+    elif dato1 % 3 == 0:
+        multiplo3 = True
+    arribo(c3, dato)
+    arribo(c4, dato1)
+
+if mult2 is True and multiplo2 is True:
+    print('Ambas colas poseen al menos un multiplo de 2')
+else:
+    print('Ambas no poseen al menos un multiplo de 2')
+if mult3 is True and multiplo3 is True:
+    print('Ambas colas poseen al menos un multiplo de 3')
+else:
+    print('Ambas no poseen al menos un multiplo de 3')'''

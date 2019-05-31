@@ -18,6 +18,13 @@ def cargautomatica1(cola):
         arribo(cola, dato)
 
 
+def cargacaract(cola):
+    caract = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.;/*-+=%#!?"
+    while not cola_llena(cola):
+        arribo(cola, random.randint(0, 10))
+        arribo(cola, random.choice(caract))
+
+
 def arribo(cola, dato):
     cola.final += 1
     if cola.final == max:
@@ -77,10 +84,3 @@ def cargaAutoStr(cola):
     arribo(cola1, num)
     while not cola_vacia(cola):
         arribo(cola1, atencion(cola))'''
-
-
-
-'''def randString(largo):
-    letras = 'abcdefghijklmnopqrstuvwxyz'
-    for i in range(largo):
-        return ''.join((random.choice(letras) for i in range(largo)))'''
