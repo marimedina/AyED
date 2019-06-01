@@ -1,6 +1,6 @@
 from tdacola import cargautomatica1, cola_llena, cola_vacia, arribo, atencion
 from tdacola import Cola, mover_al_final, barridoc, cargaAutoStr
-from tdacola import cargacaract
+from tdacola import cargacaract, fibcola
 from tdapila import invertir, apilar, Pila, desapilar, pila_vacia
 from tdapila import cargautomatica, listaRandom
 c = Cola()
@@ -118,14 +118,14 @@ print('Cola sin elemento en posicion: ' + str(pos))
 barridoc(c1)'''
 
 
-# ej8 NO ANDAAAAAAAAAAAAAAAA
+# ej8 MAL
 '''cargautomatica1(c)
 print(c.datos)
 num = 6
-while not cola_vacia(c) and (c.frente < num):
+while not cola_vacia(c) and (c.final < num):
     arribo(c1, atencion(c))
-arribo(c1, num)
-while not cola_vacia(c):
+    arribo(c1, num)
+if not cola_vacia(c):
     arribo(c1, atencion(c))
 print(c1.datos)'''
 
@@ -151,6 +151,8 @@ print('cantidad de numero negativos: ' + str(cont))'''
 
 
 # ej10 ARREGLARRRRRRRRRR
+
+
 '''n = 5
 arribo(c, 0)
 if n == 1:
@@ -166,7 +168,7 @@ barridoc(c)'''
 
 
 # ej12
-cargacaract(c)
+'''cargacaract(c)
 print(c.datos)
 caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.;/*-+=%#!?"
 # Parte A
@@ -190,7 +192,7 @@ while not cola_vacia(c2):
         if aux == elemento:
             cont += 1
     arribo(c4, aux)
-print('Hay ' + str(cont) + ' letras en la segunda cola')
+print('Hay ' + str(cont) + ' letras en la segunda cola')'''
 
 
 # ej14
@@ -269,3 +271,7 @@ if mult3 is True and multiplo3 is True:
     print('Ambas colas poseen al menos un multiplo de 3')
 else:
     print('Ambas no poseen al menos un multiplo de 3')'''
+
+
+# ej20
+vehiculos = ['auto', 'camion', 'colectivo']
