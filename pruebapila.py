@@ -38,7 +38,7 @@ print(p.datos)'''
 
 
 # ej2
-'''cargautomatica(p)
+cargautomatica(p)
 print(p.datos)
 while not pila_vacia(p):
     aux = desapilar(p)
@@ -46,7 +46,7 @@ while not pila_vacia(p):
         apilar(pp, aux)
     else:
         aux
-print(pp.datos)'''
+print(pp.datos)
 
 
 # ej3

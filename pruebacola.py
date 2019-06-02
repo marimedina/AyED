@@ -1,8 +1,9 @@
 from tdacola import cargautomatica1, cola_llena, cola_vacia, arribo, atencion
 from tdacola import Cola, mover_al_final, barridoc, cargaAutoStr
-from tdacola import cargacaract, fibcola
+from tdacola import cargacaract
 from tdapila import invertir, apilar, Pila, desapilar, pila_vacia
 from tdapila import cargautomatica, listaRandom
+import random
 c = Cola()
 c1 = Cola()
 c2 = Cola()
@@ -196,7 +197,7 @@ print('Hay ' + str(cont) + ' letras en la segunda cola')'''
 
 
 # ej14
-'''cargautomatica1(c)
+cargautomatica1(c)
 print(c.datos)
 cargautomatica1(c1)
 print(c1.datos)
@@ -239,19 +240,30 @@ else:
 
 
 # Parte E ARREGLAR
-mult2 = False
-multiplo2 = False
-mult3 = False
-multiplo2 = False
-while not cola_vacia(c3) and not cola_vacia(c4):
+'''mult2 = 0
+#multiplo2 = 0
+mult3 = 0
+#multiplo2 = False
+while not cola_vacia(c3):
     dato = atencion(c3)
-    dato1 = atencion(c4)
-    if dato % 2 == 0:
-        mult2 = True
-    elif dato1 % 2 == 0:
-        multiplo2 = True
+    if (dato % 2) == 0:
+        mult2 += 1
+
+    else:
+        if (dato % 3) == 0:
+            mult3 += 1
     arribo(c, dato)
-    arribo(c1, dato1)
+print(c.datos)
+while not cola_vacia(c4):
+    dato = atencion(c4)
+    if dato % 2 == 0:
+        multiplo2 += 1
+    arribo(c1, dato)
+
+if mult2 > 0 and mult3 > 0:
+    print('tiene al menos un multiplo de dos y tres')
+else:
+    print('no anda')
 
 while not cola_vacia(c) and not cola_vacia(c1):
     dato = atencion(c)
@@ -274,4 +286,48 @@ else:
 
 
 # ej20
-vehiculos = ['auto', 'camion', 'colectivo']
+'''vehiculos = ['autos', 'camiones', 'colectivos', 'camionetas', 'trafic']
+'autos $40, camiones $50, colectivos $60'
+peajes = [c1, c2, c3]
+precio = [40, 50, 60]
+i = 0
+
+# Parte A
+while i < 30:
+    dato = random.choice(vehiculos)
+    c = random.choice(peajes)
+    arribo(c, dato)
+    i += 1
+print(c.datos)'''
+
+# Parte B NO ANDA
+'''a1 = 0
+a2 = 0
+a3 = 0
+while not cola_vacia(c1):
+    dato = atencion(c1)
+    pos = vehiculos.index(dato)
+    #a1 = a1 + precio[pos]
+while not cola_vacia(c2):
+    dato = atencion(c2)
+    pos = vehiculos.index(dato)
+    #a2 = a2 + precio[pos]
+while not cola_vacia(c3):
+    dato = atencion(c3)
+    pos = vehiculos.index(dato)
+    #a3 = a3 + precio[pos]
+
+# Parte C
+caux = a1
+c = 1
+if caux < a2:
+    caux = a2
+    c = 2
+else:
+    if caux < a3:
+        caux = a3
+        c = 3
+    else:
+        caux = c3
+        c = 3
+print('la cabina que tuvo mayor recaudacion es la numero: ' + str(c))'''
