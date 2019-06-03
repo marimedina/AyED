@@ -4,6 +4,7 @@ from tdacola import cargacaract
 from tdapila import invertir, apilar, Pila, desapilar, pila_vacia
 from tdapila import cargautomatica, listaRandom
 import random
+import time
 c = Cola()
 c1 = Cola()
 c2 = Cola()
@@ -67,20 +68,20 @@ else:
     print('no es palindromo')'''
 
 # ej4 MAL MAL MAL
-'''cargautomatica1(c)
+cargautomatica1(c)
 print(c.datos)
+primo = True
 while not cola_vacia(c):
     aux = atencion(c)
-    if aux < 2:
+    if aux <= 2:
         arribo(c1, aux)
     else:
-        if aux == 2:
+        for i in range(2, 10):
+            if (aux % i == 0):
+                primo = False
+        if primo:
             arribo(c1, aux)
-        else:
-            for i in range(2, aux):
-                if (aux % i != 0) and (aux != i):
-                    arribo(c1, aux)
-print(c1.datos)'''
+print(c1.datos)
 
 
 # ej5
@@ -197,7 +198,7 @@ print('Hay ' + str(cont) + ' letras en la segunda cola')'''
 
 
 # ej14
-cargautomatica1(c)
+'''cargautomatica1(c)
 print(c.datos)
 cargautomatica1(c1)
 print(c1.datos)
@@ -230,9 +231,11 @@ sum1 = 0
 while not cola_vacia(c4):
     aux = atencion(c4)
     sum = sum + aux
+    arribo(c, aux)
 while not cola_vacia(c3):
     dat = atencion(c3)
     sum1 = sum + dat
+    arribo(c1, dat)
 if sum < sum1:
     print('La primera cola es la mayor')
 else:
@@ -240,49 +243,33 @@ else:
 
 
 # Parte E ARREGLAR
-'''mult2 = 0
-#multiplo2 = 0
+mult2 = 0
+multiplo2 = 0
 mult3 = 0
-#multiplo2 = False
-while not cola_vacia(c3):
-    dato = atencion(c3)
-    if (dato % 2) == 0:
+multiplo3 = 0
+while not cola_vacia(c):
+    dato = atencion(c)
+    if dato % 2 == 0:
         mult2 += 1
-
     else:
-        if (dato % 3) == 0:
+        if dato % 3 == 0:
             mult3 += 1
-    arribo(c, dato)
-print(c.datos)
-while not cola_vacia(c4):
-    dato = atencion(c4)
+    arribo(c3, dato)
+
+while not cola_vacia(c1):
+    dato = atencion(c1)
     if dato % 2 == 0:
         multiplo2 += 1
-    arribo(c1, dato)
+    else:
+        if dato % 3 == 0:
+            multiplo3 += 1
+    arribo(c4, dato)
 
 if mult2 > 0 and mult3 > 0:
-    print('tiene al menos un multiplo de dos y tres')
-else:
-    print('no anda')
-
-while not cola_vacia(c) and not cola_vacia(c1):
-    dato = atencion(c)
-    dato1 = atencion(c1)
-    if dato % 3 == 0:
-        mult3 = True
-    elif dato1 % 3 == 0:
-        multiplo3 = True
-    arribo(c3, dato)
-    arribo(c4, dato1)
-
-if mult2 is True and multiplo2 is True:
-    print('Ambas colas poseen al menos un multiplo de 2')
-else:
-    print('Ambas no poseen al menos un multiplo de 2')
-if mult3 is True and multiplo3 is True:
-    print('Ambas colas poseen al menos un multiplo de 3')
-else:
-    print('Ambas no poseen al menos un multiplo de 3')'''
+    if multiplo2 > 0 and multiplo3 > 0:
+        print('Ambas colas tienen multiplo de 2 y 3')
+    else:
+        print('Solo una de las colas posee multiplos')'''
 
 
 # ej20
@@ -331,3 +318,32 @@ else:
         caux = c3
         c = 3
 print('la cabina que tuvo mayor recaudacion es la numero: ' + str(c))'''
+
+
+# ej21 TERMINAR
+'''cdes = Cola()
+cate = Cola()
+cargautomatica1(cdes) #va ordenada
+cargautomatica1(cate)
+tipo_v = ['personas', 'negocios', 'carga']
+ta = [10, 5, 7]
+ts = [5, 3, 9]
+
+
+while not cola_vacia(cdes) or not cola_vacia(cate):
+    if not cola_vacia(cdes):
+        ha = time.strftime("%H:%M")
+        dato = frente(cdes)
+        if dato.hsalida =< ha or cola_vacia(cate):
+            dato = atencion(cdes)
+            if:
+                dato.hsalida = nuevo_hs
+                arribo(cdes)
+            else:
+                time.sleep(td[tipo_v(dato.tipo)])
+                #cargar
+    else:
+        if not cola_vacia(cate):
+            dato = atencion(cate)
+            time.sleep(ta[tipo_v(dato.tipo)])
+            #cargar'''
