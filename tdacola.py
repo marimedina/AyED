@@ -12,19 +12,6 @@ class Cola():
         self.tamanio = 0
 
 
-def cargautomatica1(cola):
-    while not cola_llena(cola):
-        dato = random.randint(0, 20)
-        arribo(cola, dato)
-
-
-def cargacaract(cola):
-    caract = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.;/*-+=%#!?"
-    while not cola_llena(cola):
-        arribo(cola, random.randint(0, 20))
-        arribo(cola, random.choice(caract))
-
-
 def arribo(cola, dato):
     cola.final += 1
     if cola.final == max:
@@ -74,6 +61,28 @@ def cargaAutoStr(cola):
     abc = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     while (not cola_llena(cola)):
         arribo(cola, random.choice(abc))
+
+
+def cargautomatica1(cola):
+    while not cola_llena(cola):
+        dato = random.randint(0, 20)
+        arribo(cola, dato)
+
+
+def cargacaract(cola):
+    caract = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.;/*-+=%#!?"
+    while not cola_llena(cola):
+        arribo(cola, random.randint(0, 20))
+        arribo(cola, random.choice(caract))
+
+
+def cargaturnos(cola):
+    letras = "ABCDE"
+    while not cola_llena(cola):
+        dato = random.choice(letras)
+        dat = random.randint(000, 999)
+        arribo(cola, dato)
+        arribo(cola, dat)
 
 
 '''def fibcola(n):

@@ -1,6 +1,6 @@
 from tdacola import cargautomatica1, cola_llena, cola_vacia, arribo, atencion
 from tdacola import Cola, mover_al_final, barridoc, cargaAutoStr
-from tdacola import cargacaract
+from tdacola import cargacaract, cargaturnos
 from tdapila import invertir, apilar, Pila, desapilar, pila_vacia
 from tdapila import cargautomatica, listaRandom
 import random
@@ -70,17 +70,23 @@ else:
 # ej4 MAL MAL MAL
 cargautomatica1(c)
 print(c.datos)
-primo = True
+pri = True
 while not cola_vacia(c):
     aux = atencion(c)
-    if aux <= 2:
+    if aux < 2:
+        pri = True
+        arribo(c1, aux)
+    elif aux == 2:
+        pri = True
         arribo(c1, aux)
     else:
-        for i in range(2, 10):
+        i = 2
+        while (i < aux) and pri:
             if (aux % i == 0):
-                primo = False
-        if primo:
-            arribo(c1, aux)
+                pri = False
+            else:
+                arribo(c1, aux)
+            i += 1
 print(c1.datos)
 
 
@@ -153,8 +159,6 @@ print('cantidad de numero negativos: ' + str(cont))'''
 
 
 # ej10 ARREGLARRRRRRRRRR
-
-
 '''n = 5
 arribo(c, 0)
 if n == 1:
@@ -242,7 +246,10 @@ else:
     print('La segunda cola es la mayor')
 
 
-# Parte E ARREGLAR
+# Parte D
+
+
+# Parte E
 mult2 = 0
 multiplo2 = 0
 mult3 = 0
@@ -272,6 +279,12 @@ if mult2 > 0 and mult3 > 0:
         print('Solo una de las colas posee multiplos')'''
 
 
+# ej17
+
+
+# ej19
+
+
 # ej20
 '''vehiculos = ['autos', 'camiones', 'colectivos', 'camionetas', 'trafic']
 'autos $40, camiones $50, colectivos $60'
@@ -279,45 +292,47 @@ peajes = [c1, c2, c3]
 precio = [40, 50, 60]
 i = 0
 
-# Parte A
-while i < 30:
+while (i < 30):
+    # num = random.randint(0, 100)
     dato = random.choice(vehiculos)
-    c = random.choice(peajes)
-    arribo(c, dato)
+    caux = random.choice(peajes)
+    arribo(caux, dato)
     i += 1
-print(c.datos)'''
+ac1, ac2, ac3 = 0, 0, 0
 
-# Parte B NO ANDA
-'''a1 = 0
-a2 = 0
-a3 = 0
-while not cola_vacia(c1):
-    dato = atencion(c1)
-    pos = vehiculos.index(dato)
-    #a1 = a1 + precio[pos]
-while not cola_vacia(c2):
-    dato = atencion(c2)
-    pos = vehiculos.index(dato)
-    #a2 = a2 + precio[pos]
-while not cola_vacia(c3):
-    dato = atencion(c3)
-    pos = vehiculos.index(dato)
-    #a3 = a3 + precio[pos]
 
-# Parte C
-caux = a1
-c = 1
-if caux < a2:
-    caux = a2
-    c = 2
+while not cola_vacia(c1) or not cola_vacia(c2) or not cola_vacia(c3):
+    if not cola_vacia(c1):
+        dato = atencion(c1)
+        print(dato)
+        pos = vehiculos.index(dato)
+        ac1 = ac1 + precio[pos]
+    if not cola_vacia(c2):
+        dato = atencion(c2)
+        pos = vehiculos.index(dato)
+        ac2 = ac2 + precio[pos]
+    if not cola_vacia(c3):
+        dato = atencion(c3)
+        pos = vehiculos.index(dato)
+        ac3 = ac3 + precio[pos]
+
+aux = ac1
+caux = 1
+if (aux < ac2):
+    aux = ac2
+    caux = 2
 else:
-    if caux < a3:
-        caux = a3
-        c = 3
+    if aux < ac3:
+        aux = ac3
+        caux = 3
+    if ac2 < ac3:
+        aux = ac3
+        caux = 3
     else:
-        caux = c3
-        c = 3
-print('la cabina que tuvo mayor recaudacion es la numero: ' + str(c))'''
+        aux = ac3
+        caux = 3
+
+print('la cabina que tuvo mayor recaudacion fue: ' + str(caux))'''
 
 
 # ej21 TERMINAR
@@ -328,15 +343,13 @@ cargautomatica1(cate)
 tipo_v = ['personas', 'negocios', 'carga']
 ta = [10, 5, 7]
 ts = [5, 3, 9]
-
-
 while not cola_vacia(cdes) or not cola_vacia(cate):
     if not cola_vacia(cdes):
         ha = time.strftime("%H:%M")
         dato = frente(cdes)
-        if dato.hsalida =< ha or cola_vacia(cate):
+        if dato.hsalida <= ha or cola_vacia(cate):
             dato = atencion(cdes)
-            if:
+            if
                 dato.hsalida = nuevo_hs
                 arribo(cdes)
             else:
@@ -345,5 +358,5 @@ while not cola_vacia(cdes) or not cola_vacia(cate):
     else:
         if not cola_vacia(cate):
             dato = atencion(cate)
-            time.sleep(ta[tipo_v(dato.tipo)])
-            #cargar'''
+            time.sleep(ta[tipo_v(dato.tipo)])'''
+            #cargar
