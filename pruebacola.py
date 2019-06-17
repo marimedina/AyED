@@ -1,6 +1,6 @@
 from tdacola import cargautomatica1, cola_llena, cola_vacia, arribo, atencion
 from tdacola import Cola, mover_al_final, barridoc, cargaAutoStr
-from tdacola import cargacaract, cargaturnos
+from tdacola import cargacaract, cargaturnos, primo
 from tdapila import invertir, apilar, Pila, desapilar, pila_vacia
 from tdapila import cargautomatica, listaRandom
 import random
@@ -67,27 +67,15 @@ if palindromo:
 else:
     print('no es palindromo')'''
 
-# ej4 MAL MAL MAL
-cargautomatica1(c)
-print(c.datos)
-pri = True
+# ej4
+'''cargautomatica1(c)
+barridoc(c)
 while not cola_vacia(c):
     aux = atencion(c)
-    if aux < 2:
-        pri = True
+    if primo(aux) is True:
         arribo(c1, aux)
-    elif aux == 2:
-        pri = True
-        arribo(c1, aux)
-    else:
-        i = 2
-        while (i < aux) and pri:
-            if (aux % i == 0):
-                pri = False
-            else:
-                arribo(c1, aux)
-            i += 1
-print(c1.datos)
+print('Cola de numeros primos:')
+barridoc(c1)'''
 
 
 # ej5

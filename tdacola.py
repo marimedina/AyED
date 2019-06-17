@@ -76,6 +76,9 @@ def cargacaract(cola):
         arribo(cola, random.choice(caract))
 
 
+# CONCATENAR
+
+
 def cargaturnos(cola):
     letras = "ABCDE"
     while not cola_llena(cola):
@@ -84,6 +87,20 @@ def cargaturnos(cola):
         arribo(cola, dato)
         arribo(cola, dat)
 
+
+def primo(n):
+    pri = True
+    if n < 2:
+        return True
+    elif n == 2:
+        return True
+    else:
+        i = 2
+        while (i < n) and pri:
+            if (n % i == 0):
+                pri = False
+            i += 1
+        return pri
 
 '''def fibcola(n):
     cola = Cola()
