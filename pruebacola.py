@@ -161,6 +161,9 @@ elif n > 1:
 barridoc(c)'''
 
 
+# ej11
+
+
 # ej12
 '''cargacaract(c)
 print(c.datos)
@@ -187,6 +190,9 @@ while not cola_vacia(c2):
             cont += 1
     arribo(c4, aux)
 print('Hay ' + str(cont) + ' letras en la segunda cola')'''
+
+
+# ej13
 
 
 # ej14
