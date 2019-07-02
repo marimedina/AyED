@@ -101,27 +101,3 @@ def primo(n):
                 pri = False
             i += 1
         return pri
-
-'''def fibcola(n):
-    cola = Cola()
-    arribo(cola, 0)
-    if (n == 1):
-        arribo(cola, 1)
-    elif (n > 1):
-        arribo(cola, 1)
-        while not cola_llena(cola) and cola.datos[cola.final] <= n:
-            dato = atencion(cola)
-            dato2 = cola.datos[cola.final]
-            arribo(cola, dato)
-            d = dato + dato2
-            arribo(cola, d)
-    barridoc(cola)'''
-
-'''def ordencrec(cola):
-    num = int(input("Ingrese el numero que desea agregar: "))
-    cola1 = Cola()
-    while not cola_vacia(cola) and (cola.frente < num):
-        arribo(cola1, atencion(cola))
-    arribo(cola1, num)
-    while not cola_vacia(cola):
-        arribo(cola1, atencion(cola))'''

@@ -1,6 +1,6 @@
 from tdacola import cargautomatica1, cola_llena, cola_vacia, arribo, atencion
 from tdacola import Cola, mover_al_final, barridoc, cargaAutoStr
-from tdacola import cargacaract, cargaturnos, primo
+from tdacola import cargacaract, cargaturnos, primo, tamanioc
 from tdapila import invertir, apilar, Pila, desapilar, pila_vacia
 from tdapila import cargautomatica, listaRandom
 import random
@@ -93,7 +93,7 @@ print(p1.datos)'''
 barridoc(c)
 num = 5
 cont = 0
-for i in range(0, tamanioc(c)):
+for i in range(0, c.tamanio):
     dato = atencion(c)
     if (dato == num):
         cont += 1
@@ -114,16 +114,20 @@ print('Cola sin elemento en posicion: ' + str(pos))
 barridoc(c1)'''
 
 
-# ej8 MAL
+# ej8
 '''cargautomatica1(c)
-print(c.datos)
+barridoc(c)
 num = 6
-while not cola_vacia(c) and (c.final < num):
-    arribo(c1, atencion(c))
-    arribo(c1, num)
-if not cola_vacia(c):
-    arribo(c1, atencion(c))
-print(c1.datos)'''
+while not cola_vacia(c) and (c.frente < num):
+    aux = atencion(c)
+    arribo(c1, aux)
+arribo(c1, num)
+while not cola_vacia(c):
+    aux = atencion(c)
+    arribo(c1, aux)
+c, c1 = c1, c
+print('Cola con nuevo numero:')
+barridoc(c)'''
 
 
 # ej9 PARA ESTE CAMBIAR CARGA AUTOMATICA (-50,50)
@@ -146,23 +150,36 @@ print('rango: ' + str(rango))
 print('cantidad de numero negativos: ' + str(cont))'''
 
 
-# ej10 ARREGLARRRRRRRRRR
-'''n = 5
+# ej10
+'''n = 6
+s = 0
 arribo(c, 0)
-if n == 1:
-    arribo(c, 1)
-elif n > 1:
-    arribo(c, 1)
-    while not cola_llena(c) and (c.tamanio <= n):
-        aux = atencion(c)
-        dato = c.final
-        arribo(c, aux)
-        arribo(c, (aux + dato))
+arribo(c, 1)
+if n > 1:
+    while tamanioc(c) < n:
+        while tamanioc(c) > 2:
+            arribo(c1, atencion(c))
+        d1 = atencion(c)
+        d2 = atencion(c)
+        s = d1 + d2
+        arribo(c1, d1)
+        arribo(c1, d2)
+        arribo(c1, s)
+        c, c1 = c1, c
 barridoc(c)'''
 
 
 # ej11
-
+'''while not cola_vacia(c1):
+    aux = atencion(c1)
+    while aux < num:
+        arribo(c, aux)
+    arribo(c, num)
+while not cola_vacia(c1):
+    aux = atencion(c1)
+    arribo(c, aux)
+print('aca2')
+barridoc(c)'''
 
 # ej12
 '''cargacaract(c)
@@ -190,9 +207,6 @@ while not cola_vacia(c2):
             cont += 1
     arribo(c4, aux)
 print('Hay ' + str(cont) + ' letras en la segunda cola')'''
-
-
-# ej13
 
 
 # ej14
@@ -271,6 +285,9 @@ if mult2 > 0 and mult3 > 0:
         print('Ambas colas tienen multiplo de 2 y 3')
     else:
         print('Solo una de las colas posee multiplos')'''
+
+
+# ej16
 
 
 # ej17
