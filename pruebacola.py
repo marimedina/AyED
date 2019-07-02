@@ -170,16 +170,13 @@ barridoc(c)'''
 
 
 # ej11
-'''while not cola_vacia(c1):
-    aux = atencion(c1)
-    while aux < num:
-        arribo(c, aux)
-    arribo(c, num)
-while not cola_vacia(c1):
-    aux = atencion(c1)
-    arribo(c, aux)
-print('aca2')
-barridoc(c)'''
+cargautomatica1(c1)
+print('Cola 1:')
+barridoc(c1)
+cargautomatica1(c2)
+print('Cola 2:')
+barridoc(c2)
+
 
 # ej12
 '''cargacaract(c)
