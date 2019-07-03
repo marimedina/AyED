@@ -169,7 +169,7 @@ if n > 1:
 barridoc(c)'''
 
 
-# ej11
+# ej11 ARREGLAR
 '''c = 10
 for i in range(1, c + 1):
     arribo(c1, (i*2))
