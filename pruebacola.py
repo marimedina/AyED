@@ -170,12 +170,25 @@ barridoc(c)'''
 
 
 # ej11
-cargautomatica1(c1)
+'''c = 10
+for i in range(1, c + 1):
+    arribo(c1, (i*2))
 print('Cola 1:')
 barridoc(c1)
-cargautomatica1(c2)
+for i in range(1, c + 1):
+    arribo(c2, (i*4))
 print('Cola 2:')
-barridoc(c2)
+barridoc(c2)'''
+# no anda de aca para abajo
+'''while not cola_vacia(c1) and not cola_vacia(c2):
+    aux = atencion(c1)
+    dato = atencion(c2)
+    if aux > dato:
+        arribo(c, dato)
+        arribo(c, aux)
+    else:
+        arribo(c, aux)
+        arribo(c, dato)'''
 
 
 # ej12
