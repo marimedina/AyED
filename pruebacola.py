@@ -219,7 +219,7 @@ while not cola_vacia(c2):
 print('Hay ' + str(cont) + ' letras en la segunda cola')'''
 
 
-# ej14
+# ej14 FALTA D
 '''cargautomatica1(c)
 print(c.datos)
 cargautomatica1(c1)
@@ -297,10 +297,40 @@ if mult2 > 0 and mult3 > 0:
         print('Solo una de las colas posee multiplos')'''
 
 
-# ej16
+# ej16 NO ENTIENDO QUE HACE
 
 
 # ej17
+cant = 10
+letra = "ABCDEF"
+for i in range(0, cant):
+    turno = str(random.choice(letra))
+    for j in range(0, 3):
+        turno += str(random.randint(0, 9))
+    arribo(c, turno)
+barridoc(c)
+# Parte B
+while not cola_vacia(c):
+    turno = atencion(c)
+    if turno[0] in ["A", "C", "F"]:
+        arribo(c1, turno)
+    else:
+        arribo(c2, turno)
+print('Cola de turnos que comienzan con A, C, F:')
+barridoc(c1)
+print('Cola de turnos que comienzan con B, D, E:')
+barridoc(c2)
+# Parte C
+ca = 0
+cb = 0
+cc = 0
+cd = 0
+ce = 0
+cf = 0
+if tamanioc(c1) < tamanioc(c2):
+    print('La cola 1 tiene mas cantidad de turnos')
+else:
+    print('La cola 2 tiene mas cantidad de turnos')
 
 
 # ej19
