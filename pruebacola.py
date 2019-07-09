@@ -327,11 +327,25 @@ cc = 0
 cd = 0
 ce = 0
 cf = 0
-if tamanioc(c1) < tamanioc(c2):
+if tamanioc(c1) > tamanioc(c2):
     print('La cola 1 tiene mas cantidad de turnos')
+    for i in range(0, tamanioc(c1)):
+        turno = atencion(c1)
+        if turno[0] == 'A':
+            ca += 1
+        elif turno[0] == 'C':
+            cc += 1
+        else:
+            cf += 1
+        arribo(c1, turno)
 else:
     print('La cola 2 tiene mas cantidad de turnos')
-
+    for j in range(0, tamanioc(c2)):
+        turno = atencion(c2)
+        if turno[0] == 'B':
+            cb += 1
+        elif turno[0] == 'D':
+            cd += 1
 
 # ej19
 
