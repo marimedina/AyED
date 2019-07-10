@@ -76,18 +76,6 @@ def cargacaract(cola):
         arribo(cola, random.choice(caract))
 
 
-# CONCATENAR
-
-
-def cargaturnos(cola):
-    letras = "ABCDE"
-    while not cola_llena(cola):
-        dato = random.choice(letras)
-        dat = random.randint(000, 999)
-        arribo(cola, dato)
-        arribo(cola, dat)
-
-
 def primo(n):
     pri = True
     if n < 2:

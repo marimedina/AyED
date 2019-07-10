@@ -220,7 +220,7 @@ print('Hay ' + str(cont) + ' letras en la segunda cola')'''
 
 
 # ej14 FALTA D
-'''cargautomatica1(c)
+cargautomatica1(c)
 print(c.datos)
 cargautomatica1(c1)
 print(c1.datos)
@@ -264,9 +264,6 @@ else:
     print('La segunda cola es la mayor')
 
 
-# Parte D
-
-
 # Parte E
 mult2 = 0
 multiplo2 = 0
@@ -294,14 +291,36 @@ if mult2 > 0 and mult3 > 0:
     if multiplo2 > 0 and multiplo3 > 0:
         print('Ambas colas tienen multiplo de 2 y 3')
     else:
-        print('Solo una de las colas posee multiplos')'''
+        print('Solo una de las colas posee multiplos')
+
+# Parte D
+p1, p2 = 0, 0
+while not cola_vacia(c3):
+    aux = atencion(c3)
+    primo(aux)
+    if True:
+        p1 += 1
+    arribo(c, aux)
+while not cola_vacia(c4):
+    dat = atencion(c4)
+    primo(dat)
+    if True:
+        p2 += 1
+    arribo(c1, dat)
+if p1 == p2:
+    print('Ambas colas tienen la misma cantidad de numeros primos')
+else:
+    if p1 > p2:
+        print('La cola 1 tiene mas cantidad de numeros primos')
+    else:
+        print('La cola 2 tiene mas cantidad de numeros primos')
 
 
 # ej16 NO ENTIENDO QUE HACE
 
 
 # ej17
-cant = 10
+'''cant = 10
 letra = "ABCDEF"
 for i in range(0, cant):
     turno = str(random.choice(letra))
@@ -321,12 +340,10 @@ barridoc(c1)
 print('Cola de turnos que comienzan con B, D, E:')
 barridoc(c2)
 # Parte C
-ca = 0
-cb = 0
-cc = 0
-cd = 0
-ce = 0
-cf = 0
+ca, cc, cf = 0, 0, 0
+cb, cd, ce = 0, 0, 0
+contador = 0
+letra = 0
 if tamanioc(c1) > tamanioc(c2):
     print('La cola 1 tiene mas cantidad de turnos')
     for i in range(0, tamanioc(c1)):
@@ -338,6 +355,15 @@ if tamanioc(c1) > tamanioc(c2):
         else:
             cf += 1
         arribo(c1, turno)
+    contador = ca
+    letra = "A"
+    if contador < cc:
+        contador = cc
+        letra = "C"
+    if contador < cf:
+        contador = cf
+        letra = "F"
+    print('La mayor cantidad de turnos comienzan con la letra ' + str(letra))
 else:
     print('La cola 2 tiene mas cantidad de turnos')
     for j in range(0, tamanioc(c2)):
@@ -346,6 +372,19 @@ else:
             cb += 1
         elif turno[0] == 'D':
             cd += 1
+        else:
+            ce += 1
+        arribo(c2, turno)
+    contador = cb
+    letra = "B"
+    if contador < cd:
+        contador = cd
+        letra = "D"
+    if contador < ce:
+        contador = ce
+        letra = "E"
+    print('La mayor cantidad de turnos comienzan con la letra '+ str(letra))'''
+
 
 # ej19
 
