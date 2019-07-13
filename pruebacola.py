@@ -1,6 +1,6 @@
 from tdacola import cargautomatica1, cola_llena, cola_vacia, arribo, atencion
 from tdacola import Cola, mover_al_final, barridoc, cargaAutoStr
-from tdacola import cargacaract, cargaturnos, primo, tamanioc
+from tdacola import cargacaract, primo, tamanioc
 from tdapila import invertir, apilar, Pila, desapilar, pila_vacia
 from tdapila import cargautomatica, listaRandom
 import random
@@ -178,9 +178,9 @@ barridoc(c1)
 for i in range(1, c + 1):
     arribo(c2, (i*4))
 print('Cola 2:')
-barridoc(c2)'''
+barridoc(c2)
 # no anda de aca para abajo
-'''while not cola_vacia(c1) and not cola_vacia(c2):
+while not cola_vacia(c1) and not cola_vacia(c2):
     aux = atencion(c1)
     dato = atencion(c2)
     if aux > dato:
@@ -188,7 +188,8 @@ barridoc(c2)'''
         arribo(c, aux)
     else:
         arribo(c, aux)
-        arribo(c, dato)'''
+        arribo(c, dato)
+barridoc(c)'''
 
 
 # ej12
@@ -219,8 +220,8 @@ while not cola_vacia(c2):
 print('Hay ' + str(cont) + ' letras en la segunda cola')'''
 
 
-# ej14 FALTA D
-cargautomatica1(c)
+# ej14
+'''cargautomatica1(c)
 print(c.datos)
 cargautomatica1(c1)
 print(c1.datos)
@@ -258,10 +259,10 @@ while not cola_vacia(c3):
     dat = atencion(c3)
     sum1 = sum + dat
     arribo(c1, dat)
-if sum < sum1:
-    print('La primera cola es la mayor')
-else:
+if sum > sum1:
     print('La segunda cola es la mayor')
+else:
+    print('La primera cola es la mayor')
 
 
 # Parte E
@@ -313,7 +314,7 @@ else:
     if p1 > p2:
         print('La cola 1 tiene mas cantidad de numeros primos')
     else:
-        print('La cola 2 tiene mas cantidad de numeros primos')
+        print('La cola 2 tiene mas cantidad de numeros primos')'''
 
 
 # ej16 NO ENTIENDO QUE HACE
