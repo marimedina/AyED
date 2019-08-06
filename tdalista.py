@@ -1,3 +1,6 @@
+import random
+
+
 class nodoLista():
     info, sig = None, None
 
@@ -6,6 +9,17 @@ class Lista():
     def __init__(self):
         self.inicio = None
         self.tamanio = 0
+
+
+def cargaAuto(lista, cantidad):
+    for i in range(0, cantidad):
+        insertar(lista, random.randint(-50, 50))
+
+
+def cargaString(lista, cantidad):
+    abc = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    for i in range(0, cantidad):
+        insertar(lista, random.choice(abc))
 
 
 def insertar(lista, dato):
@@ -57,5 +71,18 @@ def lista_vacia(lista):
     return lista.tamanio == 0
 
 
-def busqueda(lista, clave, posicion):
-    
+def tamanio(lista):
+    return lista.tamanio
+
+
+def busqueda(lista, buscado):
+    buscado = -1
+    i = -1
+    aux = lista.inicio
+    while (aux is not None) and (buscado == -1):
+        i += 1
+        if (aux.info == buscado):
+            pos = i
+        aux = aux.sig
+
+    return pos

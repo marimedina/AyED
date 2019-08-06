@@ -321,7 +321,7 @@ else:
 
 
 # ej17
-'''cant = 10
+cant = 10
 letra = "ABCDEF"
 for i in range(0, cant):
     turno = str(random.choice(letra))
