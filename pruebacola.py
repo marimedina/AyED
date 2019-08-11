@@ -181,14 +181,11 @@ print('Cola 2:')
 barridoc(c2)
 # no anda de aca para abajo
 while not cola_vacia(c1) and not cola_vacia(c2):
-    aux = atencion(c1)
-    dato = atencion(c2)
-    if aux > dato:
-        arribo(c, dato)
-        arribo(c, aux)
+    if c1.frente > c2.frente:
+        arribo(c, atencion(c2))
     else:
-        arribo(c, aux)
-        arribo(c, dato)
+        arribo(c, atencion(c1))
+print('Cola final')
 barridoc(c)'''
 
 
@@ -317,11 +314,8 @@ else:
         print('La cola 2 tiene mas cantidad de numeros primos')'''
 
 
-# ej16 NO ENTIENDO QUE HACE
-
-
 # ej17
-cant = 10
+'''cant = 10
 letra = "ABCDEF"
 for i in range(0, cant):
     turno = str(random.choice(letra))
@@ -391,53 +385,49 @@ else:
 
 
 # ej20
-'''vehiculos = ['autos', 'camiones', 'colectivos', 'camionetas', 'trafic']
-'autos $40, camiones $50, colectivos $60'
+'''vehiculos = ['auto', 'camion', 'colectivo', 'camioneta', 'trafic']
 peajes = [c1, c2, c3]
-precio = [40, 50, 60]
+cant1, cant2, cant3 = 0, 0, 0
 i = 0
-
-while (i < 30):
-    # num = random.randint(0, 100)
+for i in range(0, 10):
+    cab = random.randint(1, 3)
     dato = random.choice(vehiculos)
-    caux = random.choice(peajes)
-    arribo(caux, dato)
-    i += 1
-ac1, ac2, ac3 = 0, 0, 0
-
-
-while not cola_vacia(c1) or not cola_vacia(c2) or not cola_vacia(c3):
-    if not cola_vacia(c1):
-        dato = atencion(c1)
-        print(dato)
-        pos = vehiculos.index(dato)
-        ac1 = ac1 + precio[pos]
-    if not cola_vacia(c2):
-        dato = atencion(c2)
-        pos = vehiculos.index(dato)
-        ac2 = ac2 + precio[pos]
-    if not cola_vacia(c3):
-        dato = atencion(c3)
-        pos = vehiculos.index(dato)
-        ac3 = ac3 + precio[pos]
-
-aux = ac1
-caux = 1
-if (aux < ac2):
-    aux = ac2
-    caux = 2
-else:
-    if aux < ac3:
-        aux = ac3
-        caux = 3
-    if ac2 < ac3:
-        aux = ac3
-        caux = 3
+    if cab == 1:
+        arribo(c1, dato)
+    elif cab == 2:
+        arribo(c2, dato)
     else:
-        aux = ac3
-        caux = 3
+        arribo(c3, dato)
 
-print('la cabina que tuvo mayor recaudacion fue: ' + str(caux))'''
+print("Cabina 1:")
+barridoc(c1)
+print("Cabina 2:")
+barridoc(c2)
+print("Cabina 3:")
+barridoc(c3)
+
+while (not cola_vacia(c1)) or (not cola_vacia(c2)) or (not cola_vacia(c3)):
+    if not cola_vacia(c1):
+        atencion(c1)
+        cant1 += 1
+    if not cola_vacia(c2):
+        atencion(c2)
+        cant2 += 1
+    if not cola_vacia(c3):
+        atencion(c3)
+        cant3 += 1
+
+cant_mayor = cant1
+cab_mayor = 1
+
+if cant_mayor < cant2:
+    cant_mayor = cant2
+    cab_mayor = 2
+if cant_mayor < cant3:
+    cant_mayor = cant3
+    cab_mayor = 3
+
+print("La cabina que mas dinero recaudo fue: " + str(cab_mayor))'''
 
 
 # ej21 TERMINAR
