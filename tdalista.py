@@ -13,7 +13,7 @@ class Lista():
 
 def cargaAuto(lista, cantidad):
     for i in range(0, cantidad):
-        insertar(lista, random.randint(-50, 50))
+        insertar(lista, random.randint(0, 50))
 
 
 def cargaString(lista, cantidad):

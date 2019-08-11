@@ -28,5 +28,18 @@ barrido(l1)'''
 
 
 # ej3
-cargaAuto(l1)
+cargaAuto(l1, 10)
 barrido(l1)
+aux = l1.inicio
+aux1 = l1.inicio
+while aux is not None:
+    if aux.info % 2 == 0:
+        insertar(l2, aux)
+        aux1 = aux.sig
+    else:
+        insertar(l3, aux)
+        aux1 = aux.sig
+print('Lista de numeros pares:')
+barrido(l2)
+print('Lista de numeros impares:')
+barrido(l3)
