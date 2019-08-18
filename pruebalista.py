@@ -28,18 +28,42 @@ barrido(l1)'''
 
 
 # ej3
+'''cargaAuto(l1, 10)
+barrido(l1)
+aux = l1.inicio
+while aux is not None:
+    if aux.info % 2 == 0:
+        insertar(l2, aux.info)
+    else:
+        insertar(l3, aux.info)
+    aux = aux.sig
+print('Lista de numeros pares:')
+barrido(l2)
+print('Lista de numeros impares:')
+barrido(l3)'''
+
+
+# ej4
+
+
+# ej5
 cargaAuto(l1, 10)
 barrido(l1)
 aux = l1.inicio
 aux1 = l1.inicio
+primo = True
 while aux is not None:
-    if aux.info % 2 == 0:
-        insertar(l2, aux)
-        aux1 = aux.sig
-    else:
-        insertar(l3, aux)
-        aux1 = aux.sig
-print('Lista de numeros pares:')
-barrido(l2)
-print('Lista de numeros impares:')
-barrido(l3)
+    #if aux.info <= 2:
+        #primo = True
+    #else:
+    if aux.info > 2:
+        i = 2
+        while (i < aux.info) and primo:
+            if aux.info % i == 0:
+                primo = False
+            i += 1
+    if primo:
+        eliminar(l1, aux.info)
+        aux = aux.sig
+print('Lista sin numeros primos:')
+barrido(l1)

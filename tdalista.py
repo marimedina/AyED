@@ -26,14 +26,14 @@ def insertar(lista, dato):
     nodo = nodoLista()
     nodo.info = dato
     # resuelve primer caso y segundo
-    if (lista.inicio is None) or (nodo.info < lista.inicio.info):
+    if lista.inicio == None or nodo.info < lista.inicio.info:
         nodo.sig = lista.inicio
         lista.inicio = nodo
     else:
         # resuelve tercer y cuarto caso
         act = lista.inicio.sig
         ant = lista.inicio
-        while (act is not None) and (act.info < nodo.info):
+        while (act is not None) and (act.info <= nodo.info):
             act = act.sig
             ant = ant.sig
         nodo.sig = act
@@ -86,3 +86,18 @@ def busqueda(lista, buscado):
         aux = aux.sig
 
     return pos
+
+
+'''def primo(lista):
+    pri = True
+    aux = lista.inicio
+    while aux is not None:
+        if aux.info <= 2:
+            pri = True
+        else:
+            i = 2
+        while (i < aux.info) and pri:
+            if aux.info % i == 0:
+                pri = False
+            i += 1
+        return pri'''
