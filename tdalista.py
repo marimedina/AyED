@@ -106,7 +106,7 @@ def busquedaLista(l, buscado):
 
     return aux
 
-    
+
 '''def busqueda(lista, buscado):
     buscado = -1
     i = -1
