@@ -1,4 +1,5 @@
 import random
+import math
 
 
 class nodoLista():
@@ -26,7 +27,7 @@ def insertar(lista, dato):
     nodo = nodoLista()
     nodo.info = dato
     # resuelve primer caso y segundo
-    if lista.inicio == None or nodo.info < lista.inicio.info:
+    if lista.inicio is None or nodo.info < lista.inicio.info:
         nodo.sig = lista.inicio
         lista.inicio = nodo
     else:
@@ -39,6 +40,28 @@ def insertar(lista, dato):
         nodo.sig = act
         ant.sig = nodo
     lista.tamanio += 1
+
+
+def insertar1(lista, dato, posicion):
+    nodo = nodoLista()
+    nodo.info = dato
+    aux = lista.inicio
+    if (posicion >= 0) and (posicion <= lista.tamanio):
+        if (posicion == 0):
+            nodo.sig = lista.inicio
+            lista.inicio = nodo
+        elif (posicion < lista.tamanio):
+            for i in range(1, posicion):
+                aux = aux.sig
+            nodo.sig = aux.sig
+            aux.sig = nodo
+        else:
+            while aux.sig is not None:
+                aux = aux.sig
+            aux.sig = nodo
+    else:
+        print("El indice " + str(posicion) + " excede el tamaño de elementos que ")
+        print("posee la lista")
 
 
 def eliminar(lista, clave):
@@ -75,7 +98,16 @@ def tamanio(lista):
     return lista.tamanio
 
 
-def busqueda(lista, buscado):
+def busquedaLista(l, buscado):
+    """Devuelve dirección de memoria. None si no se encontró lo buscado"""
+    aux = l.inicio
+    while (aux is not None) and (aux.info != buscado):
+        aux = aux.sig
+
+    return aux
+
+    
+'''def busqueda(lista, buscado):
     buscado = -1
     i = -1
     aux = lista.inicio
@@ -84,20 +116,19 @@ def busqueda(lista, buscado):
         if (aux.info == buscado):
             pos = i
         aux = aux.sig
+    return pos'''
 
-    return pos
 
-
-'''def primo(lista):
+def primo(num):
     pri = True
-    aux = lista.inicio
-    while aux is not None:
-        if aux.info <= 2:
-            pri = True
-        else:
-            i = 2
-        while (i < aux.info) and pri:
-            if aux.info % i == 0:
+    if num < 2 and num != 0:
+        return True
+    elif num == 2:
+        return True
+    else:
+        i = 2
+        while (i <= math.sqrt(num)) and pri:
+            if (i != num) and (num % i == 0):
                 pri = False
             i += 1
-        return pri'''
+        return pri

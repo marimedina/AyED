@@ -1,9 +1,12 @@
 from tdalista import cargaAuto, insertar, eliminar, barrido
-from tdalista import lista_vacia, tamanio, busqueda, Lista
-from tdalista import cargaString
+from tdalista import lista_vacia, tamanio, Lista
+from tdalista import cargaString, insertar1, primo, busquedaLista
+import math
+import random
 l1 = Lista()
 l2 = Lista()
 l3 = Lista()
+
 
 
 # ej1
@@ -44,26 +47,36 @@ barrido(l3)'''
 
 
 # ej4
-
-
-# ej5
-cargaAuto(l1, 10)
+'''cargaAuto(l1, 10)
 barrido(l1)
+insertar1(l1, 100, 3)
+print("Lista con elemente agregado")
+barrido(l1)'''
+
+# ej5 MAL - TERMINAR
+'''cargaAuto(l1, 10)
+barrido(l1)
+print()
 aux = l1.inicio
-aux1 = l1.inicio
-primo = True
 while aux is not None:
-    #if aux.info <= 2:
-        #primo = True
-    #else:
-    if aux.info > 2:
-        i = 2
-        while (i < aux.info) and primo:
-            if aux.info % i == 0:
-                primo = False
-            i += 1
-    if primo:
+    if primo(aux.info):
         eliminar(l1, aux.info)
-        aux = aux.sig
+    aux = aux.sig
 print('Lista sin numeros primos:')
+barrido(l1)'''
+
+
+# ej6
+
+
+# ej7
+
+
+# ej8
+while tamanio(l1) < 10:
+    aleatorio = random.randint(-999, 999)
+    if busquedaLista(l1, aleatorio) is None:
+        if primo(aleatorio):
+            
+            insertar(l1, aleatorio)
 barrido(l1)
