@@ -1,5 +1,5 @@
 from tdalista import cargaAuto, insertar, eliminar, barrido
-from tdalista import lista_vacia, tamanio, Lista
+from tdalista import lista_vacia, tamanio, Lista, eliminarNodo
 from tdalista import cargaString, insertar1, primo, busquedaLista
 import math
 import random
@@ -7,6 +7,12 @@ l1 = Lista()
 l2 = Lista()
 l3 = Lista()
 
+'''cargaAuto(l1, 5)
+barrido(l1)
+while l1.inicio is not None:
+    eliminarNodo(l1)
+    print('l1')
+    barrido(l1)'''
 
 
 # ej1
@@ -53,7 +59,7 @@ insertar1(l1, 100, 3)
 print("Lista con elemente agregado")
 barrido(l1)'''
 
-# ej5 MAL - TERMINAR
+# ej5
 '''cargaAuto(l1, 10)
 barrido(l1)
 print()
@@ -70,13 +76,39 @@ barrido(l1)'''
 
 
 # ej7
+cargaAuto(l1, 5)
+cargaAuto(l2, 5)
+barrido(l1)
+print('lista 2')
+barrido(l2)
+aux = l1.inicio
+aux1 = l2.inicio
+# Parte B y C
+c = 0
+while aux is not None:
+    if aux.info != aux1.info:
+        insertar(l3, aux.info)
+        insertar(l3, aux1.info)
+    else:
+        c += 1
+    aux = aux.sig
+    aux1 = aux1.sig
+print('listas unidas')
+barrido(l3)
+print('Hay ' + str(c) + ' elementos repetidos')
 
-
-# ej8
-while tamanio(l1) < 10:
+# ej8 TERMINAR
+'''while tamanio(l1) < 10:
     aleatorio = random.randint(-999, 999)
     if busquedaLista(l1, aleatorio) is None:
         if primo(aleatorio):
-            
-            insertar(l1, aleatorio)
-barrido(l1)
+            #rango con anterior y siguiente +14
+                insertar(l1, aleatorio)
+        else:
+            if aleatorio mod 2 != 0:
+                #anterior y siguiente pares
+                    insertar(l1, aleatorio)
+barrido(l1)'''
+
+
+# ej12 LISTA DOBLEMENTE ENLAZADA

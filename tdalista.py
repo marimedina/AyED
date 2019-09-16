@@ -3,7 +3,7 @@ import math
 
 
 class nodoLista():
-    info, sig = None, None
+    info, sig, ant = None, None, None
 
 
 class Lista():
@@ -62,6 +62,15 @@ def insertar1(lista, dato, posicion):
     else:
         print("El indice " + str(posicion) + " excede el tamaño de elementos que ")
         print("posee la lista")
+
+
+def eliminarNodo(lista):
+    aux = None
+    if lista.inicio is not None:
+        aux = lista.inicio.info
+        lista.inicio = lista.inicio.sig
+        lista.tamanio -= 1
+    return aux
 
 
 def eliminar(lista, clave):
