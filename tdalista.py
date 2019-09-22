@@ -141,3 +141,18 @@ def primo(num):
                 pri = False
             i += 1
         return pri
+
+
+'''def ubicar(lista, pos):
+    valor = lista[pos]
+    j = pos
+    while j > 0 and valor < lista[j-1]:
+        lista[j] = lista[j-1]
+        j -= 1
+    lista[j] = valor
+
+
+def ord_alf(lista):
+    for i in range(len(lista)-1):
+        if lista[i+1] < lista[i]:
+            ubicar(lista, i+1)'''

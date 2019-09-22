@@ -1,7 +1,6 @@
 from tdaarbol import NodoArbol, busqueda, eliminar, inorden
 from tdaarbol import postorden, preorden, insertar, reemplazar
 import random
-
 '''r = None
 r = insertar(r, 4)
 r = insertar(r, 6)
@@ -11,8 +10,8 @@ inorden(r)
 print('aca')
 preorden(r)'''
 
-# ej1
-r = None
+# ej1 TERMINAR
+'''r = None
 for i in range(0, 10):
     r = insertar(r, random.randint(0, 100))
 # Parte A
@@ -29,3 +28,15 @@ if busqueda(r, n) is None:
 else:
     print('EL numero se encuentra en el arbol')
 # Parte C
+for i in range(0, 2):
+    eliminar(r, )'''
+
+
+# ej5
+r = None
+"True heroe, false villano"
+super = ["Ironman ", "Spiderman ", "Capitan America ", "Dr.Strange ",
+        "Hulk ", "Black Panter "]
+for elemento in super:
+    r = insertar(r, random.choice(super) + str(random.choice([True, False])))
+preorden(r)
