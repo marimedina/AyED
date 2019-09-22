@@ -143,6 +143,23 @@ def primo(num):
         return pri
 
 
+def campos(lista, dato, i):
+    nodo = nodoLista()
+    nodo.info = dato
+    if (lista.incio is None) or (nodo.info[i] < lista.inicio.info[i]):
+        nodo.sig = lista.inicio
+        lista.inicio = nodo
+    else:
+        ant = lista.inicio
+        act = lista.inicio.sig
+        while (act is not None) and (act.info[i] <= nodo.info[i]):
+            act = act.sig
+            ant = ant.sig
+        nodo.sig = act
+        ant.sig = nodo
+    lista.tamanio += 1
+    
+
 '''def ubicar(lista, pos):
     valor = lista[pos]
     j = pos

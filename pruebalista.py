@@ -1,6 +1,7 @@
 from tdalista import cargaAuto, insertar, eliminar, barrido
 from tdalista import lista_vacia, tamanio, Lista, eliminarNodo
 from tdalista import cargaString, insertar1, primo, busquedaLista
+from tdalista import campos
 import math
 import random
 l1 = Lista()
@@ -76,14 +77,14 @@ barrido(l1)'''
 
 
 # ej7
-cargaAuto(l1, 5)
+'''cargaAuto(l1, 5)
 cargaAuto(l2, 5)
+print('lista 1')
 barrido(l1)
 print('lista 2')
 barrido(l2)
 aux = l1.inicio
 aux1 = l2.inicio
-# Parte B y C
 c = 0
 while aux is not None:
     if aux.info != aux1.info:
@@ -96,6 +97,11 @@ while aux is not None:
 print('listas unidas')
 barrido(l3)
 print('Hay ' + str(c) + ' elementos repetidos')
+while not lista_vacia(l3):
+    eliminarNodo(l3)
+    print('Menos un nodo')
+    barrido(l3)'''
+
 
 # ej8 TERMINAR
 '''while tamanio(l1) < 10:
@@ -109,6 +115,24 @@ print('Hay ' + str(c) + ' elementos repetidos')
                 #anterior y siguiente pares
                     insertar(l1, aleatorio)
 barrido(l1)'''
+
+
+# ej 9
+for i in range(0, 10):
+    nom = 'Nombre: ' + str(random.randint(0, 50))
+    artis = chr(65+i)
+    dur = random.randint(60, 180)
+    reprod = random.randint(200, 1000)
+    cancion = [nom, artis, dur, reprod]
+    campos(l1, cancion, 1)
+barrido(l1)
+aux = l1.inicio
+clarga = aux
+while aux is not None:
+    if (aux.info[2] > clarga.info[2]):
+        clarga = aux
+    aux = aux.sig
+print('La cancion mas larga es ' + str(clarga.info))
 
 
 # ej12 LISTA DOBLEMENTE ENLAZADA
