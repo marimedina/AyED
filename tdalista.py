@@ -146,7 +146,7 @@ def primo(num):
 def campos(lista, dato, i):
     nodo = nodoLista()
     nodo.info = dato
-    if (lista.incio is None) or (nodo.info[i] < lista.inicio.info[i]):
+    if (lista.inicio is None) or (nodo.info[i] < lista.inicio.info[i]):
         nodo.sig = lista.inicio
         lista.inicio = nodo
     else:
@@ -158,7 +158,7 @@ def campos(lista, dato, i):
         nodo.sig = act
         ant.sig = nodo
     lista.tamanio += 1
-    
+
 
 '''def ubicar(lista, pos):
     valor = lista[pos]

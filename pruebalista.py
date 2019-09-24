@@ -133,6 +133,17 @@ while aux is not None:
         clarga = aux
     aux = aux.sig
 print('La cancion mas larga es ' + str(clarga.info))
+A = 'Arctic Monkeys'
+aux = l1.inicio
+aux1 = l1.inicio
+while aux is not None:
+    if aux.info[1] == 'A':
+        l1 = aux
+    aux = aux.sig
+if aux1 is None:
+    print('No hay canciones de Arctic Monkeys')
+else:
+    print('Cancion de Arctic Monkeys')
 
 
 # ej12 LISTA DOBLEMENTE ENLAZADA
