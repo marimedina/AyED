@@ -118,9 +118,12 @@ barrido(l1)'''
 
 
 # ej 9
+artistas = ["Arctic monkeys", "The strokes", "Miles Kane", "Oasis",
+            "Radiohead", "The killers", "Coldplay", "Kings of leon",
+            "The kooks", "Kasabian", "Josh Homme", "Foo fighters"]
 for i in range(0, 10):
     nom = 'Nombre: ' + str(random.randint(0, 50))
-    artis = chr(65+i)
+    artis = random.choice(artistas)
     dur = random.randint(60, 180)
     reprod = random.randint(200, 1000)
     cancion = [nom, artis, dur, reprod]
@@ -133,17 +136,17 @@ while aux is not None:
         clarga = aux
     aux = aux.sig
 print('La cancion mas larga es ' + str(clarga.info))
-A = 'Arctic Monkeys'
 aux = l1.inicio
 aux1 = l1.inicio
 while aux is not None:
-    if aux.info[1] == 'A':
+    if aux.info[1] == 'Arctic monkeys':
         l1 = aux
     aux = aux.sig
 if aux1 is None:
     print('No hay canciones de Arctic Monkeys')
 else:
-    print('Cancion de Arctic Monkeys')
+    print('Hay canciones de Arctic Monkeys')
+    print(aux1.info)
 
 
 # ej12 LISTA DOBLEMENTE ENLAZADA
