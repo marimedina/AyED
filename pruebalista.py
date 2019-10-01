@@ -136,17 +136,27 @@ while aux is not None:
         clarga = aux
     aux = aux.sig
 print('La cancion mas larga es ' + str(clarga.info))
+t1 = aux
+t2, t3, t4, t5 = 0, 0, 0, 0
+while aux is not None:
+    if (aux.info[3] > t1)
+# puedo ordenar de mayor a menor por reproducciones
+# y mostrar los primeros 5/10/50
+
+
+# No anda
 aux = l1.inicio
-aux1 = l1.inicio
+aux1 = l2.inicio
 while aux is not None:
     if aux.info[1] == 'Arctic monkeys':
-        l1 = aux
+        l2 = aux
     aux = aux.sig
 if aux1 is None:
     print('No hay canciones de Arctic Monkeys')
 else:
-    print('Hay canciones de Arctic Monkeys')
-    print(aux1.info)
+    print('Canciones de Arctic Monkeys')
+    barrido(l2)
+
 
 
 # ej12 LISTA DOBLEMENTE ENLAZADA
