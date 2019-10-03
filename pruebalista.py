@@ -3,6 +3,7 @@ from tdalista import lista_vacia, tamanio, Lista, eliminarNodo
 from tdalista import cargaString, insertar1, primo, busquedaLista
 from tdalista import campos
 import math
+import string
 import random
 l1 = Lista()
 l2 = Lista()
@@ -117,8 +118,8 @@ while not lista_vacia(l3):
 barrido(l1)'''
 
 
-# ej 9
-artistas = ["Arctic monkeys", "The strokes", "Miles Kane", "Oasis",
+# ej 9 TERMINAR ULTIMA PARTE
+'''artistas = ["Arctic monkeys", "The strokes", "Miles Kane", "Oasis",
             "Radiohead", "The killers", "Coldplay", "Kings of leon",
             "The kooks", "Kasabian", "Josh Homme", "Foo fighters"]
 for i in range(0, 10):
@@ -139,24 +140,46 @@ print('La cancion mas larga es ' + str(clarga.info))
 t1 = aux
 t2, t3, t4, t5 = 0, 0, 0, 0
 while aux is not None:
-    if (aux.info[3] > t1)
+    if (aux.info[3] > t1)'''
 # puedo ordenar de mayor a menor por reproducciones
 # y mostrar los primeros 5/10/50
-
-
 # No anda
-aux = l1.inicio
+'''aux = l1.inicio
 aux1 = l2.inicio
 while aux is not None:
     if aux.info[1] == 'Arctic monkeys':
-        l2 = aux
+        insertar(l2, aux)
     aux = aux.sig
+
 if aux1 is None:
     print('No hay canciones de Arctic Monkeys')
 else:
     print('Canciones de Arctic Monkeys')
-    barrido(l2)
+    barrido(l2)'''
 
 
+# ej10 ARREGLAR insertar
 
+'''personajes = ['rey', 'darth vader', 'luke', 'leia', 'han solo', 'yoda',
+              'chewbacca', 'grievous']
+gen = ['Femenino', 'Masculino']
+for i in range(0, 10):
+    nombre = random.choice(personajes)
+    altura = random.randint(100, 300)
+    edad = random.randint(0, 60)
+    genero = random.choice(gen)
+    #especie =
+    planeta = random.choice(string.ascii_letters)
+    episodio = random.randint(1, 9)
+    pers = [nombre, altura, edad, genero, planeta, episodio]
+    campos(l1, pers, 1)
+barrido(l1)
+
+# Parte A
+print('Lista de personajes femeninos')
+aux = l1.inicio
+while aux is not None:
+    if aux.info[3] == 'Femenino':
+        l2 = aux
+barrido(l2)'''
 # ej12 LISTA DOBLEMENTE ENLAZADA
