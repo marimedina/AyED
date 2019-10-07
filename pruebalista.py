@@ -137,14 +137,11 @@ while aux is not None:
         clarga = aux
     aux = aux.sig
 print('La cancion mas larga es ' + str(clarga.info))
-t1 = aux
-t2, t3, t4, t5 = 0, 0, 0, 0
-while aux is not None:
-    if (aux.info[3] > t1)'''
+
 # puedo ordenar de mayor a menor por reproducciones
 # y mostrar los primeros 5/10/50
 # No anda
-'''aux = l1.inicio
+aux = l1.inicio
 aux1 = l2.inicio
 while aux is not None:
     if aux.info[1] == 'Arctic monkeys':
@@ -160,7 +157,7 @@ else:
 
 # ej10 ARREGLAR insertar
 
-'''personajes = ['rey', 'darth vader', 'luke', 'leia', 'han solo', 'yoda',
+personajes = ['rey', 'darth vader', 'luke', 'leia', 'han solo', 'yoda',
               'chewbacca', 'grievous']
 gen = ['Femenino', 'Masculino']
 for i in range(0, 10):
@@ -172,14 +169,15 @@ for i in range(0, 10):
     planeta = random.choice(string.ascii_letters)
     episodio = random.randint(1, 9)
     pers = [nombre, altura, edad, genero, planeta, episodio]
-    campos(l1, pers, 1)
+    insertar(l1, pers)
 barrido(l1)
 
 # Parte A
-print('Lista de personajes femeninos')
+'''print('Lista de personajes femeninos')
 aux = l1.inicio
 while aux is not None:
     if aux.info[3] == 'Femenino':
         l2 = aux
+    aux = aux.sig
 barrido(l2)'''
 # ej12 LISTA DOBLEMENTE ENLAZADA
