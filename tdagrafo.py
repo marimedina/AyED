@@ -130,8 +130,55 @@ def marcar_no_visitado(grafo):
         aux.visitado = False
     aux = aux.sig
 
+
+def camino_corto()
+
+
+def eliminar_vertice(grafo, clave):
+    dato = None
+    if grafo.inicio.info == clave:
+        dato = grafo.inicio.info
+        grafo.inicio = grafo.inicio.sig
+        grafo.tamanio -= 1
+    else:
+        ant = grafo.inicio
+        act = grafo.inicio.sig
+        while (act is not None) and (act.info != clave):
+            ant = act
+            act = act.sig
+        if (act is not None):
+            dato = act.info
+            ant.sig = act.sig
+            grafo.tamanio -= 1
+    if(dato is not None):
+        aux = grafo.inicio
+        while aux is not None:
+            eliminar_arista(aux.adyacentes, dato)
+    return dato
+
+
+def eliminar_arista(vertice, clave):
+    dato = None
+    if vertice.inicio.info == clave:
+        dato = vertice.inicio.info
+        vertice.inicio = vertice.inicio.sig
+        vertice.tamanio -= 1
+    else:
+        ant = vertice.inicio
+        act = vertice.inicio.sig
+        while (act is not None) and (act.info != clave):
+            ant = act
+            act = act.sig
+        if (act is not None):
+            dato = act.info
+            ant.sig = act.sig
+            vertice.tamanio -= 1
+    return dato
+
+
 '''en el insertar arista hago una busqueda de origen y destino, si ambos
-son verdaderas entonces le paso el destino'''
+son verdaderas entonces le paso el destino
+Adyacentes es la lista de adyacente, y adyacente es cada uno'''
 '''pos = buscar_vertice()
 pos_aux = buscar_arista()
 if pos is not None:
