@@ -9,6 +9,8 @@ l1 = Lista()
 l2 = Lista()
 l3 = Lista()
 l4 = Lista()
+l5 = Lista()
+l6 = Lista()
 
 '''cargaAuto(l1, 5)
 barrido(l1)
@@ -156,18 +158,19 @@ else:
     barrido(l2)'''
 
 
-# ej10 ARREGLAR insertar
-
+# ej10
 personajes = ['rey', 'darth vader', 'luke', 'leia', 'han solo', 'yoda',
               'chewbacca', 'grievous']
 gen = ['Femenino', 'Masculino']
+esp = ['humano', 'droide', 'wookies', 'ewoks', 'gungan', 'jawas']
+pla = ['naboo', 'ender', 'kashyyyk', 'tatooine', 'coruscant', 'alderan']
 for i in range(0, 10):
     nombre = random.choice(personajes)
-    altura = random.randint(100, 300)
-    edad = random.randint(0, 60)
+    altura = random.randint(50, 200)
+    edad = random.randint(400, 1500)
     genero = random.choice(gen)
-    especie = random.choice(string.ascii_letters)
-    planeta = random.choice(string.ascii_letters)
+    especie = random.choice(esp)
+    planeta = random.choice(pla)
     episodio = random.randint(1, 9)
     pers = [nombre, altura, edad, genero, especie, planeta, episodio]
     insertar(l1, pers)
@@ -180,23 +183,21 @@ while aux is not None:
     if aux.info[3] == 'Femenino':
         insertar(l2, aux.info)
     aux = aux.sig
-barrido(l2)
+barrido(l2)'''
 
 # Parte B
-d = 'Droide'
-D = 'Droide'
-print('Personajes de especie droide:')
+'''print('Personajes de especie droide:')
 aux = l1.inicio
 while aux is not None:
-    if aux.info[4] == 'd' or aux.info[4] == 'D':
+    if aux.info[4] == 'droide':
         if (aux.info[6] == 1 or aux.info[6] == 2 or aux.info[6] == 3 or
         aux.info[6] == 4 or aux.info[6] == 5 or aux.info[6] == 6):
             insertar(l3, aux.info)
     aux = aux.sig
-barrido(l3)
+barrido(l3)'''
 
 # Parte C
-print('Informacion de Darth Vader')
+'''print('Informacion de Darth Vader')
 aux = l1.inicio
 while aux is not None:
     if aux.info[0] == 'darth vader':
@@ -204,6 +205,70 @@ while aux is not None:
     aux = aux.sig
 barrido(l4)'''
 
+# Parte D
+'''print('Personajes del episodio 4 al 7')
+aux = l1.inicio
+while aux is not None:
+    if (aux.info[6] == 4 or aux.info[6] == 5 or aux.info[6] == 6 or
+       aux.info[6] == 7):
+        insertar(l5, aux.info)
+    aux = aux.sig
+barrido(l5)'''
 
+# Parte E
+'''print('Personajes mayores a 850 anios')
+aux = l1.inicio
+while aux is not None:
+    if aux.info[2] > 850:
+        print(aux.info)
+        insertar(l6, aux.info)
+    aux = aux.sig
 
+dat = l6.inicio
+mayor = dat
+while dat is not None:
+    if dat.info[2] > mayor.info[2]:
+        mayor = dat
+    dat = dat.sig
+print('El personaje de mayor edad es:')
+print(mayor.info)'''
+
+# Parte F
+'''aux = l1.inicio
+print('Sin personajes de episodios 4, 5 y 6')
+while aux is not None:
+    if aux.info[6] == 4 or aux.info[6] == 5 or aux.info[6] == 6:
+        eliminar(l1, aux.info)
+    aux = aux.sig
+barrido(l1)'''
+
+# Parte G
+'''aux = l1.inicio
+while aux is not None:
+    if aux.info[4] == 'humano':
+        if aux.info[5] == 'alderan':
+            insertar(l3, aux.info)
+    aux = aux.sig
+print('Personajes humanos de Alderan')
+barrido(l3)'''
+
+# Parte H
+'''print('Personajes con menos de 70 centimetros')
+aux = l1.inicio
+while aux is not None:
+    if aux.info[1] < 70:
+        print(aux.info)
+    aux = aux.sig'''
+
+# Parte I
+
+# Parte J
+'''print('Chewbacca')
+aux = l1.inicio
+while aux is not None:
+    if aux.info[0] == 'chewbacca':
+        insertar(l4, aux.info[6])
+    aux = aux.sig
+print('Aparece en los episodios:')
+barrido(l4)'''
 # ej12 LISTA DOBLEMENTE ENLAZADA
