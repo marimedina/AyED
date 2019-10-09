@@ -8,12 +8,13 @@ import random
 l1 = Lista()
 l2 = Lista()
 l3 = Lista()
+l4 = Lista()
 
 '''cargaAuto(l1, 5)
 barrido(l1)
 while l1.inicio is not None:
     eliminarNodo(l1)
-    print('l1')
+    print('lista 1')
     barrido(l1)'''
 
 
@@ -165,10 +166,10 @@ for i in range(0, 10):
     altura = random.randint(100, 300)
     edad = random.randint(0, 60)
     genero = random.choice(gen)
-    #especie =
+    especie = random.choice(string.ascii_letters)
     planeta = random.choice(string.ascii_letters)
     episodio = random.randint(1, 9)
-    pers = [nombre, altura, edad, genero, planeta, episodio]
+    pers = [nombre, altura, edad, genero, especie, planeta, episodio]
     insertar(l1, pers)
 barrido(l1)
 
@@ -177,7 +178,32 @@ barrido(l1)
 aux = l1.inicio
 while aux is not None:
     if aux.info[3] == 'Femenino':
-        l2 = aux
+        insertar(l2, aux.info)
     aux = aux.sig
-barrido(l2)'''
+barrido(l2)
+
+# Parte B
+d = 'Droide'
+D = 'Droide'
+print('Personajes de especie droide:')
+aux = l1.inicio
+while aux is not None:
+    if aux.info[4] == 'd' or aux.info[4] == 'D':
+        if (aux.info[6] == 1 or aux.info[6] == 2 or aux.info[6] == 3 or
+        aux.info[6] == 4 or aux.info[6] == 5 or aux.info[6] == 6):
+            insertar(l3, aux.info)
+    aux = aux.sig
+barrido(l3)
+
+# Parte C
+print('Informacion de Darth Vader')
+aux = l1.inicio
+while aux is not None:
+    if aux.info[0] == 'darth vader':
+        insertar(l4, aux.info)
+    aux = aux.sig
+barrido(l4)'''
+
+
+
 # ej12 LISTA DOBLEMENTE ENLAZADA

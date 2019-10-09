@@ -27,7 +27,7 @@ def insertar(lista, dato):
     nodo = nodoLista()
     nodo.info = dato
     # resuelve primer caso y segundo
-    if lista.inicio is None or nodo.info < lista.inicio.info:
+    if (lista.inicio is None) or (nodo.info < lista.inicio.info):
         nodo.sig = lista.inicio
         lista.inicio = nodo
     else:
