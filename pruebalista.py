@@ -1,7 +1,7 @@
 from tdalista import cargaAuto, insertar, eliminar, barrido
 from tdalista import lista_vacia, tamanio, Lista, eliminarNodo
 from tdalista import cargaString, insertar1, primo, busquedaLista
-from tdalista import campos
+from tdalista import campos, pokemones
 import math
 import string
 import random
@@ -121,7 +121,7 @@ while not lista_vacia(l3):
 barrido(l1)'''
 
 
-# ej 9 TERMINAR ULTIMA PARTE
+# ej 9 TERMINAR PARTE B
 '''artistas = ["Arctic monkeys", "The strokes", "Miles Kane", "Oasis",
             "Radiohead", "The killers", "Coldplay", "Kings of leon",
             "The kooks", "Kasabian", "Josh Homme", "Foo fighters"]
@@ -132,34 +132,43 @@ for i in range(0, 10):
     reprod = random.randint(200, 1000)
     cancion = [nom, artis, dur, reprod]
     campos(l1, cancion, 1)
-barrido(l1)
-aux = l1.inicio
+barrido(l1)'''
+
+# Parte A
+'''aux = l1.inicio
 clarga = aux
 while aux is not None:
     if (aux.info[2] > clarga.info[2]):
         clarga = aux
     aux = aux.sig
-print('La cancion mas larga es ' + str(clarga.info))
+print('La cancion mas larga es ' + str(clarga.info))'''
 
+# Parte B mal
+'''aux = l1.inicio
+dato = l3.inicio
+while aux is not None:
+    if dato.info[3] >= aux.info[3]:
+        insertar(l3, dato.info)
+        insertar(l3, aux.info)
+    else:
+        insertar(l3, aux.info)
+        insertar(l3, dato.info)
+print('aca')
+barrido(l3)'''
 # puedo ordenar de mayor a menor por reproducciones
 # y mostrar los primeros 5/10/50
-# No anda
-aux = l1.inicio
-aux1 = l2.inicio
+# Parte C
+'''aux = l1.inicio
 while aux is not None:
     if aux.info[1] == 'Arctic monkeys':
-        insertar(l2, aux)
+        insertar(l2, aux.info)
     aux = aux.sig
-
-if aux1 is None:
-    print('No hay canciones de Arctic Monkeys')
-else:
-    print('Canciones de Arctic Monkeys')
-    barrido(l2)'''
+print('Canciones de Arctic Monkeys')
+barrido(l2)'''
 
 
 # ej10
-personajes = ['rey', 'darth vader', 'luke', 'leia', 'han solo', 'yoda',
+'''personajes = ['rey', 'darth vader', 'luke', 'leia', 'han solo', 'yoda',
               'chewbacca', 'grievous']
 gen = ['Femenino', 'Masculino']
 esp = ['humano', 'droide', 'wookies', 'ewoks', 'gungan', 'jawas']
@@ -174,7 +183,7 @@ for i in range(0, 10):
     episodio = random.randint(1, 9)
     pers = [nombre, altura, edad, genero, especie, planeta, episodio]
     insertar(l1, pers)
-barrido(l1)
+barrido(l1)'''
 
 # Parte A
 '''print('Lista de personajes femeninos')
@@ -261,6 +270,12 @@ while aux is not None:
     aux = aux.sig'''
 
 # Parte I
+'''aux = l1.inicio
+while aux.sig.sig is not None:
+    aux = aux.sig
+eliminar(l1, aux.info)
+print('Lista sin el ante ultimo elemento')
+barrido(l1)'''
 
 # Parte J
 '''print('Chewbacca')
@@ -271,4 +286,19 @@ while aux is not None:
     aux = aux.sig
 print('Aparece en los episodios:')
 barrido(l4)'''
-# ej12 LISTA DOBLEMENTE ENLAZADA
+
+# ej12
+
+# ej3
+
+# Ej14
+entrenadores = ['Pepito', 'Mariana', 'Pedro', 'Jose', 'Alicia', 'Luciano']
+for i in range(0, 10):
+    nombre = random.choice(entrenadores)
+    t_ganados = random.randint(0, 10)
+    b_perdidas = random.randint(0, 10)
+    b_ganadas = random.randint(0, 10)
+    #l_pokemon = pokemones(1)
+    entr = [nombre, t_ganados, b_perdidas, b_ganadas]
+    campos(l1, entr, 0)
+barrido(l1)

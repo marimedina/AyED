@@ -1,5 +1,6 @@
 import random
 import math
+import string
 
 
 class nodoLista():
@@ -173,3 +174,17 @@ def ord_alf(lista):
     for i in range(len(lista)-1):
         if lista[i+1] < lista[i]:
             ubicar(lista, i+1)'''
+
+
+def pokemones(cantidad):
+    lista = Lista()
+    pokemones = ['Bulbasaur', 'Ivysaur', 'Charmander', 'Squirtle', 'Caterpie']
+    tipos = ['fuego', 'agua', 'planta', 'bicho', 'normal', 'veneno', 'electrico']
+    for i in range(0, 10):
+        nomb = random.choice(pokemones)
+        nivel = random.randint(1, 40)
+        tipo = random.choice(tipos)
+        subtipo = random.choice(string.ascii_uppercase)
+        pok = [nomb, nivel, tipo, subtipo]
+        campos(lista, pok, 0)
+    return lista
