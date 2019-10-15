@@ -13,6 +13,10 @@ class Lista():
         self.tamanio = 0
 
 
+class nodoListadeLista():
+    info, sig, lista = None, None, Lista()
+    
+
 def cargaAuto(lista, cantidad):
     for i in range(0, cantidad):
         insertar(lista, random.randint(0, 50))
