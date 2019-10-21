@@ -35,8 +35,9 @@ for i in range(0, 2):
 # ej5
 r = None
 "True heroe, false villano"
-super = ["Ironman ", "Spiderman ", "Capitan America ", "Dr.Strange ",
-        "Hulk ", "Black Panter "]
+super = ["Ironman ", "Spiderman ", "CapitanAmerica ", "Dr.Strange ",
+        "Hulk ", "BlackPanter "]
 for elemento in super:
     r = insertar(r, random.choice(super) + str(random.choice([True, False])))
 preorden(r)
+# Parte D

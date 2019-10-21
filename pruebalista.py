@@ -1,7 +1,7 @@
 from tdalista import cargaAuto, insertar, eliminar, barrido
 from tdalista import lista_vacia, tamanio, Lista, eliminarNodo
 from tdalista import cargaString, insertar1, primo, busquedaLista
-from tdalista import campos, pokemones
+from tdalista import campos, pokemones, ListadeLista
 import math
 import string
 import random
@@ -11,6 +11,7 @@ l3 = Lista()
 l4 = Lista()
 l5 = Lista()
 l6 = Lista()
+l7 = ListadeLista()
 
 '''cargaAuto(l1, 5)
 barrido(l1)
@@ -292,13 +293,14 @@ barrido(l4)'''
 # ej3
 
 # Ej14
+l_pokemon = ListadeLista()
 entrenadores = ['Pepito', 'Mariana', 'Pedro', 'Jose', 'Alicia', 'Luciano']
 for i in range(0, 10):
     nombre = random.choice(entrenadores)
     t_ganados = random.randint(0, 10)
     b_perdidas = random.randint(0, 10)
     b_ganadas = random.randint(0, 10)
-    #l_pokemon = pokemones(1)
-    entr = [nombre, t_ganados, b_perdidas, b_ganadas]
-    campos(l1, entr, 0)
-barrido(l1)
+    l_pokemon = pokemones(5)
+    entr = [nombre, t_ganados, b_perdidas, b_ganadas, l_pokemon]
+    campos(l7, entr, 0)
+barrido(l7)

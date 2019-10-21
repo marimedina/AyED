@@ -13,9 +13,9 @@ class Lista():
         self.tamanio = 0
 
 
-class nodoListadeLista():
+class ListadeLista():
     info, sig, lista = None, None, Lista()
-    
+
 
 def cargaAuto(lista, cantidad):
     for i in range(0, cantidad):
