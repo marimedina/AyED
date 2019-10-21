@@ -1,17 +1,18 @@
 from tdalista import cargaAuto, insertar, eliminar, barrido
 from tdalista import lista_vacia, tamanio, Lista, eliminarNodo
 from tdalista import cargaString, insertar1, primo, busquedaLista
-from tdalista import campos, pokemones, ListadeLista
+from tdalista import campos, pokemones
 import math
 import string
 import random
+import calendar
 l1 = Lista()
 l2 = Lista()
 l3 = Lista()
 l4 = Lista()
 l5 = Lista()
 l6 = Lista()
-l7 = ListadeLista()
+
 
 '''cargaAuto(l1, 5)
 barrido(l1)
@@ -79,7 +80,52 @@ barrido(l1)'''
 
 
 # ej6
+'''sheroes = ['Linterna Verde', 'Wolverine', 'Ant Man', 'Ironman', 'Black Panter']
+casas = ['Marvel', 'DC']
+for i in range(0, 10):
+    nombre = random.choice(sheroes)
+    aparicion = random.randint(1000, 2000)
+    casa = random.choice(casas)
+    #biografia =
+    super = [nombre, aparicion, casa]
+    campos(l1, super, 0)
+barrido(l1)'''
 
+# Parte A
+'''aux = l1.inicio
+while aux is not None:
+    if aux.info[0] == 'Linterna Verde':
+        eliminar(l1, aux.info)
+    aux = aux.sig
+print('Sin linterna verde')
+barrido(l1)'''
+
+# Parte B
+'''aux = l1.inicio
+print('Aparicion de Wolverine')
+while aux is not None:
+    if aux.info[0] == 'Wolverine':
+        print(aux.info[1])
+    aux = aux.sig'''
+
+# Parte C
+'''aux = l1.inicio
+while aux is not None:
+    if aux.info[0] == 'Ant Man':
+        aux.info[2] = 'Marvel'
+    aux = aux.sig
+print('Ant Man-Marvel')
+barrido(l1)'''
+
+# Parte D
+
+# Parte E
+'''print('Nombre y casa de heroes con anio de aparecion menor a 1963')
+aux = l1.inicio
+while aux is not None:
+    if aux.info[1] < 1963:
+        print(aux.info[0] + ' ' + aux.info[2])
+    aux = aux.sig'''
 
 # ej7
 '''cargaAuto(l1, 5)
@@ -145,19 +191,9 @@ while aux is not None:
 print('La cancion mas larga es ' + str(clarga.info))'''
 
 # Parte B mal
-'''aux = l1.inicio
-dato = l3.inicio
-while aux is not None:
-    if dato.info[3] >= aux.info[3]:
-        insertar(l3, dato.info)
-        insertar(l3, aux.info)
-    else:
-        insertar(l3, aux.info)
-        insertar(l3, dato.info)
-print('aca')
-barrido(l3)'''
 # puedo ordenar de mayor a menor por reproducciones
 # y mostrar los primeros 5/10/50
+
 # Parte C
 '''aux = l1.inicio
 while aux is not None:
@@ -290,10 +326,10 @@ barrido(l4)'''
 
 # ej12
 
-# ej3
+# ej13
 
-# Ej14
-l_pokemon = ListadeLista()
+# Ej14 MAL MAL MAL MAL
+'''l_pokemon = Lista()
 entrenadores = ['Pepito', 'Mariana', 'Pedro', 'Jose', 'Alicia', 'Luciano']
 for i in range(0, 10):
     nombre = random.choice(entrenadores)
@@ -303,4 +339,21 @@ for i in range(0, 10):
     l_pokemon = pokemones(5)
     entr = [nombre, t_ganados, b_perdidas, b_ganadas, l_pokemon]
     campos(l7, entr, 0)
-barrido(l7)
+barrido(l7)'''
+
+# Ej 15
+"Tiempo dado en horas"
+cant = 10
+for i in range(0, cant):
+    costo = random.randint(100, 1000)
+    tiempo = random.randint(1, 20)
+    #f_inicio =
+    responsable = random.choice(string.ascii_uppercase)
+    tarea = [costo, tiempo, responsable]
+    campos(l1, tarea, 0)
+barrido(l1)
+
+# Parte A
+ac = 0
+aux = l1.inicio
+while aux is not None:
