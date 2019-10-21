@@ -1,4 +1,7 @@
 import tdacola
+from tdapila import apilar, Pila
+from tdaheap atencio_H
+from math import inf
 
 
 class nodoArista():
@@ -53,7 +56,6 @@ def insertar_vertice(grafo, dato):
 
 
 def agregar_arista():
-
 
 
 def insertar_arista(grafo, dato, origen, destino):
@@ -191,3 +193,56 @@ else:
 destino = buscar_arista(origen, )
 if origen is not None and destino si not None:
     insertar_arista(grafo, 20, origen, destino)'''
+
+
+def Kruskal(grafo):
+    bosque = []
+    aristas = Heap(tamanio(grafo)**2)
+    aux = grafo.inicio
+    while aux is not None:
+        bosque.append([aux.info])
+        adyacentes = aux.adyacentes.inicio
+        while adyacentes is not None:
+            arribo_H(arista, [aux.info, adyacentes.destino], adyacentes.info)
+            adyacentes = adyacentes.sig
+        aux = aux.sig
+    while len(bosque[0]) == 1 and not heap_vacio(aristas):
+        dato = atencion_H(aristas)
+        origen = None
+        for elemento in bosque:
+            if dato[1][0] in elemento:
+                origen = bosque.pop(bosque.index(elemento))
+        destino = None
+
+
+def dijkstra(grafo, origen, destino):
+    no_visitados = Heap(tamanio(grafo))
+    camino = Pila()
+    aux = grafo.inicio
+    while aux is not None:
+        if aux.info = origen:
+            arribo_H(no_visitado, [aux, None], 0)
+        else:
+            arribo_H(no_visitados, [aux, None], inf)
+        aux = aux.sig
+    while not heap_vacio(no_visitados):
+        dato = atencio_H(no_visitados)
+        apilar(camino, dato)
+        aux = dato[1][0].adyacentes.inicio
+        while aux is not None:
+            pos = buscar_H(no_visitados, aux.destino)
+            if (no_visitados.vector[pos][0] > dato[0] + aux.info):
+                no_visitados.vector[pos][1][1] = dato[1][0].info
+
+                
+'''cambiar prioridad es de heap'''
+
+
+'''Para probar'''
+'''camino = dij()
+fin =
+while not pila_vacia(camino):
+    dato = desapilar(camino)
+    if fin == dato[1][0].info:
+        print('de', dato[1][0].info, 'hasta', dato[1][1], dato[0])
+        fin = dato[1][1]'''

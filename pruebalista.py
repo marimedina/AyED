@@ -357,3 +357,7 @@ barrido(l1)
 ac = 0
 aux = l1.inicio
 while aux is not None:
+    ac = ac + aux.info[1]
+    aux = aux.sig
+prom = ac % cant
+print('Promedio de tareas ' + str(prom))
