@@ -1,7 +1,9 @@
 from tdalista import cargaAuto, insertar, eliminar, barrido
 from tdalista import lista_vacia, tamanio, Lista, eliminarNodo
 from tdalista import cargaString, insertar1, primo, busquedaLista
-from tdalista import campos, pokemones
+from tdalista import campos
+from tdalistaenlazada import insertar2, Lista2, barrido2, busquedacampos2
+from tdalistaenlazada import campos2, tamanio2
 import math
 import string
 import random
@@ -328,22 +330,76 @@ barrido(l4)'''
 
 # ej13
 
-# Ej14 MAL MAL MAL MAL
-'''l_pokemon = Lista()
+# Ej14
+l1 = Lista2()
+pokemons = ['Bulbasaur', 'Ivysaur', 'Charmander', 'Squirtle', 'Caterpie']
+tipos = ['fuego', 'agua', 'planta', 'bicho', 'volador', 'veneno', 'electrico']
 entrenadores = ['Pepito', 'Mariana', 'Pedro', 'Jose', 'Alicia', 'Luciano']
-for i in range(0, 10):
-    nombre = random.choice(entrenadores)
+for i in range(0, 6):
+    nombre = entrenadores[i]
     t_ganados = random.randint(0, 10)
     b_perdidas = random.randint(0, 10)
     b_ganadas = random.randint(0, 10)
-    l_pokemon = pokemones(5)
-    entr = [nombre, t_ganados, b_perdidas, b_ganadas, l_pokemon]
-    campos(l7, entr, 0)
-barrido(l7)'''
+    entr = [nombre, t_ganados, b_perdidas, b_ganadas]
+    campos2(l1, entr, 0)
+    nodo = busquedacampos2(l1, entr[0], 0)
+    laux = nodo.lista
+    for j in range(0, 3):
+        nomb = random.choices(pokemons)
+        nivel = random.randint(1, 40)
+        tipo = random.choice(tipos)
+        subtipo = random.choice(string.ascii_uppercase)
+        pok = [nomb, nivel, tipo, subtipo]
+        campos2(laux, pok, 0)
+barrido2(l1)
+
+# Parte A
+'''print('Cantidad de pokemons por jugador: ' + str(tamanio2(laux)))
+# Parte B
+print('Entrenadores con mas de 3 toneos ganados')
+aux = l1.inicio
+while aux is not None:
+    if aux.info[1] > 3:
+        print(aux.info)
+    aux = aux.sig'''
+# Parte C
+'''aux = l1.inicio
+e_mayor = aux.info[1]
+while aux is not None:
+    if aux.info[1] > e_mayor:
+        e_mayor = aux.info[1]
+        nom = aux.info
+        nod = aux
+    aux = aux.sig
+print('El entrenador con mayores torneos ganados es: ' + str(nom[0]))
+d = nod.lista
+dat = d.inicio
+p_mayor = dat.info[1]
+while dat is not None:
+    if dat.info[1] > p_mayor:
+        p_mayor = dat.info[1]
+        nom1 = dat.info
+    dat = dat.sig
+print('y su pokemons de mayor nivel es ' + str(nom1))'''
+# Parte D
+# Parte E
+dat = l1.inicio
+while dat is not None:
+    aux = dat.lista
+    while aux is not None:
+        if aux.info[2] == 'fuego' or aux.info[2] == 'planta':
+            campos2(l2, aux, 0)
+        else:
+            if aux.info[2] == 'agua' or aux.info[2] == 'volador':
+                campos2(l3, aux, 0)
+        aux = aux.sig
+
+
+
 
 # Ej 15
 "Tiempo dado en horas"
-cant = 10
+'''cant = 10
 for i in range(0, cant):
     costo = random.randint(100, 1000)
     tiempo = random.randint(1, 20)
@@ -351,13 +407,13 @@ for i in range(0, cant):
     responsable = random.choice(string.ascii_uppercase)
     tarea = [costo, tiempo, responsable]
     campos(l1, tarea, 0)
-barrido(l1)
+barrido(l1)'''
 
 # Parte A
-ac = 0
+'''ac = 0
 aux = l1.inicio
 while aux is not None:
     ac = ac + aux.info[1]
     aux = aux.sig
-prom = ac % cant
-print('Promedio de tareas ' + str(prom))
+prom = ac / cant
+print('Promedio de tareas ' + str(prom))'''
