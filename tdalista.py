@@ -13,6 +13,12 @@ class Lista():
         self.tamanio = 0
 
 
+def barrido_descendente(lista):
+    aux = lista.inicio
+    while aux is not None:
+        
+
+
 def cargaAuto(lista, cantidad):
     for i in range(0, cantidad):
         insertar(lista, random.randint(0, 50))

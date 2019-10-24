@@ -327,8 +327,6 @@ print('Aparece en los episodios:')
 barrido(l4)'''
 
 # ej12
-cargaAuto(l1, 7)
-barrido(l1)
 
 # ej13
 
@@ -455,3 +453,10 @@ while aux is not None:
     aux = aux.sig
 prom = ac / cant
 print('Promedio de tareas ' + str(prom))'''
+
+
+# ej16
+destino = ['Paris', 'Atenas', 'Roma', 'Filadelfia']
+for i in range(0, 10):
+    empresa = random.choice(string.ascii_uppercase)
+    
