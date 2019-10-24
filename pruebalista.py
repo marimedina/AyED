@@ -81,7 +81,7 @@ print('Lista sin numeros primos:')
 barrido(l1)'''
 
 
-# ej6
+# ej6 PARTE D TERMINAR
 '''sheroes = ['Linterna Verde', 'Wolverine', 'Ant Man', 'Ironman', 'Black Panter']
 casas = ['Marvel', 'DC']
 for i in range(0, 10):
@@ -327,11 +327,13 @@ print('Aparece en los episodios:')
 barrido(l4)'''
 
 # ej12
+cargaAuto(l1, 7)
+barrido(l1)
 
 # ej13
 
-# Ej14
-l1 = Lista2()
+# ej14 FALTA PARTE D, H Y G
+'''l1 = Lista2()
 pokemons = ['Bulbasaur', 'Ivysaur', 'Charmander', 'Squirtle', 'Caterpie']
 tipos = ['fuego', 'agua', 'planta', 'bicho', 'volador', 'veneno', 'electrico']
 entrenadores = ['Pepito', 'Mariana', 'Pedro', 'Jose', 'Alicia', 'Luciano']
@@ -351,7 +353,7 @@ for i in range(0, 6):
         subtipo = random.choice(string.ascii_uppercase)
         pok = [nomb, nivel, tipo, subtipo]
         campos2(laux, pok, 0)
-barrido2(l1)
+barrido2(l1)'''
 
 # Parte A
 '''print('Cantidad de pokemons por jugador: ' + str(tamanio2(laux)))
@@ -383,18 +385,54 @@ while dat is not None:
 print('y su pokemons de mayor nivel es ' + str(nom1))'''
 # Parte D
 # Parte E
-dat = l1.inicio
+'''dat = l1.inicio
 while dat is not None:
-    aux = dat.lista
+    aux1 = dat.lista
+    aux = aux1.inicio
     while aux is not None:
         if aux.info[2] == 'fuego' or aux.info[2] == 'planta':
-            campos2(l2, aux, 0)
-        else:
-            if aux.info[2] == 'agua' or aux.info[2] == 'volador':
-                campos2(l3, aux, 0)
+            insertar(l2, dat.info)
+        elif aux.info[2] == 'agua' or aux.info[2] == 'volador':
+            insertar(l3, dat.info)
         aux = aux.sig
-
-
+    dat = dat.sig
+print('Entrenadores con pokemons de tipo fuego y planta')
+barrido(l2)
+print('Entrenadores con pokemons de tipo agua y volador')
+barrido(l3)'''
+# Parte F
+'''print('Ingrese el nombre del entrenador')
+nombre = input()
+aux = l1.inicio
+ac = 0
+while aux is not None:
+    if aux.info[0] == nombre:
+        aux1 = aux.lista
+        dat = aux1.inicio
+        while dat is not None:
+            ac = ac + dat.info[1]
+            dat = dat.sig
+        prom = ac//tamanio(laux)
+        print('El nivel de pokemons de ' + nombre + ' es ' + str(prom))
+    aux = aux.sig'''
+# Parte G NO ENTRA AL IF
+#print('Ingrese el nombre del pokemons')
+'''nom = 'Bulbasaur'
+aux = l1.inicio
+cont = 0
+while aux is not None:
+    aux1 = aux.lista
+    aux2 = aux1.inicio
+    while aux2 is not None:
+        if aux2.info[0] == nom:
+            cont += 1
+            insertar(l2, aux.info)
+        aux2 = aux2.sig
+    aux = aux.sig
+print('los entrenadores que tienen a ' + nom + ' son:')
+barrido(l2)
+print('la cantidas es ' + str(cont))'''
+# Parte H
 
 
 # Ej 15
