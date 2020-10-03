@@ -1,6 +1,6 @@
 from tdacola import cargautomatica1, cola_llena, cola_vacia, arribo, atencion
 from tdacola import Cola, mover_al_final, barridoc, cargaAutoStr
-from tdacola import cargacaract, primo, tamanioc
+from tdacola import cargacaract, primo, tamanioc, cargaAutomEnteros
 from tdapila import invertir, apilar, Pila, desapilar, pila_vacia
 from tdapila import cargautomatica, listaRandom
 import random
@@ -28,19 +28,21 @@ print(c1.datos)
 print(c2.datos)
 '''
 
-# ej1
-'''cargaAutoStr(c)
+# ej1 - Eliminar de una cola de caracteres todas las vocales que aparecen
+'''
+cargaAutoStr(c)
 print(c.datos)
 while not cola_vacia(c):
     aux = atencion(c)
     if not (aux == 'a' or aux == 'e' or aux == 'i' or aux == 'o' or aux == 'u'
     or aux == 'A' or aux == 'E' or aux == 'I' or aux == 'O' or aux == 'U'):
         arribo(c1, aux)
-print(c1.datos)'''
+print(c1.datos)
+'''
 
-
-# ej2
-'''cargautomatica1(c)
+# ej2 - Invertir el contenido de una cola.
+'''
+cargautomatica1(c)
 print(c.datos)
 while not cola_vacia(c):
     dato = atencion(c)
@@ -48,11 +50,13 @@ while not cola_vacia(c):
 while not pila_vacia(p):
     dat = desapilar(p)
     arribo(c1, dat)
-print(c1.datos)'''
+print(c1.datos)
+'''
 
 
-# ej3
-'''palabra = 'casa'
+#ej3 - Determinar si es un palindromo
+'''
+palabra = 'hola'
 for letra in palabra:
     arribo(c, letra)
     apilar(p, letra)
@@ -65,31 +69,37 @@ while not cola_vacia(c):
 if palindromo:
     print('es palindromo')
 else:
-    print('no es palindromo')'''
+    print('no es palindromo')
+'''
 
-# ej4
-'''cargautomatica1(c)
+# ej4 - Dada una cola de numeros cargados aleatoriamente,
+# eliminar de ella todos los que no sean primos.
+'''
+cargautomatica1(c)
 barridoc(c)
 while not cola_vacia(c):
     aux = atencion(c)
     if primo(aux) is True:
         arribo(c1, aux)
 print('Cola de numeros primos:')
-barridoc(c1)'''
+barridoc(c1)
+'''
 
-
-# ej5
-'''cargautomatica1(c)
+# ej5 - Utilizando operaciones de cola y pila, invertir el contenido de una pila
+'''
+cargautomatica1(c)
 while not cola_vacia(c):
     dato = atencion(c)
     apilar(p, dato)
 print(p.datos)
 invertir(p, p1)
-print(p1.datos)'''
+print(p1.datos)
+'''
 
 
-# ej6
-'''cargautomatica1(c)
+# ej6 - Contar la cantidad de ocurrencias de un determinado elemento en una cola.
+'''
+cargautomatica1(c)
 barridoc(c)
 num = 5
 cont = 0
@@ -98,11 +108,13 @@ for i in range(0, c.tamanio):
     if (dato == num):
         cont += 1
     arribo(c, dato)
-print('cantidad de ocurrencias: ' + str(cont))'''
+print('cantidad de ocurrencias: ' + str(cont))
+'''
 
 
-# ej7
-'''cargautomatica1(c)
+# ej7 - Eliminar el i-esimo elemento despues del frente de la cola.
+'''
+cargautomatica1(c)
 barridoc(c)
 pos = 6
 for i in range(0, tamanioc(c)):
@@ -111,11 +123,12 @@ for i in range(0, tamanioc(c)):
     else:
         arribo(c1, atencion(c))
 print('Cola sin elemento en posicion: ' + str(pos))
-barridoc(c1)'''
+barridoc(c1)
+'''
 
-
-# ej8
-'''cargautomatica1(c)
+# ej8 - Mantener ordenado los elementos agregados a una cola
+'''
+cargautomatica1(c)
 barridoc(c)
 num = 6
 while not cola_vacia(c) and (c.frente < num):
@@ -127,11 +140,13 @@ while not cola_vacia(c):
     arribo(c1, aux)
 c, c1 = c1, c
 print('Cola con nuevo numero:')
-barridoc(c)'''
+barridoc(c)
+'''
 
 
-# ej9 PARA ESTE CAMBIAR CARGA AUTOMATICA (-50,50)
-'''cargautomatica1(c)
+# ej9 - Dada una cola de enteros calcular rango y contar cuantos elementos negativos hay.
+'''
+cargaAutomEnteros(c)
 barridoc(c)
 min = c.frente
 max = c.frente
@@ -145,13 +160,17 @@ while not cola_vacia(c):
     arribo(c1, aux)
     if aux < 0:
         cont += 1
+
 rango = max - min
 print('rango: ' + str(rango))
-print('cantidad de numero negativos: ' + str(cont))'''
+print('cantidad de numero negativos: ' + str(cont))
+'''
 
-
-# ej10
-'''n = 6
+# ej10 - algoritmo que ingrese en una cola los dos valores iniciales de la sucesion de
+# Fibonacci y a partir de estos calcule los siguientes valores de dicha sucesion,
+# hasta obtener el valor en dicha sucesion correspondiente a un numero n.
+'''
+n = 7
 s = 0
 arribo(c, 0)
 arribo(c, 1)
@@ -166,11 +185,11 @@ if n > 1:
         arribo(c1, d2)
         arribo(c1, s)
         c, c1 = c1, c
-barridoc(c)'''
-
+barridoc(c)
+'''
 
 # ej11 ARREGLAR
-'''c = 10
+c = 10
 for i in range(1, c + 1):
     arribo(c1, (i*2))
 print('Cola 1:')
@@ -186,7 +205,7 @@ while not cola_vacia(c1) and not cola_vacia(c2):
     else:
         arribo(c, atencion(c1))
 print('Cola final')
-barridoc(c)'''
+barridoc(c)
 
 
 # ej12

@@ -69,6 +69,12 @@ def cargautomatica1(cola):
         arribo(cola, dato)
 
 
+def cargaAutomEnteros(cola):
+    while not cola_llena(cola):
+        dato = random.randint(-50, 50)
+        arribo(cola, dato)
+
+
 def cargacaract(cola):
     caract = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.;/*-+=%#!?"
     while not cola_llena(cola):
