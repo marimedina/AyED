@@ -13,10 +13,9 @@ class Lista():
         self.tamanio = 0
 
 
-def barrido_descendente(lista):
+'''def barrido_descendente(lista):
     aux = lista.inicio
-    while aux is not None:
-        
+    while aux is not None:'''
 
 
 def cargaAuto(lista, cantidad):

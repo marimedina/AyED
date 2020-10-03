@@ -2,7 +2,63 @@ class NodoArbol():
     def __init__(self, info):
         self.izq = None
         self.der = None
+        self.altura = 0
         self.info = info
+
+
+def altura(raiz):
+    if raiz is None:
+        return 0
+    else:
+        return raiz.altura
+
+
+def act_altura(raiz):
+    if altura(raiz.izq) > altura(raiz.der):
+        raiz.altura = altura(raiz.izq) + 1
+    else:
+        raiz.altura = altura(raiz.der) + 1
+    return raiz
+
+
+def rot_simple(raiz, c):
+    if c:
+        aux = raiz.izq
+        raiz.izq = aux.der
+        aux.der = raiz
+    else:
+        aux = raiz.der
+        raiz.der = aux.izq
+        aux.izq = raiz
+    act_altura(raiz)
+    act_altura(aux)
+    raiz = aux
+    return raiz
+
+
+def rot_doble(raiz, c):
+    if c:
+        raiz.izq = rot_simple(raiz.izq, False)
+        raiz = rot_simple(raiz, True)
+    else:
+        raiz.der = rot_simple(raiz.der, True)
+        raiz = rot_simple(raiz, False)
+    return raiz
+
+
+def balancear(raiz):
+    if raiz is not None:
+        if (altura(raiz.izq) - altura(raiz.der) == 2):
+            if altura(raiz.izq.izq) >= altura(raiz.izq.der):
+                raiz = rot_simple(raiz, True)
+            else:
+                raiz = rot_doble(raiz, True)
+        elif (altura(raiz.der) - altura(raiz.izq) == 2):
+            if altura(raiz.der.der) >= altura(raiz.der.izq):
+                raiz = rot_simple(raiz, False)
+            else:
+                raiz = rot_doble(raiz, False)
+    return raiz
 
 
 def insertar(raiz, dato):
@@ -14,6 +70,9 @@ def insertar(raiz, dato):
             raiz.izq = insertar(raiz.izq, dato)
         else:
             raiz.der = insertar(raiz.der, dato)
+    act_altura(raiz)
+    raiz = balancear(raiz)
+    
     return raiz
 
 

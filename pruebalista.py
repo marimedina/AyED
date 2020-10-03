@@ -8,13 +8,14 @@ import math
 import string
 import random
 import calendar
+import datetime
 l1 = Lista()
 l2 = Lista()
 l3 = Lista()
 l4 = Lista()
 l5 = Lista()
 l6 = Lista()
-
+m
 
 '''cargaAuto(l1, 5)
 barrido(l1)
@@ -330,7 +331,7 @@ barrido(l4)'''
 
 # ej13
 
-# ej14 FALTA PARTE D, H Y G
+# ej14 FALTA PARTE D, H
 '''l1 = Lista2()
 pokemons = ['Bulbasaur', 'Ivysaur', 'Charmander', 'Squirtle', 'Caterpie']
 tipos = ['fuego', 'agua', 'planta', 'bicho', 'volador', 'veneno', 'electrico']
@@ -345,7 +346,7 @@ for i in range(0, 6):
     nodo = busquedacampos2(l1, entr[0], 0)
     laux = nodo.lista
     for j in range(0, 3):
-        nomb = random.choices(pokemons)
+        nomb = random.choice(pokemons)
         nivel = random.randint(1, 40)
         tipo = random.choice(tipos)
         subtipo = random.choice(string.ascii_uppercase)
@@ -382,6 +383,7 @@ while dat is not None:
     dat = dat.sig
 print('y su pokemons de mayor nivel es ' + str(nom1))'''
 # Parte D
+
 # Parte E
 '''dat = l1.inicio
 while dat is not None:
@@ -413,7 +415,7 @@ while aux is not None:
         prom = ac//tamanio(laux)
         print('El nivel de pokemons de ' + nombre + ' es ' + str(prom))
     aux = aux.sig'''
-# Parte G NO ENTRA AL IF
+# Parte G
 #print('Ingrese el nombre del pokemons')
 '''nom = 'Bulbasaur'
 aux = l1.inicio
@@ -424,39 +426,65 @@ while aux is not None:
     while aux2 is not None:
         if aux2.info[0] == nom:
             cont += 1
-            insertar(l2, aux.info)
+            insertar(l2, aux.info[0])
         aux2 = aux2.sig
     aux = aux.sig
 print('los entrenadores que tienen a ' + nom + ' son:')
-barrido(l2)
-print('la cantidas es ' + str(cont))'''
+barrido(l2)'''
 # Parte H
 
 
 # Ej 15
-"Tiempo dado en horas"
-'''cant = 10
-for i in range(0, cant):
-    costo = random.randint(100, 1000)
-    tiempo = random.randint(1, 20)
-    #f_inicio =
-    responsable = random.choice(string.ascii_uppercase)
-    tarea = [costo, tiempo, responsable]
-    campos(l1, tarea, 0)
-barrido(l1)'''
-
-# Parte A
-'''ac = 0
-aux = l1.inicio
+'''for i in range(1, 8):
+    costo = randint(1500, 3500)
+    tiempo = randint(2, 12)  # tiempo en horas
+    dia = randint(1, 28)
+    mes = randint(1, 12)
+    anio = randint(2018, 2019)
+    persona = 'Persona ' + str(i)
+    tarea = [costo, tiempo, dia, mes, anio, persona]
+    inserCampo(l1, tarea, 1)
+barrido(l1)
+aux = l1.inicio'''
+# Punto A
+'''a = 0
 while aux is not None:
-    ac = ac + aux.info[1]
+    a += aux.info[1]
     aux = aux.sig
-prom = ac / cant
-print('Promedio de tareas ' + str(prom))'''
+prom = (a//7)
+print('El tiempo promedio de tareas es de: ' + str(prom) + ' horas')'''
 
+# Punto B
+'''a = 0
+while aux is not None:
+    a += aux.info[0]
+    aux = aux.sig
+print('El costo total del proyecto es de: $' + str(a))'''
+# Punto C
+'''while aux is not None:
+    if aux.info[5] == 'Persona 5':
+        inserCampo(l2, aux.info, 5)
+    aux = aux.sig
+print('Actividades realizadas por Persona 5: ')
+barrido(l2)'''
+
+# Punto D
+'''f1 = [7, 8, 2018]
+f2 = [5, 9, 2019]
+print('Tareas a realizar entre ' + str(f1) + ' y ' + str(f2) + ' : ')
+while aux is not None:
+    if entre(aux.info[2], f1[0], f2[0]) and entre(aux.info[3], f1[1], f2[1])
+    and entre(aux.info[4], f1[2], f2[2]):
+        print(aux.info)
+    aux = aux.sig'''
 
 # ej16
-destino = ['Paris', 'Atenas', 'Roma', 'Filadelfia']
+destinos = ['Paris', 'Atenas', 'Roma', 'Filadelfia', 'Grecia', 'Londres']
 for i in range(0, 10):
     empresa = random.choice(string.ascii_uppercase)
-    
+    numero = random.randint(0, 50)
+    asientos = random.randint(0, 60)
+    #fecha =
+    origen = random.choice(string.ascii_lowercas)
+    destino = random.choice(destinos)
+    kilometros = random.randint(10, 1000)
