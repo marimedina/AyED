@@ -189,6 +189,7 @@ barridoc(c)
 '''
 
 # ej11 ARREGLAR
+'''
 c = 10
 for i in range(1, c + 1):
     arribo(c1, (i*2))
@@ -200,16 +201,20 @@ print('Cola 2:')
 barridoc(c2)
 # no anda de aca para abajo
 while not cola_vacia(c1) and not cola_vacia(c2):
-    if c1.frente > c2.frente:
-        arribo(c, atencion(c2))
+    if c1.frente >= c2.frente:
+        arribo(c3, atencion(c2))
     else:
-        arribo(c, atencion(c1))
+        arribo(c3, atencion(c1))
 print('Cola final')
 barridoc(c)
+'''
 
 
-# ej12
-'''cargacaract(c)
+# ej12 - Dada una cola de 15000 caracteres generados aleatoriamente realizar:
+#a. Separarla en dos colas una con dígitos y otra con el resto de los caracteres.
+#b. Determinar cuántas letras hay en la segunda cola.
+'''
+cargacaract(c)
 print(c.datos)
 caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.;/*-+=%#!?"
 # Parte A
@@ -233,7 +238,8 @@ while not cola_vacia(c2):
         if aux == elemento:
             cont += 1
     arribo(c4, aux)
-print('Hay ' + str(cont) + ' letras en la segunda cola')'''
+print('Hay ' + str(cont) + ' letras en la segunda cola')
+'''
 
 
 # ej14
