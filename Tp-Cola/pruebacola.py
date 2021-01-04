@@ -188,9 +188,10 @@ if n > 1:
 barridoc(c)
 '''
 
-# ej11 ARREGLAR
+# ej11 - Dada dos colas con valores ordenadas, realizar un algoritmo que permita combinar en una
+# nueva cola los valores de las otras dos manteniendo los valores ordenados
 '''
-c = 10
+c = 5
 for i in range(1, c + 1):
     arribo(c1, (i*2))
 print('Cola 1:')
@@ -205,14 +206,14 @@ while not cola_vacia(c1) and not cola_vacia(c2):
         arribo(c3, atencion(c2))
     else:
         arribo(c3, atencion(c1))
-print('Cola final')
-barridoc(c)
+print('Cola final:')
+barridoc(c3)
 '''
 
 
 # ej12 - Dada una cola de 15000 caracteres generados aleatoriamente realizar:
-#a. Separarla en dos colas una con dígitos y otra con el resto de los caracteres.
-#b. Determinar cuántas letras hay en la segunda cola.
+#a. Separarla en dos colas una con digitos y otra con el resto de los caracteres.
+#b. Determinar cuantas letras hay en la segunda cola.
 '''
 cargacaract(c)
 print(c.datos)
@@ -242,18 +243,20 @@ print('Hay ' + str(cont) + ' letras en la segunda cola')
 '''
 
 
-# ej14
-'''cargautomatica1(c)
+# ej14 - Dada dos colas con valores enteros numericos determinar:
+'''
+cargautomatica1(c)
 print(c.datos)
 cargautomatica1(c1)
 print(c1.datos)
-# Parte A
+
+# Parte A - Si tienen la misma cantidad de elementos.
 if c.tamanio == c1.tamanio:
     print('Ambas colas tienen la misma cantidad de elementos')
 else:
     print('No poseen la misma cantidad de elementos')
 
-# Parte B
+# Parte B - Si ambas colas son iguales.
 iguales = False
 while not cola_vacia(c):
     aux = atencion(c)
@@ -270,7 +273,7 @@ if iguales:
 else:
     print('Colas distintas')
 
-# Parte C
+# Parte C - Cual de las dos es mayor (respecto a la sumatoria de sus elementos).
 sum = 0
 sum1 = 0
 while not cola_vacia(c4):
@@ -286,8 +289,33 @@ if sum > sum1:
 else:
     print('La primera cola es la mayor')
 
+# Parte D - Cual tiene mas numeros primos.
+p1, p2 = 0, 0
+while not cola_vacia(c3):
+    aux = atencion(c3)
+    if primo(aux) is True:
+        p1 += 1
+    arribo(c, aux)
 
-# Parte E
+while not cola_vacia(c4):
+    dat = atencion(c4)
+    if primo(dat) is True:
+        p2 += 1
+    arribo(c1, dat)
+
+if p1 == p2:
+
+    print('Ambas colas tienen la misma cantidad de numeros primos')
+else:
+    if p1 > p2:
+
+        print('La cola 1 tiene mas cantidad de numeros primos')
+    else:
+
+        print('La cola 2 tiene mas cantidad de numeros primos')
+
+
+# Parte E - Si ambas colas poseen al menos un numero multiplo de 2 y un numero multiplo de 3
 mult2 = 0
 multiplo2 = 0
 mult3 = 0
@@ -315,32 +343,15 @@ if mult2 > 0 and mult3 > 0:
         print('Ambas colas tienen multiplo de 2 y 3')
     else:
         print('Solo una de las colas posee multiplos')
-
-# Parte D
-p1, p2 = 0, 0
-while not cola_vacia(c3):
-    aux = atencion(c3)
-    primo(aux)
-    if True:
-        p1 += 1
-    arribo(c, aux)
-while not cola_vacia(c4):
-    dat = atencion(c4)
-    primo(dat)
-    if True:
-        p2 += 1
-    arribo(c1, dat)
-if p1 == p2:
-    print('Ambas colas tienen la misma cantidad de numeros primos')
-else:
-    if p1 > p2:
-        print('La cola 1 tiene mas cantidad de numeros primos')
-    else:
-        print('La cola 2 tiene mas cantidad de numeros primos')'''
+'''
 
 
-# ej17
-'''cant = 10
+
+# ej17 - Dada una cola con los codigos de turnos de atencion (con el formato #@@@, donde # es
+# una letra de la A a la F y @@@ son tres digitos desde el 000 al 999), desarrollar un algoritmo
+# que resuelva las siguientes situaciones:
+'''
+cant = 5
 letra = "ABCDEF"
 for i in range(0, cant):
     turno = str(random.choice(letra))
@@ -348,6 +359,7 @@ for i in range(0, cant):
         turno += str(random.randint(0, 9))
     arribo(c, turno)
 barridoc(c)
+
 # Parte B
 while not cola_vacia(c):
     turno = atencion(c)
@@ -359,6 +371,7 @@ print('Cola de turnos que comienzan con A, C, F:')
 barridoc(c1)
 print('Cola de turnos que comienzan con B, D, E:')
 barridoc(c2)
+
 # Parte C
 ca, cc, cf = 0, 0, 0
 cb, cd, ce = 0, 0, 0
@@ -403,7 +416,8 @@ else:
     if contador < ce:
         contador = ce
         letra = "E"
-    print('La mayor cantidad de turnos comienzan con la letra '+ str(letra))'''
+    print('La mayor cantidad de turnos comienzan con la letra '+ str(letra))
+'''
 
 
 # ej19
