@@ -14,14 +14,16 @@ p3 = Pila()
 
 
 # pruebadebarrido
+'''
 cargautomatica(p)
 print(p.datos)
 invertir(p, p1)
 print(p1.datos)
+'''
 
-
-# ej1
-'''cargautomatica(p)
+# ej1 - Determinar el numero de ocurrencias de un determinado elemento en la pila
+'''
+cargautomatica(p)
 print(p.datos)
 paux = Pila()
 num = 5
@@ -34,10 +36,11 @@ while not pila_vacia(p):
 print('Cantidad de ocurrencias:', cont)
 while not pila_vacia(paux):
     apilar(p, desapilar(paux))
-print(p.datos)'''
+'''
 
 
-# ej2
+# ej2 - Eliminar de una pila todos los elementos impares
+'''
 cargautomatica(p)
 print(p.datos)
 while not pila_vacia(p):
@@ -47,14 +50,15 @@ while not pila_vacia(p):
     else:
         aux
 print(pp.datos)
+'''
 
-
-# ej3
-'''cargautomatica(p)
+# ej3 - Reemplazar todas las ocurrencias de un determinado elemento en una pila.
+'''
+cargautomatica(p)
 print(p.datos)
 paux = Pila()
-num = 5
-reemplazo = 2
+num = 5 #numero a reemplazar
+reemplazo = 2 #numero por el que se reemplaza
 while not pila_vacia(p):
     dato = desapilar(p)
     if dato == num:
@@ -62,21 +66,24 @@ while not pila_vacia(p):
     apilar(paux, dato)
 while not pila_vacia(paux):
     apilar(p, desapilar(paux))
-print(p.datos)'''
+print(p.datos)
+'''
 
-
-# ej4
-'''cargautomatica(p)
+# ej4 - Invertir el contenido de una pila
+'''
+cargautomatica(p)
 print(p.datos)
 paux = Pila()
 while not pila_vacia(p):
     dato = desapilar(p)
     apilar(paux, dato)
-print(paux.datos)'''
+print(paux.datos)
+'''
 
 
-# ej5
-'''palab = 'neuquen'
+# ej5 - Determinar si una cadena de caracteres es un palindromo.
+'''
+palab = 'oso'
 for elemento in palab:
     apilar(p, elemento)
 print(palab)
@@ -85,8 +92,6 @@ while not pila_vacia(p):
     apilar(p1, dato)
     apilar(p2, dato)
 invertir(p2, p)
-print(p.datos)
-print(p1.datos)
 # para abajo esta MAL
 flag = True
 while not pila_vacia(p):
@@ -98,22 +103,26 @@ while not pila_vacia(p):
 if flag:
     print('Palindromo')
 else:
-    print('No palindromo')'''
+    print('No palindromo')
+'''
 
 
-# ej6
-'''palabra = 'Algoritmos'
+# ej6 - Leer una palabra y visualizarla en forma inversa.
+'''
+palabra = 'Algoritmos'
 for elemento in palabra:
     apilar(p, elemento)
 print(palabra)
-
 while not pila_vacia(p):
     invertir(p, p1)
 print(p1.datos)
 '''
 
-# ej7
-'''cargautomatica(p)
+
+# ej7 - Eliminar el i-esimo elemento debajo de la cima
+# (lo reemplaza al final por otro numero)
+'''
+cargautomatica(p)
 print(p.datos)
 i = 5
 while not pila_vacia(p):
@@ -123,10 +132,12 @@ while not pila_vacia(p):
 while not pila_vacia(p1):
     apilar(p, desapilar(p1))
 
-barrido(p)'''
+print(p.datos)
+'''
 
 
-# ej8'
+# ej8 - Dada una pila de elemento (numero, palo) que representa una carta de baraja espanola,
+# generada de forma aleatoria, resolver los siguientes puntos:
 '''
 dat = [5, 2]
 apilar(p, dat)
@@ -139,7 +150,8 @@ apilar(p, dat)
 dat = [11, 1]
 apilar(p, dat)
 print(p.datos)
-# parte A
+
+# parte A - Separar la pila mazo en cuatro pilas una por cada palo.
 while not pila_vacia(p):
     aux = desapilar(p)
     if aux[1] == 0:
@@ -150,11 +162,16 @@ while not pila_vacia(p):
         apilar(p2, aux)
     if aux[1] == 3:
         apilar(p3, aux)
+print('Palo 0:')
 print(p0.datos)
+print('Palo 1:')
 print(p1.datos)
+print('Palo 2:')
 print(p2.datos)
+print('Palo 3:')
 print(p3.datos)
-# parte B
+
+# parte B - Ordenar una de las cuatro pilas de manera creciente.
 while not pila_vacia(p1):
     aux = desapilar(p1)
     if pila_vacia(pi):
@@ -165,11 +182,14 @@ while not pila_vacia(p1):
         apilar(pi, aux)
         while not pila_vacia(pp):
             apilar(pi, desapilar(pp))
-print(pi.datos)'''
+
+print('Pila ordenada de manera creciente')
+print(pi.datos)
+'''
 
 
 # ej9
-'''fact = 1
+fact = 1
 num = 6
 apilar(p, num)
 while num > 0:
@@ -177,7 +197,7 @@ while num > 0:
     num -= 1
 while not pila_vacia(p):
     fact *= desapilar(p)
-print(fact)'''
+print(fact)
 
 
 # ej10
@@ -234,7 +254,7 @@ print(lista)'''
 '''num = '0123456789'
 parrafo = 'Hoy, en mi casa hay 3 perros.'
 voc = 'aeiouAEIOU'
-cons = 'bcdfghjklmnñpqrstvwxyzBCDFGHJKLMNÑPQRSTVWXYZ'
+cons = 'bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ'
 for elemento in parrafo:
     if elemento in voc:
         apilar(p1, elemento)

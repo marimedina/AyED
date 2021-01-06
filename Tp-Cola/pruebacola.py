@@ -419,15 +419,22 @@ else:
     print('La mayor cantidad de turnos comienzan con la letra '+ str(letra))
 '''
 
+# ej18
 
 # ej19
 
 
-# ej20
-'''vehiculos = ['auto', 'camion', 'colectivo', 'camioneta', 'trafic']
+# ej20 - Desarrollar un algoritmo para el control de un puesto de peaje (que posee 3 cabinas de
+# cobro), que resuelva las siguientes actividades
+
+'''
+vehiculos = ['auto', 'camion', 'colectivo', 'camioneta', 'trafic']
+precios = [100, 150, 175, 200, 125]
 peajes = [c1, c2, c3]
 cant1, cant2, cant3 = 0, 0, 0
 i = 0
+
+# Parte A - Agregar 30 autos de manera aleatoria a las cabinas de cobro.
 for i in range(0, 10):
     cab = random.randint(1, 3)
     dato = random.choice(vehiculos)
@@ -445,17 +452,19 @@ barridoc(c2)
 print("Cabina 3:")
 barridoc(c3)
 
+# Parte B - Realizar la atencion de las cabinas.
 while (not cola_vacia(c1)) or (not cola_vacia(c2)) or (not cola_vacia(c3)):
     if not cola_vacia(c1):
         atencion(c1)
-        cant1 += 1
+        cant1 += random.choice(precios)
     if not cola_vacia(c2):
         atencion(c2)
-        cant2 += 1
+        cant2 += random.choice(precios)
     if not cola_vacia(c3):
         atencion(c3)
-        cant3 += 1
+        cant3 += random.choice(precios)
 
+# Parte C - Determinar que cabina recaudo mayor cantidad de pesos
 cant_mayor = cant1
 cab_mayor = 1
 
@@ -466,15 +475,38 @@ if cant_mayor < cant3:
     cant_mayor = cant3
     cab_mayor = 3
 
-print("La cabina que mas dinero recaudo fue: " + str(cab_mayor))'''
+print("La cabina que mas dinero recaudo fue la " + str(cab_mayor))
 
+
+#print(cant1)
+#print(cant2)
+#print(cant3)
+'''
 
 # ej21 TERMINAR
-'''cdes = Cola()
-cate = Cola()
-cargautomatica1(cdes) #va ordenada
-cargautomatica1(cate)
+cdes = Cola() #despegues
+cate = Cola() #aterrizajes
+
+
+aux = []
+
+empresa = ['a', 'b', 'c', 'd', 'e', 'f'] #nombre de empresa
+origen = ['arg', 'eur', 'fra', 'cub']
+destino = ['ind', 'par' 'uru', 'mex']
 tipo_v = ['personas', 'negocios', 'carga']
+tipo = ['at', 'des']
+
+for i in range(0, 10):
+    aux = random.choice(empresa)
+    print(aux)
+    #aux = random.choice(tipo)
+    if aux == 'at':
+        arribo(cate, aux)
+
+
+barridoc(cate)
+'''
+
 ta = [10, 5, 7]
 ts = [5, 3, 9]
 while not cola_vacia(cdes) or not cola_vacia(cate):
@@ -492,5 +524,6 @@ while not cola_vacia(cdes) or not cola_vacia(cate):
     else:
         if not cola_vacia(cate):
             dato = atencion(cate)
-            time.sleep(ta[tipo_v(dato.tipo)])'''
+            time.sleep(ta[tipo_v(dato.tipo)])
             #cargar
+'''
