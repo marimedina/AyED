@@ -345,6 +345,7 @@ if mult2 > 0 and mult3 > 0:
         print('Solo una de las colas posee multiplos')
 '''
 
+#ej16
 
 
 # ej17 - Dada una cola con los codigos de turnos de atencion (con el formato #@@@, donde # es
