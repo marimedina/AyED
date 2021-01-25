@@ -1,7 +1,7 @@
 from tdapila import apilar, desapilar, pila_llena, pila_vacia, tamanio, cima
 from tdapila import Pila, cargautomatica, barrido, invertir, randString
-from tdapila import quicksortI, listaRandom, dirrecionAnum, numAdirrecion
-from tdapila import ordencre
+from tdapila import listaRandom, dirrecionAnum, numAdirrecion
+from tdapila import ordencre, cargaString
 import string
 import random
 p = Pila()
@@ -188,20 +188,23 @@ print(pi.datos)
 '''
 
 
-# ej9
+# ej9 - Resolver el factorial de un numero
+'''
 fact = 1
 num = 6
-apilar(p, num)
 while num > 0:
     apilar(p, num)
     num -= 1
 while not pila_vacia(p):
     fact *= desapilar(p)
 print(fact)
+'''
 
 
-# ej10
-'''cargautomatica(p)
+# ej10 - Dada una pila de numeros separarla en dos pilas, una para los numeros pares y otra para
+# los impares.
+'''
+cargautomatica(p)
 print(p.datos)
 while not pila_vacia(p):
     aux = desapilar(p)
@@ -212,24 +215,30 @@ while not pila_vacia(p):
 print('pila par')
 print(pp.datos)
 print('pila impar')
-print(pi.datos)'''
+print(pi.datos)
+'''
 
-# ej11
-'''palabra = 'algoritmos'
+
+# ej11 - Dada una pila de letras determinar cuantas vocales hay.
+#palabra = 'algoritmos'
+'''
 cont = 0
-for elemento in palabra:
-    apilar(p, elemento)
+cargaString(p)
 print(p.datos)
 while not pila_vacia(p):
     aux = desapilar(p)
-    if aux == 'a' or aux == 'e' or aux == 'i' or aux == 'o' or aux == 'u':
+    if (aux == 'a' or aux == 'e' or aux == 'i' or aux == 'o' or aux == 'u' or
+    aux == 'A' or aux == 'E' or aux == 'I' or aux == 'O' or aux == 'U'):
         cont += 1
 apilar(p1, aux)
-print('Hay ' + str(cont) + ' vocales')'''
+print('Hay ' + str(cont) + ' vocales')
+'''
 
 
-# ej12
-'''num = int(input('Ingrese un numero: '))
+# ej12 - Realizar un algoritmo que permita ingresar elementos en una pila, y que los mismos
+# queden ordenados de forma creciente.
+'''
+num = int(input('Ingrese un numero: '))
 while num != 0:
     if not pila_llena(p):
         while not pila_vacia(p) and (cima(p) >= num):
@@ -240,19 +249,18 @@ while num != 0:
     else:
         print('Pila llena')
     barrido(p)
-    num = int(input('Ingrese un numero: '))'''
+    num = int(input('Ingrese un numero: '))
+'''
 
 
 # ej13
-'''lista = listaRandom(25)
-print(lista)
-quicksortI(lista, 0, len(lista) - 1)
-print(lista)'''
 
 
-# ej14
-'''num = '0123456789'
-parrafo = 'Hoy, en mi casa hay 3 perros.'
+# ej14 - Dado un parrafo que finaliza en punto, separa dicho parrafo en tres pilas vocales,
+# consonantes, otros caracteres que no sean letras.
+'''
+num = '0123456789'
+parrafo = 'Hoy, en mi casa hay muchos perros.'
 voc = 'aeiouAEIOU'
 cons = 'bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ'
 for elemento in parrafo:
@@ -263,12 +271,13 @@ for elemento in parrafo:
             apilar(p2, elemento)
         else:
             apilar(p3, elemento)
-# Parte A
+
+# Parte A - Cantidad de caracteres de cada tipo
 print('Cantidad de vocales: ' + str(tamanio(p1)))
 print('Cantidad de consonantes: ' + str(tamanio(p2)))
 print('Cantidad de signos o numeros: ' + str(tamanio(p3)))
 
-# Parte B
+# Parte B - Cantidad de espacios en blanco hay.
 c_espacios = 0
 while not pila_vacia(p3):
     aux = desapilar(p3)
@@ -276,7 +285,7 @@ while not pila_vacia(p3):
         c_espacios += 1
 print('Cantidad de espacios: ' + str(c_espacios))
 
-# Parte C
+# Parte C - Porcentaje que representan las vocales respecto de las consonantes.
 c_total = (tamanio(p1) + tamanio(p2) + tamanio(p3))
 por_voc = (tamanio(p1) * 100) // c_total
 por_con = (tamanio(p2) * 100) // c_total
@@ -284,7 +293,7 @@ print('Porcentaje de vocales: ' + str(por_voc))
 print('Porcentaje de consonantes: ' + str(por_con))
 
 
-# Parte D
+# Parte D - Cantidad de numeros
 c_numeros = 0
 while not pila_vacia(p3):
     aux = desapilar(p3)
@@ -293,24 +302,30 @@ while not pila_vacia(p3):
 print('Cantidad de numeros: ' + str(c_numeros))
 
 
-# Parte E
+# Parte E - La cantidad de vocales y otros caracteres son iguales
 if tamanio(p1) == tamanio(p3):
     print('Tienen cantidades iguales')
 else:
     print('No tienen cantidades iguales')
 
 
-# Parte F
+# Parte F - Determinar si existe al menos una z en la pila de consonantes
+cont = 0
 while not pila_vacia(p2):
-    dat = desapilar(p3)
+    dat = desapilar(p2)
     if dat == 'z' or dat == 'Z':
-        print('Existe al menos una z en el parrafo')
-    else:
-        print('No existe una z en el parrafo')'''
+        cont += 1
+if cont == 0:
+    print('No hay Z en el parrafo')
+else:
+    print('Hay ' + str(cont) + ' Z en el parrafo')
+'''
 
 
-# ej15
-'''cont = 8
+# ej15 - Dada una pila de objetos de una oficina y su peso, ordenar dicha pila
+# de acuerdo a su peso
+'''
+cont = 8
 obj = ['mouse', 'teclado', 'carpeta', 'cartuchera', 'perforadora',
        'abrochadora', 'escritorio', 'computadora']
 for i in range(0, cont):
@@ -318,11 +333,13 @@ for i in range(0, cont):
     peso = random.randint(0, 25)
     apilar(p, [objeto, peso])
 p1 = ordencre(p)
-barrido(p1)'''
+barrido(p1)
+'''
 
-
-# ej16
-'''max = 10
+# ej16 - algoritmo que genere la secuencia de movimientos necesarios para
+# volver al lugar de partida, por el mismo camino que fue.
+'''
+max = 10
 movs = ['norte', 'sur', 'este', 'oeste', 'noreste', 'sureste',
         'noroeste', 'suroeste']
 camino = []
@@ -337,11 +354,13 @@ while not pila_vacia(p):
 print('recorrido:')
 print(camino)
 print('recorrido de vuelta:')
-print(camino_vuelta)'''
+print(camino_vuelta)
+'''
 
-
-# ej17
-'''n = 5
+# ej17 - Realizar un algoritmo que ingrese en una pila los dos valores iniciales de la sucesion de
+# Fibonacci y a partir de estos calcule los siguientes valores de dicha sucesion
+'''
+n = 5
 apilar(p, 0)
 if (n == 1):
     apilar(p, 1)
@@ -352,10 +371,14 @@ elif (n > 1):
         dato1 = cima(p)
         apilar(p, dato)
         apilar(p, (dato + dato1))
-barrido(p)'''
+barrido(p)
+'''
 
-# ej18
-'''cargautomatica(p)
+
+# ej18 - Dada una pila con los valores de temperaturas ambiente del mes de abril, obtener la
+# siguiente informacion
+'''
+cargautomatica(p)
 print(p.datos)
 prom = 0
 med = 0
@@ -382,36 +405,47 @@ while not pila_vacia(p1):
         menores += 1
     apilar(p2, aux)
 
-# Parte A
+
+# Parte A - Rango de temperatura valor minimo y maximo.
 print('Temperatura minima: ' + str(tempmin))
 print('Temperatura maxima: ' + str(tempmax))
 print('Rango: ' + str(rang))
 
-# Parte B
+# Parte B - El promedio (media) del total de valores.
 print('Promedio del total de valores: ' + str(media))
 
-# Parte C
-print('Valores por encima: ' + str(mayores))
-print('Valores por debajoo iguales: ' + str(menores))'''
+# Parte C - Cantidad de valores por encima y por debajo de la media.
+print('Valores por encima de la media: ' + str(mayores))
+print('Valores por debajo de la media ' + str(menores))
+'''
 
-# ej19
-'''while not pila_llena(p):
+
+
+# ej19 - Dada una pila de palabras, mostrar aquellas que contengan mas de 7 caracteres de largo,
+# sin perder los datos de la pila.
+'''
+while not pila_llena(p):
     largo = random.randint(1, 15)
     apilar(p, randString(largo))
-
+print('Palabras con mas de 7 caracteres:')
 while not pila_vacia(p):
     aux = desapilar(p)
     if len(aux) > 7:
         print(aux)
     apilar(p1, aux)
-print(p1.datos)'''
-
+print('Pila con todas las palabras:')
+print(p1.datos)
+'''
 
 # ej20 PARA ESTE CAMBIAR MAX Y RANDOM
-'''cargautomatica(p)
+# Dada una pila de 10000 elementos generados aleatoriamente, eliminar de esta todos los
+# numeros que no sean multiplos de 2, de 3 o de 5.
+'''
+cargautomatica(p)
 print(p.datos)
 while not pila_vacia(p):
     aux = desapilar(p)
     if aux % 2 == 0 or aux % 3 == 0 or aux % 5 == 0:
         apilar(p1, aux)
-barrido(p1)'''
+barrido(p1)
+'''

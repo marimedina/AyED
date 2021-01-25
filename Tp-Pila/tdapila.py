@@ -17,6 +17,12 @@ def cargautomatica(pila):
         apilar(pila, dato)
 
 
+def cargaString(pila):
+    abc = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    while (not pila_llena(pila)):
+        apilar(pila, random.choice(abc))
+
+
 def apilar(pila, dato):
     pila.tope += 1
     pila.datos[pila.tope] = dato
@@ -116,11 +122,12 @@ def numAdirrecion(n):
     return dir
 
 
-# NO ORDENA
+# NO 
+'''
 def quicksortI(vec, pri, ult):
     pila = Pila()
     apilar(pila, [pri, ult])
-    #dato = []
+    dato = []
     while not pila_vacia(pila):
         dato = desapilar(pila)
         i = dato[0]
@@ -140,7 +147,7 @@ def quicksortI(vec, pri, ult):
             apilar(pila, [dato[0], j])
         if dato[1] > i:
             apilar(pila, [i+1, dato[1]])
-
+'''
 
 def ordencre(pila):
     aux = Pila()
