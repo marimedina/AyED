@@ -66,8 +66,7 @@ def insertar1(lista, dato, posicion):
                 aux = aux.sig
             aux.sig = nodo
     else:
-        print("El indice " + str(posicion) + " excede el tamaño de elementos que ")
-        print("posee la lista")
+        print('El indice ' + str(posicion) + ' excede el tamanio de elementos que posee la lista')
 
 
 def eliminarNodo(lista):
@@ -114,7 +113,7 @@ def tamanio(lista):
 
 
 def busquedaLista(l, buscado):
-    """Devuelve dirección de memoria. None si no se encontró lo buscado"""
+    """Devuelve direccion de memoria. None si no se encontro lo buscado"""
     aux = l.inicio
     while (aux is not None) and (aux.info != buscado):
         aux = aux.sig

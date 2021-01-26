@@ -52,7 +52,7 @@ def barrido2(lista):
 
 
 def busquedaLista2(lista, buscado):
-    """Devuelve dirección de memoria. None si no se encontró lo buscado"""
+    """Devuelve direccion de memoria. None si no se encontro lo buscado"""
     aux = lista.inicio
     while (aux is not None) and (aux.info != buscado):
         aux = aux.sig

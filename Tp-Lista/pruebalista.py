@@ -15,7 +15,7 @@ l3 = Lista()
 l4 = Lista()
 l5 = Lista()
 l6 = Lista()
-m
+
 
 '''cargaAuto(l1, 5)
 barrido(l1)
@@ -25,13 +25,17 @@ while l1.inicio is not None:
     barrido(l1)'''
 
 
-# ej1
-'''cargaAuto(l1, 10)
+# ej1 - Algoritmo que cuente la cantidad de nodos de una lista.
+'''
+cargaAuto(l1, 5)
 barrido(l1)
-print('El tamanio es: ' + str(l1.tamanio))'''
+print('El tamanio es: ' + str(l1.tamanio))
+'''
 
-# ej2
-'''cargaString(l1, 10)
+
+# ej2 - Algoritmo que elimina las vocales de una lista de caracteres.
+'''
+cargaString(l1, 10)
 barrido(l1)
 aux1 = l1.inicio
 aux = l1.inicio
@@ -42,8 +46,9 @@ while aux is not None:
     (aux.info == 'U')):
         eliminar(l1, aux.info)
     aux = aux.sig
-print('lista sin vocales')
-barrido(l1)'''
+print('Lista sin vocales:')
+barrido(l1)
+'''
 
 
 # ej3
@@ -479,6 +484,7 @@ while aux is not None:
     aux = aux.sig'''
 
 # ej16
+'''
 destinos = ['Paris', 'Atenas', 'Roma', 'Filadelfia', 'Grecia', 'Londres']
 for i in range(0, 10):
     empresa = random.choice(string.ascii_uppercase)
@@ -488,3 +494,4 @@ for i in range(0, 10):
     origen = random.choice(string.ascii_lowercas)
     destino = random.choice(destinos)
     kilometros = random.randint(10, 1000)
+'''
