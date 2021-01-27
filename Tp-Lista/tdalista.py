@@ -17,6 +17,13 @@ class Lista():
     aux = lista.inicio
     while aux is not None:'''
 
+def finLista(lista):
+    nodoFin = lista.inicio
+    while nodoFin.sig is not None:
+        nodoFin = nodoFin.sig
+
+    return nodoFin
+
 
 def cargaAuto(lista, cantidad):
     for i in range(0, cantidad):
@@ -113,7 +120,7 @@ def tamanio(lista):
 
 
 def busquedaLista(l, buscado):
-    """Devuelve direccion de memoria. None si no se encontro lo buscado"""
+    'Devuelve direccion de memoria. None si no se encontro lo buscado'
     aux = l.inicio
     while (aux is not None) and (aux.info != buscado):
         aux = aux.sig

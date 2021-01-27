@@ -1,7 +1,7 @@
 from tdalista import cargaAuto, insertar, eliminar, barrido
 from tdalista import lista_vacia, tamanio, Lista, eliminarNodo
 from tdalista import cargaString, insertar1, primo, busquedaLista
-from tdalista import campos
+from tdalista import campos, finLista
 from tdalistaenlazada import insertar2, Lista2, barrido2, busquedacampos2
 from tdalistaenlazada import campos2, tamanio2
 import math
@@ -51,8 +51,10 @@ barrido(l1)
 '''
 
 
-# ej3
-'''cargaAuto(l1, 10)
+# ej3 - Dada una lista de numeros enteros, implementar un algoritmo que la divida en dos, una
+# con los numeros pares y otra con los numeros impares.
+'''
+cargaAuto(l1, 10)
 barrido(l1)
 aux = l1.inicio
 while aux is not None:
@@ -64,102 +66,138 @@ while aux is not None:
 print('Lista de numeros pares:')
 barrido(l2)
 print('Lista de numeros impares:')
-barrido(l3)'''
+barrido(l3)
+'''
 
 
-# ej4
-'''cargaAuto(l1, 10)
+# ej4 - algoritmo que inserte un nodo en la i-esima posicion de una lista.
+'''
+cargaAuto(l1, 10)
 barrido(l1)
 insertar1(l1, 100, 3)
 print("Lista con elemente agregado")
-barrido(l1)'''
-
-# ej5
-'''cargaAuto(l1, 10)
 barrido(l1)
-print()
+'''
+
+# ej5 - Dada una lista de numeros enteros eliminar de estas los primos.
+'''
+cargaAuto(l1, 10)
+barrido(l1)
 aux = l1.inicio
 while aux is not None:
     if primo(aux.info):
         eliminar(l1, aux.info)
     aux = aux.sig
 print('Lista sin numeros primos:')
-barrido(l1)'''
+barrido(l1)
+'''
 
 
-# ej6 PARTE D TERMINAR
-'''sheroes = ['Linterna Verde', 'Wolverine', 'Ant Man', 'Ironman', 'Black Panter']
+# ej6 - Dada una lista con el siguiente tipo de registro, superheroe (nombre aparicion, casa, biografia)
+'''
+sheroes = ['Linterna Verde', 'Wolverine', 'Ant Man', 'Ironman', 'Black Panter']
 casas = ['Marvel', 'DC']
-for i in range(0, 10):
+bio = ['traje', 'garras', 'armadura', 'nada', 'mascara']
+for i in range(0, 6):
     nombre = random.choice(sheroes)
     aparicion = random.randint(1000, 2000)
     casa = random.choice(casas)
-    #biografia =
-    super = [nombre, aparicion, casa]
+    biografia = random.choice(bio)
+    super = [nombre, aparicion, casa, biografia]
     campos(l1, super, 0)
-barrido(l1)'''
+barrido(l1)
 
-# Parte A
-'''aux = l1.inicio
+# Parte A - Eliminar el nodo que contiene la informacion de Linterna Verde.
+aux = l1.inicio
 while aux is not None:
     if aux.info[0] == 'Linterna Verde':
         eliminar(l1, aux.info)
     aux = aux.sig
-print('Sin linterna verde')
-barrido(l1)'''
+print('A - Lista sin linterna verde:')
+barrido(l1)
 
-# Parte B
-'''aux = l1.inicio
-print('Aparicion de Wolverine')
+# Parte B - Mostrar el anio de aparicion de Wolverine.
+aux = l1.inicio
+print('B - Aparicion de Wolverine:')
 while aux is not None:
     if aux.info[0] == 'Wolverine':
         print(aux.info[1])
-    aux = aux.sig'''
+    aux = aux.sig
 
-# Parte C
-'''aux = l1.inicio
+# Parte C - Cambiar la casa de Ant-Man a Marvel.
+aux = l1.inicio
 while aux is not None:
     if aux.info[0] == 'Ant Man':
         aux.info[2] = 'Marvel'
     aux = aux.sig
-print('Ant Man-Marvel')
-barrido(l1)'''
+print('C - cambiar casa de ant-man')
+barrido(l1)
 
-# Parte D
+# Parte D - Mostrar el nombre de aquellos que en su biografia menciona lapalabra traje o armadura.
+print('D - Aquellos con traje o armadura')
+aux = l1.inicio
+while aux is not None:
+    if aux.info[3] == 'traje' or aux.info[3] == 'armadura':
+        print(aux.info[0])
+    aux = aux.sig
 
-# Parte E
-'''print('Nombre y casa de heroes con anio de aparecion menor a 1963')
+# Parte E - Mostrar el nombre y la casa, cuya fecha de aparicion sea anterior a 1963.
+print('F - Nombre y casa de heroes con anio de aparecion menor a 1963')
 aux = l1.inicio
 while aux is not None:
     if aux.info[1] < 1963:
         print(aux.info[0] + ' ' + aux.info[2])
-    aux = aux.sig'''
-
-# ej7
-'''cargaAuto(l1, 5)
-cargaAuto(l2, 5)
-print('lista 1')
-barrido(l1)
-print('lista 2')
-barrido(l2)
-aux = l1.inicio
-aux1 = l2.inicio
-c = 0
-while aux is not None:
-    if aux.info != aux1.info:
-        insertar(l3, aux.info)
-        insertar(l3, aux1.info)
-    else:
-        c += 1
     aux = aux.sig
-    aux1 = aux1.sig
-print('listas unidas')
+'''
+
+
+# ej7 - FALTA PARTE C
+cargaAuto(l1, 4)
+cargaAuto(l2, 4)
+print('Lista 1:')
+barrido(l1)
+print('Lista 2:')
+barrido(l2)
+
+'''hago una copia de l1 para los sig ejercicios'''
+copl1 = Lista()
+au = l1.inicio
+while au is not None:
+    insertar(copl1, au.info)
+    au = au.sig
+
+
+#Parte A - Concatenar dos listas una atras de otra
+print('Listas concatenadas')
+aux = finLista(l1)
+aux.sig = l2.inicio
+barrido(l1)
+
+
+#Parte B - Concatenar dos listas en una sola omitiendo los datos repetidos y manteniendo su orden.
+aux = l1.inicio
+while aux is not None:
+    if busquedaLista(l3, aux.info) is None:
+        insertar(l3, aux.info)
+    aux = aux.sig
+
+print('Lista sin datos repetidos y ordenados')
 barrido(l3)
-print('Hay ' + str(c) + ' elementos repetidos')
+
+#Parte C
+'''aux = copl1.inicio
+while aux is not None:
+    if (busquedaLista(l2, aux.info) is not None) and (busquedaLista())
+
+'''
+#Parte D - Eliminar todos los nodos de una lista de a uno a la vez.
+print('Parte D')
 while not lista_vacia(l3):
     eliminarNodo(l3)
-    print('Menos un nodo')
-    barrido(l3)'''
+    print('--')
+    barrido(l3)
+
+
 
 
 # ej8 TERMINAR
