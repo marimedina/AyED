@@ -16,6 +16,8 @@ l4 = Lista()
 l5 = Lista()
 l6 = Lista()
 
+# NO ANDAN/FALTAN:
+# 8 SE CUELGA
 
 '''cargaAuto(l1, 5)
 barrido(l1)
@@ -151,7 +153,8 @@ while aux is not None:
 '''
 
 
-# ej7 - FALTA PARTE C
+# ej7 - Escribir un algoritmo que realice las siguientes actividades:
+'''
 cargaAuto(l1, 4)
 cargaAuto(l2, 4)
 print('Lista 1:')
@@ -159,7 +162,7 @@ barrido(l1)
 print('Lista 2:')
 barrido(l2)
 
-'''hago una copia de l1 para los sig ejercicios'''
+#hago una copia de l1 para los sig ejercicios
 copl1 = Lista()
 au = l1.inicio
 while au is not None:
@@ -168,7 +171,7 @@ while au is not None:
 
 
 #Parte A - Concatenar dos listas una atras de otra
-print('Listas concatenadas')
+print('A - Listas concatenadas')
 aux = finLista(l1)
 aux.sig = l2.inicio
 barrido(l1)
@@ -181,41 +184,59 @@ while aux is not None:
         insertar(l3, aux.info)
     aux = aux.sig
 
-print('Lista sin datos repetidos y ordenados')
+print('B - Lista sin datos repetidos y ordenados')
 barrido(l3)
 
-#Parte C
-'''aux = copl1.inicio
-while aux is not None:
-    if (busquedaLista(l2, aux.info) is not None) and (busquedaLista())
 
-'''
+#Parte C - Contar cuantos elementos repetidos hay entre dos listas (es decir su interseccion).
+aux = copl1.inicio
+cont = 0
+print('C - Cantidad de elementos repetidos entre ambas listas:')
+while aux is not None:
+    if (busquedaLista(l2, aux.info) is not None) and (busquedaLista(l4, aux.info) is None):
+        cont += 1
+    aux = aux.sig
+print(cont)
+
+
 #Parte D - Eliminar todos los nodos de una lista de a uno a la vez.
 print('Parte D')
 while not lista_vacia(l3):
     eliminarNodo(l3)
     print('--')
     barrido(l3)
+'''
 
 
 
-
-# ej8 TERMINAR
-'''while tamanio(l1) < 10:
-    aleatorio = random.randint(-999, 999)
-    if busquedaLista(l1, aleatorio) is None:
-        if primo(aleatorio):
-            #rango con anterior y siguiente +14
-                insertar(l1, aleatorio)
-        else:
-            if aleatorio mod 2 != 0:
-                #anterior y siguiente pares
-                    insertar(l1, aleatorio)
-barrido(l1)'''
-
+# ej8 TERMINAR - SE CUELGA
+'''
+while tamanio(l1) < 5:
+    aleat = random.randint(0, 15) #Parte A - poner -999 a +999
+    if l1.tamanio == 0:
+        insertar(l1, aleat)
+    else:
+        if busquedaLista(l1, aleat) is None:
+            if l1.tamanio == 1:
+                if (primo(aleat)) and (abs(l1.inicio.info - aleat) > 14): #Parte C
+                    insertar(l1, aleat)
+                else:
+                    if ((aleat % 2) != 0) and ((l1.inicio.info % 2) == 0) and (not primo(aleat)): #Parte D
+                        insertar(l1, aleat)
+            else:
+                ant = l1.inicio
+                sig = ant.sig
+                while (sig is not None) and (sig.info < aleat):
+                    if (primo(aleat)) and (abs(ant.info - aleat) < 14):
+                        insertar(l1, aleat)
+                    else:
+                        if ((aleat % 2) != 0) and ((ant.info % 2) == 0) and (not primo(aleat)):
+                            insertar(l1, aleat)
+barrido(l1)
+'''
 
 # ej 9 TERMINAR PARTE B
-'''artistas = ["Arctic monkeys", "The strokes", "Miles Kane", "Oasis",
+artistas = ["Arctic monkeys", "The strokes", "Miles Kane", "Oasis",
             "Radiohead", "The killers", "Coldplay", "Kings of leon",
             "The kooks", "Kasabian", "Josh Homme", "Foo fighters"]
 for i in range(0, 10):
@@ -225,7 +246,7 @@ for i in range(0, 10):
     reprod = random.randint(200, 1000)
     cancion = [nom, artis, dur, reprod]
     campos(l1, cancion, 1)
-barrido(l1)'''
+barrido(l1)
 
 # Parte A
 '''aux = l1.inicio
