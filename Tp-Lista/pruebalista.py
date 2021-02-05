@@ -210,8 +210,8 @@ while not lista_vacia(l3):
 
 
 # ej8 TERMINAR - SE CUELGA
-'''
-while tamanio(l1) < 5:
+
+'''while tamanio(l1) < 10:
     aleat = random.randint(0, 15) #Parte A - poner -999 a +999
     if l1.tamanio == 0:
         insertar(l1, aleat)
@@ -232,46 +232,58 @@ while tamanio(l1) < 5:
                     else:
                         if ((aleat % 2) != 0) and ((ant.info % 2) == 0) and (not primo(aleat)):
                             insertar(l1, aleat)
-barrido(l1)
-'''
 
-# ej 9 TERMINAR PARTE B
+barrido(l1)'''
+
+
+# ej 9 - Se tiene una lista de canciones, desarrollar un algoritmo que permita realizar:
+'''
 artistas = ["Arctic monkeys", "The strokes", "Miles Kane", "Oasis",
             "Radiohead", "The killers", "Coldplay", "Kings of leon",
             "The kooks", "Kasabian", "Josh Homme", "Foo fighters"]
-for i in range(0, 10):
+for i in range(0, 50):
     nom = 'Nombre: ' + str(random.randint(0, 50))
     artis = random.choice(artistas)
     dur = random.randint(60, 180)
     reprod = random.randint(200, 1000)
     cancion = [nom, artis, dur, reprod]
-    campos(l1, cancion, 1)
+    campos(l1, cancion, 3)
 barrido(l1)
 
-# Parte A
-'''aux = l1.inicio
+# Parte A - Obtener la informacion de la cancion mas larga.
+aux = l1.inicio
 clarga = aux
 while aux is not None:
     if (aux.info[2] > clarga.info[2]):
         clarga = aux
     aux = aux.sig
-print('La cancion mas larga es ' + str(clarga.info))'''
+print('')
+print('La cancion mas larga es ' + str(clarga.info))
 
-# Parte B mal
-# puedo ordenar de mayor a menor por reproducciones
-# y mostrar los primeros 5/10/50
+# Parte B - Obtener el TOP 5, TOP 10 y TOP 40 de canciones mas escuchadas.
+print('')
+print('Top 5:')
+aux = l1.inicio
+for i in range(0, l1.tamanio - 5): # cambiar 5 para top 10 y 40
+    aux = aux.sig
+while aux is not None:
+    print(aux.info)
+    aux = aux.sig
 
-# Parte C
-'''aux = l1.inicio
+
+# Parte C - Obtener todas las canciones de la banda Arctic Monkeys.
+aux = l1.inicio
 while aux is not None:
     if aux.info[1] == 'Arctic monkeys':
         insertar(l2, aux.info)
     aux = aux.sig
-print('Canciones de Arctic Monkeys')
-barrido(l2)'''
+print('')
+print('Canciones de Arctic Monkeys:')
+barrido(l2)
+'''
 
 
-# ej10
+# ej10 - Dada una lista que contiene informacion de los personajes de la saga de Star Wars
 '''personajes = ['rey', 'darth vader', 'luke', 'leia', 'han solo', 'yoda',
               'chewbacca', 'grievous']
 gen = ['Femenino', 'Masculino']
@@ -287,19 +299,24 @@ for i in range(0, 10):
     episodio = random.randint(1, 9)
     pers = [nombre, altura, edad, genero, especie, planeta, episodio]
     insertar(l1, pers)
-barrido(l1)'''
-
-# Parte A
-'''print('Lista de personajes femeninos')
+barrido(l1)
+'''
+# Parte A - Listar todos los personajes de genero femenino.
+'''
+print('')
+print('Lista de personajes femeninos')
 aux = l1.inicio
 while aux is not None:
     if aux.info[3] == 'Femenino':
         insertar(l2, aux.info)
     aux = aux.sig
-barrido(l2)'''
+barrido(l2)
+'''
 
-# Parte B
-'''print('Personajes de especie droide:')
+# Parte B - Listar todos los personajes de especie Droide
+'''
+print('')
+print('Personajes de especie droide:')
 aux = l1.inicio
 while aux is not None:
     if aux.info[4] == 'droide':
@@ -307,29 +324,38 @@ while aux is not None:
         aux.info[6] == 4 or aux.info[6] == 5 or aux.info[6] == 6):
             insertar(l3, aux.info)
     aux = aux.sig
-barrido(l3)'''
+barrido(l3)
+'''
 
-# Parte C
-'''print('Informacion de Darth Vader')
+# Parte C - Mostrar toda la informacion de Darth Vader
+'''
+print('')
+print('Informacion de Darth Vader')
 aux = l1.inicio
 while aux is not None:
     if aux.info[0] == 'darth vader':
         insertar(l4, aux.info)
     aux = aux.sig
-barrido(l4)'''
+barrido(l4)
+'''
 
-# Parte D
-'''print('Personajes del episodio 4 al 7')
+# Parte D - Listar los personajes que aparecen en el episodio VII y en los tres anteriores.
+'''
+print('')
+print('Personajes del episodio 4 al 7')
 aux = l1.inicio
 while aux is not None:
     if (aux.info[6] == 4 or aux.info[6] == 5 or aux.info[6] == 6 or
        aux.info[6] == 7):
         insertar(l5, aux.info)
     aux = aux.sig
-barrido(l5)'''
+barrido(l5)
+'''
 
-# Parte E
-'''print('Personajes mayores a 850 anios')
+# Parte E - Mostrar los personajes con edad mayor a 850 anios y de ellos el mayor.
+'''
+print('')
+print('Personajes mayores a 850 anios')
 aux = l1.inicio
 while aux is not None:
     if aux.info[2] > 850:
@@ -343,60 +369,79 @@ while dat is not None:
     if dat.info[2] > mayor.info[2]:
         mayor = dat
     dat = dat.sig
-print('El personaje de mayor edad es:')
-print(mayor.info)'''
+print('')
+print('Y de ellos el personaje de mayor edad es:')
+print(mayor.info)
+'''
 
-# Parte F
-'''aux = l1.inicio
+# Parte F - Eliminar todos los personajes que solamente aparecieron en los episodios IV, V y VI.
+'''
+print('')
+aux = l1.inicio
 print('Sin personajes de episodios 4, 5 y 6')
 while aux is not None:
     if aux.info[6] == 4 or aux.info[6] == 5 or aux.info[6] == 6:
         eliminar(l1, aux.info)
     aux = aux.sig
-barrido(l1)'''
+barrido(l1)
+'''
 
-# Parte G
-'''aux = l1.inicio
+# Parte G - Listar los personajes especie humana cuyo planeta de origen es Alderan.
+'''
+print('')
+aux = l1.inicio
 while aux is not None:
     if aux.info[4] == 'humano':
         if aux.info[5] == 'alderan':
             insertar(l3, aux.info)
     aux = aux.sig
-print('Personajes humanos de Alderan')
-barrido(l3)'''
+print('Personajes humanos de Alderan:')
+barrido(l3)
+'''
 
-# Parte H
-'''print('Personajes con menos de 70 centimetros')
+# Parte H - Mostrar toda la informacion de los personajes cuya altura es menor a 70
+'''
+print('')
+print('Personajes con menos de 70 centimetros')
 aux = l1.inicio
 while aux is not None:
     if aux.info[1] < 70:
         print(aux.info)
-    aux = aux.sig'''
+    aux = aux.sig
+'''
 
-# Parte I
-'''aux = l1.inicio
+# Parte I - Eliminar el anteultimo nodo de una lista
+'''
+print('')
+aux = l1.inicio
 while aux.sig.sig is not None:
     aux = aux.sig
 eliminar(l1, aux.info)
 print('Lista sin el ante ultimo elemento')
-barrido(l1)'''
+barrido(l1)
+'''
 
-# Parte J
-'''print('Chewbacca')
+# Parte J - Determinar en que episodios aparece Chewbacca y mostrar ademas toda su info.
+'''
+print('')
 aux = l1.inicio
 while aux is not None:
     if aux.info[0] == 'chewbacca':
         insertar(l4, aux.info[6])
+        insertar(l5, aux.info)
     aux = aux.sig
-print('Aparece en los episodios:')
-barrido(l4)'''
+print('Chewbacca aparece en los episodios:')
+barrido(l4)
+print('Informacion completa:')
+barrido(l5)
+'''
 
 # ej12
 
 # ej13
 
 # ej14 FALTA PARTE D, H
-'''l1 = Lista2()
+l1 = Lista2()
 pokemons = ['Bulbasaur', 'Ivysaur', 'Charmander', 'Squirtle', 'Caterpie']
 tipos = ['fuego', 'agua', 'planta', 'bicho', 'volador', 'veneno', 'electrico']
 entrenadores = ['Pepito', 'Mariana', 'Pedro', 'Jose', 'Alicia', 'Luciano']
@@ -416,17 +461,25 @@ for i in range(0, 6):
         subtipo = random.choice(string.ascii_uppercase)
         pok = [nomb, nivel, tipo, subtipo]
         campos2(laux, pok, 0)
-barrido2(l1)'''
+barrido2(l1)
 
-# Parte A
-'''print('Cantidad de pokemons por jugador: ' + str(tamanio2(laux)))
-# Parte B
-print('Entrenadores con mas de 3 toneos ganados')
+# Parte A - Obtener la cantidad de Pokemons
+'''
+print('')
+print('Cantidad de pokemons por jugador: ' + str(tamanio2(laux)))
+'''
+
+# Parte B - Listar los entrenadores que hayan ganado mas de tres torneos.
+'''
+print('')
+print('Entrenadores con mas de 3 toneos ganados:')
 aux = l1.inicio
 while aux is not None:
     if aux.info[1] > 3:
         print(aux.info)
-    aux = aux.sig'''
+    aux = aux.sig
+'''
+
 # Parte C
 '''aux = l1.inicio
 e_mayor = aux.info[1]
