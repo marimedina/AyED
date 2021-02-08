@@ -436,11 +436,8 @@ print('Informacion completa:')
 barrido(l5)
 '''
 
-# ej12
 
-# ej13
-
-# ej14 FALTA PARTE D, H
+# ej14 FALTA PARTE H
 l1 = Lista2()
 pokemons = ['Bulbasaur', 'Ivysaur', 'Charmander', 'Squirtle', 'Caterpie']
 tipos = ['fuego', 'agua', 'planta', 'bicho', 'volador', 'veneno', 'electrico']
@@ -480,8 +477,10 @@ while aux is not None:
     aux = aux.sig
 '''
 
-# Parte C
-'''aux = l1.inicio
+# Parte C - Pokemon de mayor nivel del entrenador con mayor cantidad de torneos ganados
+'''
+print('')
+aux = l1.inicio
 e_mayor = aux.info[1]
 while aux is not None:
     if aux.info[1] > e_mayor:
@@ -498,11 +497,32 @@ while dat is not None:
         p_mayor = dat.info[1]
         nom1 = dat.info
     dat = dat.sig
-print('y su pokemons de mayor nivel es ' + str(nom1))'''
-# Parte D
+print('y su pokemons de mayor nivel es ' + str(nom1))
+'''
 
-# Parte E
-'''dat = l1.inicio
+# Parte D - Entrenadores cuyo porcentaje de batallas ganados sea mayor al 79 porciento
+'''
+print('')
+cb = 0 #cantidad de batallas totales
+porc = 0
+aux = l1.inicio
+while aux is not None:
+    cb += aux.info[2] #perdi 7
+    cb += aux.info[3] #gane 3
+    porc = (aux.info[3] * 100) / cb
+    print(porc)
+
+    if porc > 79:
+        insertar(l2, aux.info)
+    aux = aux.sig
+print('Entrenadores con 79% de batallas ganadas:')
+barrido(l2)
+'''
+
+
+# Parte E - Los entrenadores que tengan Pokemons de tipo fuego y planta o agua/volador.
+'''
+dat = l1.inicio
 while dat is not None:
     aux1 = dat.lista
     aux = aux1.inicio
@@ -516,10 +536,14 @@ while dat is not None:
 print('Entrenadores con pokemons de tipo fuego y planta')
 barrido(l2)
 print('Entrenadores con pokemons de tipo agua y volador')
-barrido(l3)'''
-# Parte F
-'''print('Ingrese el nombre del entrenador')
-nombre = input()
+barrido(l3)
+'''
+
+# Parte F - promedio de nivel de los Pokemons de un determinado entrenador.
+'''
+print('')
+print('Ingrese el nombre del entrenador')
+nombre = 'Alicia' #input()
 aux = l1.inicio
 ac = 0
 while aux is not None:
@@ -531,10 +555,13 @@ while aux is not None:
             dat = dat.sig
         prom = ac//tamanio(laux)
         print('El nivel de pokemons de ' + nombre + ' es ' + str(prom))
-    aux = aux.sig'''
-# Parte G
-#print('Ingrese el nombre del pokemons')
-'''nom = 'Bulbasaur'
+    aux = aux.sig
+'''
+
+# Parte G - Determinar cuantos entrenadores tienen a un determinado Pokemon.
+'''
+print('')
+nom = 'Bulbasaur'
 aux = l1.inicio
 cont = 0
 while aux is not None:
@@ -546,9 +573,20 @@ while aux is not None:
             insertar(l2, aux.info[0])
         aux2 = aux2.sig
     aux = aux.sig
-print('los entrenadores que tienen a ' + nom + ' son:')
-barrido(l2)'''
+print('Los entrenadores que tienen a ' + nom + ' son:')
+barrido(l2)
+'''
+
 # Parte H
+print('')
+aux = l1.inicio
+while aux is not None:
+    aux1 = aux.lista.inicio
+    while aux1 is not None:
+        if (aux1.info[0] == aux1.info[0].sig):
+            print('El entrenador con pokemon repetido es ' + aux.info[0])
+        aux1 = aux1.sig
+    aux = aux.sig
 
 
 # Ej 15
