@@ -172,6 +172,11 @@ def campos(lista, dato, i):
     lista.tamanio += 1
 
 
+def buscarEntre(dato, a, b):
+    if (dato >= a) and (dato <= b):
+        return True
+
+
 '''def ubicar(lista, pos):
     valor = lista[pos]
     j = pos

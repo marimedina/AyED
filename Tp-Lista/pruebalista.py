@@ -1,7 +1,7 @@
 from tdalista import cargaAuto, insertar, eliminar, barrido
 from tdalista import lista_vacia, tamanio, Lista, eliminarNodo
 from tdalista import cargaString, insertar1, primo, busquedaLista
-from tdalista import campos, finLista
+from tdalista import campos, finLista, buscarEntre
 from tdalistaenlazada import insertar2, Lista2, barrido2, busquedacampos2
 from tdalistaenlazada import campos2, tamanio2
 import math
@@ -18,6 +18,7 @@ l6 = Lista()
 
 # NO ANDAN/FALTAN:
 # 8 SE CUELGA
+# 15-D VER COMO CALCULAR SI UNA FECHA ESTA ENTRE FECHAS
 
 '''cargaAuto(l1, 5)
 barrido(l1)
@@ -437,7 +438,10 @@ barrido(l5)
 '''
 
 
-# ej14 FALTA PARTE H
+#ej14 - Se tiene una lista de entrenadores Pokemon.Se conoce de ellos nombre, cantidad de
+#torneos ganados, cantidad de batallas perdidas y cantidad de batallas ganadas. Y ademas
+#la lista de sus Pokemons de los cuales se conoce: nombre, nivel, tipo y subtipo.
+'''
 l1 = Lista2()
 pokemons = ['Bulbasaur', 'Ivysaur', 'Charmander', 'Squirtle', 'Caterpie']
 tipos = ['fuego', 'agua', 'planta', 'bicho', 'volador', 'veneno', 'electrico']
@@ -459,6 +463,7 @@ for i in range(0, 6):
         pok = [nomb, nivel, tipo, subtipo]
         campos2(laux, pok, 0)
 barrido2(l1)
+'''
 
 # Parte A - Obtener la cantidad de Pokemons
 '''
@@ -577,71 +582,101 @@ print('Los entrenadores que tienen a ' + nom + ' son:')
 barrido(l2)
 '''
 
-# Parte H
+# Parte H - Mostrar los entrenadores que tienen Pokemons repetidos.
+'''
 print('')
 aux = l1.inicio
 while aux is not None:
     aux1 = aux.lista.inicio
-    while aux1 is not None:
-        if (aux1.info[0] == aux1.info[0].sig):
-            print('El entrenador con pokemon repetido es ' + aux.info[0])
+    while aux1.sig is not None:
+        #print(aux1.info)
+        if (aux1.info[0] == aux1.sig.info[0]):
+            print('Un entrenador con pokemon repetido es ' + aux.info[0])
         aux1 = aux1.sig
     aux = aux.sig
-
+'''
 
 # Ej 15
-'''for i in range(1, 8):
-    costo = randint(1500, 3500)
-    tiempo = randint(2, 12)  # tiempo en horas
-    dia = randint(1, 28)
-    mes = randint(1, 12)
-    anio = randint(2018, 2019)
+'''
+for i in range(1, 8):
+    costo = random.randint(1500, 3500)
+    tiempo = random.randint(2, 12)  # tiempo en horas
+    dia = random.randint(1, 28)
+    mes = random.randint(1, 12)
+    anio = random.randint(2018, 2019)
     persona = 'Persona ' + str(i)
     tarea = [costo, tiempo, dia, mes, anio, persona]
-    inserCampo(l1, tarea, 1)
+    insertar(l1, tarea)
 barrido(l1)
-aux = l1.inicio'''
-# Punto A
-'''a = 0
+aux = l1.inicio
+'''
+
+# Parte A - Tiempo promedio de tareas
+'''
+print('')
+a = 0
 while aux is not None:
     a += aux.info[1]
     aux = aux.sig
 prom = (a//7)
-print('El tiempo promedio de tareas es de: ' + str(prom) + ' horas')'''
+print('El tiempo promedio de tareas es de: ' + str(prom) + ' horas')
+'''
 
-# Punto B
-'''a = 0
+# Parte B - Costo total del proyecto
+'''
+print('')
+a = 0
 while aux is not None:
     a += aux.info[0]
     aux = aux.sig
-print('El costo total del proyecto es de: $' + str(a))'''
-# Punto C
-'''while aux is not None:
-    if aux.info[5] == 'Persona 5':
-        inserCampo(l2, aux.info, 5)
-    aux = aux.sig
-print('Actividades realizadas por Persona 5: ')
-barrido(l2)'''
+print('El costo total del proyecto es de: $' + str(a))
+'''
 
-# Punto D
-'''f1 = [7, 8, 2018]
-f2 = [5, 9, 2019]
+# Parte C - Actividades realizadas por una determinada persona
+'''
+print('')
+pers = 'Persona 5'
+while aux is not None:
+    if aux.info[5] == pers:
+        campos(l2, aux.info, 5)
+    aux = aux.sig
+print('Actividades realizadas por ' + pers + ':')
+barrido(l2)
+'''
+
+# Parte D
+'''
+f1 = [1, 8, 2018]
+f2 = [21, 9, 2019]
 print('Tareas a realizar entre ' + str(f1) + ' y ' + str(f2) + ' : ')
 while aux is not None:
-    if entre(aux.info[2], f1[0], f2[0]) and entre(aux.info[3], f1[1], f2[1])
-    and entre(aux.info[4], f1[2], f2[2]):
+    if buscarEntre(aux.info[4], f1[2], f2[2]) and buscarEntre(aux.info[3], f1[1], f2[1])
+        and buscarEntre(aux.info[2], f1[0], f2[0]):
         print(aux.info)
-    aux = aux.sig'''
+    aux = aux.sig
+'''
 
 # ej16
-'''
+l1 = Lista2()
 destinos = ['Paris', 'Atenas', 'Roma', 'Filadelfia', 'Grecia', 'Londres']
+estado_asientos = ['libre', 'ocupado']
 for i in range(0, 10):
     empresa = random.choice(string.ascii_uppercase)
     numero = random.randint(0, 50)
     asientos = random.randint(0, 60)
     #fecha =
-    origen = random.choice(string.ascii_lowercas)
+    origen = random.choice(string.ascii_uppercase)
     destino = random.choice(destinos)
-    kilometros = random.randint(10, 1000)
-'''
+    km = random.randint(10, 1000)
+    vuelos = [empresa,numero,asientos,origen,destino,km]
+    campos2(l1, vuelos, 0)
+    nodo = busquedacampos2(l1, vuelos[0], 0)
+    laux = nodo.lista
+    for j in range(0,1):
+        num = random.randint(0,90)
+        #clase =
+        estado = random.choice(estado_asientos)
+        persona = random.choice(string.ascii_uppercase)
+        asiento = [num,estado,persona]
+        campos2(laux, asiento, 0)
+barrido(l1)
