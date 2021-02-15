@@ -18,7 +18,7 @@ l6 = Lista()
 
 # NO ANDAN/FALTAN:
 # 8 SE CUELGA
-# 15-D VER COMO CALCULAR SI UNA FECHA ESTA ENTRE FECHAS
+# 15-D VER COMO CALCULAR SI UNA FECHA ESTA ENTRE X FECHAS
 
 '''cargaAuto(l1, 5)
 barrido(l1)
@@ -657,26 +657,55 @@ while aux is not None:
 '''
 
 # ej16
-l1 = Lista2()
+l2 = Lista2()
 destinos = ['Paris', 'Atenas', 'Roma', 'Filadelfia', 'Grecia', 'Londres']
 estado_asientos = ['libre', 'ocupado']
-for i in range(0, 10):
-    empresa = random.choice(string.ascii_uppercase)
-    numero = random.randint(0, 50)
+empresas = ['Arg', 'Bra', 'Col', 'Uru', 'Par']
+clases_as = ['turista', 'comercial', 'general']
+for i in range(0, 6):
+    empresa = random.choice(empresas)
+    numero = random.randrange(0, 50)
     asientos = random.randint(0, 60)
     #fecha =
     origen = random.choice(string.ascii_uppercase)
-    destino = random.choice(destinos)
+    destino = destinos[i]
     km = random.randint(10, 1000)
-    vuelos = [empresa,numero,asientos,origen,destino,km]
-    campos2(l1, vuelos, 0)
-    nodo = busquedacampos2(l1, vuelos[0], 0)
+    vuelos = [empresa, numero, asientos, origen, destino, km]
+    campos2(l2, vuelos, 0)
+    nodo = busquedacampos2(l2, vuelos[0], 0)
     laux = nodo.lista
-    for j in range(0,1):
+    for j in range(0,3):
         num = random.randint(0,90)
-        #clase =
+        clase = random.choice(clases_as)
         estado = random.choice(estado_asientos)
         persona = random.choice(string.ascii_uppercase)
-        asiento = [num,estado,persona]
+        asiento = [num, clase, estado, persona]
         campos2(laux, asiento, 0)
+barrido2(l2)
+
+
+#Parte A - Lista los vuelos con destino a Atenas
+'''
+print('')
+print('Vuelos con destino a Atenas:')
+aux = l2.inicio
+while aux is not None:
+    if aux.info[4] == 'Atenas':
+        insertar(l1, aux.info)
+    aux = aux.sig
 barrido(l1)
+'''
+
+#Parte B
+
+print('')
+print('Vuelos con asientos de clase turista')
+aux = l2.inicio
+while aux is not None:
+    if 
+
+
+#Parte C
+#Parte D
+#Parte E
+#Parte F
