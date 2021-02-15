@@ -16,6 +16,9 @@ l4 = Lista()
 l5 = Lista()
 l6 = Lista()
 
+
+#De este tp no se hacen 11, 12, 13 y 19
+
 # NO ANDAN/FALTAN:
 # 8 SE CUELGA
 # 15-D VER COMO CALCULAR SI UNA FECHA ESTA ENTRE X FECHAS
@@ -656,21 +659,27 @@ while aux is not None:
     aux = aux.sig
 '''
 
-# ej16
+
+
+# ej16 - Se tiene los vuelos de un aeropuerto de los cuales se conoce empresa, numero, cantidad
+# de asientos, fecha, origen, destino, km del vuelo, y de cada vuelo ademas se tiene la
+# informacion de cada asiento: numero, clases, estado, persona.
+'''
 l2 = Lista2()
 destinos = ['Paris', 'Atenas', 'Roma', 'Filadelfia', 'Grecia', 'Londres']
 estado_asientos = ['libre', 'ocupado']
-empresas = ['Arg', 'Bra', 'Col', 'Uru', 'Par']
-clases_as = ['turista', 'comercial', 'general']
+empresas = ['Arg', 'Bra', 'Col', 'Uru', 'Par', 'Can']
+clases_as = ['turista', 'primera clase']
 for i in range(0, 6):
-    empresa = random.choice(empresas)
-    numero = random.randrange(0, 50)
+    empresa = empresas[i]
+    numero = random.randrange(1, 6)
     asientos = random.randint(0, 60)
-    #fecha =
+    dia = random.randint(1,30)
+    mes = random.randint(1,12)
     origen = random.choice(string.ascii_uppercase)
     destino = destinos[i]
     km = random.randint(10, 1000)
-    vuelos = [empresa, numero, asientos, origen, destino, km]
+    vuelos = [empresa, numero, asientos, dia, mes, origen, destino, km]
     campos2(l2, vuelos, 0)
     nodo = busquedacampos2(l2, vuelos[0], 0)
     laux = nodo.lista
@@ -682,7 +691,7 @@ for i in range(0, 6):
         asiento = [num, clase, estado, persona]
         campos2(laux, asiento, 0)
 barrido2(l2)
-
+'''
 
 #Parte A - Lista los vuelos con destino a Atenas
 '''
@@ -690,22 +699,93 @@ print('')
 print('Vuelos con destino a Atenas:')
 aux = l2.inicio
 while aux is not None:
-    if aux.info[4] == 'Atenas':
+    if aux.info[6] == 'Atenas':
         insertar(l1, aux.info)
     aux = aux.sig
 barrido(l1)
 '''
 
-#Parte B
-
+#Parte B - Listar los vuelos con asientos clase turista disponible.
+'''
 print('')
-print('Vuelos con asientos de clase turista')
+print('Vuelos con asientos de clase turista:')
 aux = l2.inicio
 while aux is not None:
-    if 
+    aux1 = aux.lista.inicio
+    while aux1 is not None:
+        if aux1.info[1] == 'turista' and aux1.info[2] == 'libre':
+            insertar(l1, aux.info)
+        aux1 = aux1.sig
+    aux = aux.sig
+barrido(l1)
+'''
+
+#Parte C - Mostrar el total recaudado por cada vuelo, considerando clase turista $350 por
+#km y primera clase $988 por km
+'''
+print('')
+print('Total recaudado por cada vuelo:')
+tr = 0 #total recaudado
+aux = l2.inicio
+while aux is not None:
+    aux1 = aux.lista.inicio
+    while aux1 is not None:
+        tk = aux.info[7]
+        if aux1.info[1] == 'turista':
+            ac = tk * 350
+        else:
+            ac = tk * 988
+        print(aux.info)
+        print('Su total recaudado es: ' + str(ac))
+        aux1 = aux1.sig
+    aux = aux.sig
+'''
 
 
-#Parte C
-#Parte D
-#Parte E
-#Parte F
+#Parte D - Los vuelos programados para una determinada fecha
+'''
+print('')
+print('Vuelos con fecha 12/02/2020:')
+aux = l2.inicio
+while aux is not None:
+    if aux.info[3] == 12 and aux.info[4] == 2:
+        insertar(l1, aux.info)
+    aux = aux.sig
+barrido(l1)
+'''
+
+#Parte E - Vender un asiento (pasaje) para un determinado vuelo.
+'''
+print('')
+print('Vender un pasaje')
+aux = l2.inicio
+while aux is not None:
+    if aux.info[6] == 'Filadelfia':
+        aux1 = aux.lista.inicio
+        while aux1 is not None:
+            if aux1.info[2] == 'libre':
+                aux1.info[2] = 'ocupado'
+            aux1 = aux1.sig
+    aux = aux.sig
+barrido2(l2)
+'''
+
+#Parte F - Eliminar un vuelo. Tener en cuenta que si tiene pasajes vendidos, se deben
+#conocer los datos de dicha persona
+'''
+print('')
+print('Eliminar vuelo con destino a Roma')
+aux = l2.inicio
+while aux is not None:
+    if aux.info[6] == 'Roma':
+        aux1 = aux.lista.inicio
+        while aux1 is not None:
+            if aux1.info[2] == 'ocupado':
+                print('Datos de la persona a la que se le vendio el asiento:')
+                print(aux1.info[3])
+            aux1 = aux1.sig
+        eliminar(l2, aux.info)
+    aux = aux.sig
+print('')
+barrido2(l2)
+'''
