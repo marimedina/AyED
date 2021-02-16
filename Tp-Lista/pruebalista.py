@@ -22,6 +22,8 @@ l6 = Lista()
 # NO ANDAN/FALTAN:
 # 8 SE CUELGA
 # 15-D VER COMO CALCULAR SI UNA FECHA ESTA ENTRE X FECHAS
+# 17 FALTA
+# 18 FALTA
 
 '''cargaAuto(l1, 5)
 barrido(l1)
@@ -788,4 +790,69 @@ while aux is not None:
     aux = aux.sig
 print('')
 barrido2(l2)
+'''
+
+
+#ej20
+
+for i in range(1, 8):
+    producto = 'Producto ' + random.choice(string.ascii_uppercase)
+    costo = '$' + str(random.randint(1500, 3500))
+    calif = random.randint(1, 5)
+    productos = [producto, costo, calif]
+    insertar(l1, productos)
+barrido(l1)
+
+# Parte A - Mostrar los datos de un determinado producto.
+'''
+print('')
+print('Mostrando datos del producto A')
+aux = l1.inicio
+while aux is not None:
+    if aux.info[0] == 'Producto A':
+        print(aux.info)
+    aux = aux.sig
+'''
+
+
+#Parte B
+#Por defecto los productos ya estan ordenados por nombre.
+
+#Parte C
+print('')
+aux = l1.inicio
+while aux is not None:
+    insertar1(l2, aux.info, 2)
+    aux = aux.sig
+print('Listado de productos ordenado por calificacion')
+barrido(l2)
+
+
+#Parte D - Mostrar el producto mas barato de calificacion 3.
+'''
+print('')
+menor = 0
+producto = None
+aux = busquedacampos2(l1, 3, 2)
+if aux is not None:
+    menor = aux.info[1]
+    producto = aux.info[0]
+while (aux is not None) and (aux.info[2] == 3):
+    if menor >= aux.info[1]:
+        menor = aux.info[1]
+        producto = aux.info[0]
+    aux = aux.sig
+print('El producto mas barato de calificacion 3 es el ' + str(producto) + ' y su precio es ' + str(menor))
+'''
+
+#Parte E
+'''
+print('')
+aux = l1.inicio
+while aux is not None:
+    if aux.info[0] == 'Producto H':
+        insertar(l2, aux.info[1])
+    aux = aux.sig
+print('El precio de los productos H es:')
+barrido(l2)
 '''
