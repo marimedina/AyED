@@ -24,6 +24,7 @@ l6 = Lista()
 # 15-D VER COMO CALCULAR SI UNA FECHA ESTA ENTRE X FECHAS
 # 17 FALTA
 # 18 FALTA
+# 20 FALTA
 
 '''cargaAuto(l1, 5)
 barrido(l1)
@@ -793,15 +794,32 @@ barrido2(l2)
 '''
 
 
+#Ej 17 -
+for i in range(0,10):
+    codigo = random.randint(0000, 9999)
+    tipo = random.choice(string.ascii_uppercase)
+    marca = random.choice(string.ascii_lowercase)
+    #modelo
+    precio = random.randint(200, 1000)
+    stock = random.randint(0, 50)
+    
+
+
+
+
+
+
 #ej20
 
-for i in range(1, 8):
+'''
+for i in range(0,10):
     producto = 'Producto ' + random.choice(string.ascii_uppercase)
     costo = '$' + str(random.randint(1500, 3500))
     calif = random.randint(1, 5)
     productos = [producto, costo, calif]
-    insertar(l1, productos)
+    insertar(l1, productos) #ordenada por nombre por defecto
 barrido(l1)
+'''
 
 # Parte A - Mostrar los datos de un determinado producto.
 '''
@@ -819,13 +837,8 @@ while aux is not None:
 #Por defecto los productos ya estan ordenados por nombre.
 
 #Parte C
-print('')
-aux = l1.inicio
-while aux is not None:
-    insertar1(l2, aux.info, 2)
-    aux = aux.sig
-print('Listado de productos ordenado por calificacion')
-barrido(l2)
+
+
 
 
 #Parte D - Mostrar el producto mas barato de calificacion 3.
