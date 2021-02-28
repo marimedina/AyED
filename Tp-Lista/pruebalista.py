@@ -20,11 +20,9 @@ l6 = Lista()
 #De este tp no se hacen 11, 12, 13 y 19
 
 # NO ANDAN/FALTAN:
-# 8 SE CUELGA
 # 15-D VER COMO CALCULAR SI UNA FECHA ESTA ENTRE X FECHAS
-# 17 FALTA
 # 18 FALTA
-# 20 FALTA
+
 
 '''cargaAuto(l1, 5)
 barrido(l1)
@@ -216,9 +214,16 @@ while not lista_vacia(l3):
 
 
 
-# ej8 TERMINAR - SE CUELGA
+#Ej 8 - Desarrollar un algoritmo que permita realizar la siguientes actividades:
+# a. Cargar numero de manera aleatoria en el rango de -999 a 999.
+# b. Los numeros no pueden estar repetidos.
+# c. Si el numero a insertar es primo, el rango de diferencia con el numero anterior y siguiente de la lista debe ser +14.
+# d. Si el numero no es primo pero impar, el anterior y el siguiente deben ser pares.
+# e. En caso de que un numero a insertar no cumpla las condiciones anteriores se debe descartar.
 
-'''while tamanio(l1) < 10:
+#SE CUELGA Y NO SE PORQUE
+'''
+while tamanio(l1) < 10:
     aleat = random.randint(0, 15) #Parte A - poner -999 a +999
     if l1.tamanio == 0:
         insertar(l1, aleat)
@@ -239,9 +244,10 @@ while not lista_vacia(l3):
                     else:
                         if ((aleat % 2) != 0) and ((ant.info % 2) == 0) and (not primo(aleat)):
                             insertar(l1, aleat)
+                    sig = sig.sig
 
-barrido(l1)'''
-
+barrido(l1)
+'''
 
 # ej 9 - Se tiene una lista de canciones, desarrollar un algoritmo que permita realizar:
 '''
@@ -794,30 +800,152 @@ barrido2(l2)
 '''
 
 
-#Ej 17 -
-for i in range(0,10):
+#Ej 17 - Se tiene una lista con los productos de un local de informatica.
+# De ellos se conoce codigo, tipo, marca, modelo, precio, cantidad en stock.
+# Ademas se tiene otra lista con los productos entregados por los proveedores A y B.
+'''
+tipos = ['Pendrive', 'Mouse', 'Teclado', 'Auriculares', 'Adaptador', 'Disco', 'Cable']
+marcas = ['Kingston', 'Epson', 'Microsoft', 'Acer', 'Sandisk']
+
+lprovA, lprovB = Lista(), Lista()
+
+for i in range(0, 6):
     codigo = random.randint(0000, 9999)
-    tipo = random.choice(string.ascii_uppercase)
-    marca = random.choice(string.ascii_lowercase)
-    #modelo
+    tipo = tipos[i]
+    marca = random.choice(marcas)
+    modelo = 'Modelo ' + random.choice(string.ascii_lowercase)
     precio = random.randint(200, 1000)
     stock = random.randint(0, 50)
-    
+    producto = [codigo, tipo, marca, modelo, precio, stock]
+    campos2(l1, producto, 1) # lista del local ordenada por tipo de producto
+    campos2(l2, producto, 2) # lista del local ordenada por marca del producto
+    campos2(lprovA, producto, 0) # lista proveedor A
+
+barrido(l1)
+
+for i in range(0, 6):
+    codigo = random.randint(0000, 9999)
+    tipo = tipos[i]
+    marca = random.choice(marcas)
+    modelo = 'Modelo ' + random.choice(string.ascii_lowercase)
+    precio = random.randint(200, 1000)
+    stock = random.randint(0, 50)
+    producto = [codigo, tipo, marca, modelo, precio, stock]
+    campos2(lprovB, producto, 0) # lista proveedor B
+'''
+
+
+#Parte A - Agregar los productos de las listas de los proveedores A y B a la lista de productos
+# de la tienda
+'''
+aux = lprovA.inicio
+while aux is not None:
+    buscado = busquedacampos2(l1, aux.info[1], 1)
+    if buscado is None:
+        campos2(l1, aux.info, 1)
+    else:
+        #no suma, reemplaza
+        aux.info[5] += buscado.info[5]
+    aux = aux.sig
+
+aux1 = lprovB.inicio
+while aux1 is not None:
+    busc = busquedacampos2(l1, aux1.info[1], 1)
+    if busc is None:
+        campos2(l1, aux1.info, 1)
+    else:
+        #no suma, reemplaza
+        aux1.info[5] += busc.info[5]
+    aux1 = aux1.sig
+
+
+print('Lista provedores A')
+barrido(lprovA)
+print('Lista provedores B')
+barrido(lprovB)
+print('')
+print('Lista del local actualizada')
+barrido(l1)
+'''
+
+# Parte B - Eliminar todos los productos de tipo Pendrive marca Kingston.
+'''
+print('')
+print('Listado de productos sin pendrive marca Kingston')
+aux = l1.inicio
+while aux is not None:
+    if aux.info[1] == 'Pendrive' and aux.info[2] == 'Kingston':
+        eliminar(l1, aux.info)
+    aux = aux.sig
+barrido(l1)
+'''
+
+# Parte C - Realizar un barrido ordenado por tipo y marca del producto.
+'''
+print('')
+print('Listad ordenado por tipo de producto')
+barrido(l1)
+print('')
+print('Listado ordenado por marca de producto')
+barrido(l2)
+'''
+
+# Parte D - Obtener el costo de existencia (cantidad en stock por precio) de los productos tipo
+# Disco solido y Teclado inalambrico.
+'''
+print('')
+buscDisco = busquedacampos2(l1, 'Disco', 1)
+if buscDisco is not None:
+    costo = buscDisco.info[5] * buscDisco.info[4]
+    print('El costo de existencia de disco es: ' + str(costo))
+
+
+buscTeclado = busquedacampos2(l1, 'Teclado', 1)
+if buscTeclado is not None:
+    cost = buscTeclado.info[5] * buscTeclado.info[4]
+    print('El costo de existencia de telcado es: ' + str(cost))
+'''
+
+
+
+#Ej 18 -
+l7 = Lista2()
+for i in range(1, 10):
+    usuario = 'Usuario ' + str(i)
+    campos2(l7, usuario, 0)
+    nodo = busquedacampos2(l7, usuario[0], 0)
+    laux = nodo.lista
+    for j in range(1, random.randint(0, 10)):
+        fecha = random.randint(01012020, 31012020)
+        hora = random.randint(1, 12)
+        mensaje = random.choice(string.ascii_uppercase)
+        nombre_arc = random.choice(string.ascii_lowercase)
+        l_agreg = random.randint(0, 10)
+        l_elim = random.randint(0, 10)
+        commit = [fecha, hora, mensaje, nombre_arc, l_agreg, l_elim]
+        campos2(laux, commit, 0)
+barrido2(l7)
+
+# Parte A
+aux = l7.inicio
+while aux is not None:
+    aux1 = 
 
 
 
 
 
 
-#ej20
-
+#Ej20 - Se tiene una lista de productos de los cuales se conoce nombre, precio y calificacion
+# entero de 1 a 5.
 '''
 for i in range(0,10):
     producto = 'Producto ' + random.choice(string.ascii_uppercase)
     costo = '$' + str(random.randint(1500, 3500))
     calif = random.randint(1, 5)
     productos = [producto, costo, calif]
-    insertar(l1, productos) #ordenada por nombre por defecto
+    campos2(l1, productos, 0) # lista ordenada por nombre
+    campos2(l2, productos, 2) # lista ordenada por calificacion
 barrido(l1)
 '''
 
@@ -832,13 +960,29 @@ while aux is not None:
     aux = aux.sig
 '''
 
+#Parte B - Poder cambiar el orden de los elementos de la lista por nombre o calificacion.
+# 1 para ordenar por nombre, 2 para ordenar por calificacion
+'''
+orden = 2
+if orden == 1:
+    print('Orden por nombre')
+    barrido(l1)
+elif orden == 2:
+    print('Orden por calificacion')
+    barrido(l2)
+'''
 
-#Parte B
-#Por defecto los productos ya estan ordenados por nombre.
-
-#Parte C
-
-
+#Parte C - Mostrar un listado ordenado por clasificacion de producto
+# (debe utilizar una lista auxiliar).
+'''
+print('')
+print('Listado ordenado por calificacion de producto:')
+aux = l1.inicio
+while aux is not None:
+    campos2(l3, aux.info, 2)
+    aux = aux.sig
+barrido(l3)
+'''
 
 
 #Parte D - Mostrar el producto mas barato de calificacion 3.
@@ -858,14 +1002,14 @@ while (aux is not None) and (aux.info[2] == 3):
 print('El producto mas barato de calificacion 3 es el ' + str(producto) + ' y su precio es ' + str(menor))
 '''
 
-#Parte E
+#Parte E - Mostrar el precio de los producto que empiezan con H
 '''
 print('')
 aux = l1.inicio
 while aux is not None:
     if aux.info[0] == 'Producto H':
-        insertar(l2, aux.info[1])
+        insertar(l4, aux.info[1])
     aux = aux.sig
 print('El precio de los productos H es:')
-barrido(l2)
+barrido(l4)
 '''
