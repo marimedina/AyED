@@ -1,7 +1,7 @@
 from hash import crear_tabla_abierta, insert_palabra, barrido_abierta
 from hash import busq_palabra, eliminar_palabra, telefono
 from hash import crear_tabla_cerrada, rehash, nueva_catedra, barrido_cerrada
-from hash import busq_catedra, docente, hash_1
+from hash import busq_catedra, docente, hash_1, insertar_contacto
 from tdalista import *
 import random
 import string
@@ -71,6 +71,11 @@ for i in range(0, len(t)):
 
 #Ej 3 - Implementar un tabla hash cerrada para guardar las catedras de una carrera universitaria
 # de acuerdo a su codigo
+
+#a. cargar catedras de una carrera de las cuales se conoce nombre, modalidad cantidad de horas
+#b. ademas se deben poder agregar los docentes vinculados con las catedras
+#c. debe ser una tabla cerrada
+#d. debe poder solucionar las colisiones
 '''
 t = crear_tabla_cerrada(20)
 
@@ -94,9 +99,16 @@ for i in range(0, 10):
 barrido_cerrada(t)
 '''
 
-#Ej 4
+#Ej 4 - Desarrollar un algoritmo que implemente una tabla hash cerrada para cargar personajes
+# de Star Wars de los que solo se conoce su nombre
 
+#a. la tabla inicialmente sera de 20 posiciones
+#b. debera permitir el manejo de colisiones
+#c. cuando el factor de carga de la tabla exceda el 75%, se debera incrementar el tamanio de la tabla al doble
+
+'''
 def carga(t):
+    f = 0
     'Para controlar el factor de carga de la tabla'
     ocupados = 0
     for personaje in t:
@@ -120,6 +132,90 @@ def insert_perj(t, personaje):
         indice = rehash(t, indice)
     t[indice] = personaje
 
-    if f > 75:
+    if carga(t) > 75:
         t = agrandarTabla(t)
+
     return t
+
+
+t = crear_tabla_cerrada(20)
+
+for i in range(0,15):
+    t = insert_perj(t, random.choice(string.ascii_uppercase))
+
+print(len(t)) #Hasta aca tiene 20 posiciones la tabla
+
+
+t = insert_perj(t, random.choice(string.ascii_uppercase))
+
+print(len(t)) #Se duplico el tamanio
+'''
+
+
+
+#Ej 5 - Desarrollar un algoritmo que implemente una tabla hash cerrada para administrar los
+#contactos de personas de las cuales se conoce nombre, apellido y correo electronico,
+#contemplando las siguientes pautas:
+
+#a. El campo clave para generar las posiciones son el apellido y nombre.
+#b. Debera contemplar una funcion de sondeo para resolver las colisiones.
+
+'''
+t = crear_tabla_cerrada(20)
+
+for i in range(0,10):
+    nombre = random.choice(string.ascii_uppercase)
+    apellido = random.choice(string.ascii_lowercase)
+    correo = random.randint(1, 100)
+    contact = [nombre, apellido, correo]
+    insertar_contacto(t, contact)
+
+barrido_cerrada(t)
+'''
+
+
+#Ej 6 -
+'''
+legiones = ['FL', 'TF', 'TK', 'CT', 'FN', 'FO']
+legion = ''
+num = ''
+def codigo():
+    legion = random.choice(legiones)
+    num = random.randint(0000, 9999)
+    codigo = legion + '-' + num
+    return codigo
+
+def insertar_codigo(t, codigo):
+    legion, num = codigo.split('-')
+    indice = hash(legion)
+    indice = indice % len(t)
+    insertar(t[indice], codigo)
+
+def hash(codigo):
+    legion, num = codigo.split("-")
+    return (legion + num)
+
+t = crear_tabla_abierta(10)
+for i in range(0, 10):
+    insertar_codigo(t, codigo)
+barrido_abierta(t)
+'''
+
+
+#Ej 7 -
+t_tipo = crear_tabla_cerrada(30)
+tipos = ['fuego', 'agua', 'planta', 'normal', 'electrico', 'hielo',
+        'lucha', 'veneno', 'tierra', 'volador']
+
+def pokemon(numero):
+    numero = numero
+    nombre = 'Nombre ' + [i]
+    canttipo = random.randint(1,2)
+    tipo = random.choice(tipos)
+
+    if canttipo == 2:
+        tipo += '-' + random.choice(tipos)
+
+    nivel = random.randint(1,100)
+
+    return [numero, nombre, tipo, nivel]

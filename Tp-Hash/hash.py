@@ -73,6 +73,7 @@ def busq_palabra(tabla, palabra):
     return busquedaListaCampo(tabla[indice], palabra, 0)
 
 
+'PARA EJERCICIO 1'
 def telefono():
     caract = ''
     num = ''
@@ -107,3 +108,17 @@ def busq_catedra(tabla, catedra):
     if tabla[indice][1] != catedra[1]:
         indice = rehash(tabla, indice)
     return indice
+'PARA EJERCICIO 1'
+
+
+'PARA EJERCICIO 5'
+def insertar_contacto(t, contacto):
+    indice = hash(contacto[0] + contacto[1])
+    indice = indice % len(t)
+    if t[indice] is None:
+        t[indice] = contacto
+    else:
+        indice = rehash(t, indice)
+        if t[indice] is None:
+            t[indice] = contacto
+'PARA EJERCICIO 5'
