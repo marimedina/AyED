@@ -58,3 +58,7 @@ def Heapsort(H):
     for i in H.tamanio-2:
         quitar(H)
         H.tamanio = aux
+
+def monticulizar(H):
+    for i in len(H.vector):
+        flotar(H)
