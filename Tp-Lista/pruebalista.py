@@ -21,7 +21,6 @@ l6 = Lista()
 
 # NO ANDAN/FALTAN:
 # 15-D VER COMO CALCULAR SI UNA FECHA ESTA ENTRE X FECHAS
-# 18 FALTA
 
 
 '''cargaAuto(l1, 5)
@@ -609,7 +608,7 @@ while aux is not None:
 '''
 
 # Ej 15
-'''
+
 for i in range(1, 8):
     costo = random.randint(1500, 3500)
     tiempo = random.randint(2, 12)  # tiempo en horas
@@ -621,7 +620,7 @@ for i in range(1, 8):
     insertar(l1, tarea)
 barrido(l1)
 aux = l1.inicio
-'''
+
 
 # Parte A - Tiempo promedio de tareas
 '''
@@ -909,13 +908,14 @@ if buscTeclado is not None:
 
 
 #Ej 18 -
+'''
 l7 = Lista2()
 for i in range(1, 10):
     usuario = 'Usuario ' + str(i)
     campos2(l7, usuario, 0)
     nodo = busquedacampos2(l7, usuario[0], 0)
     laux = nodo.lista
-    for j in range(1, random.randint(0, 10)):
+    for j in range(1, random.randint(0, 5)):
         fecha = random.randint(01012020, 31012020)
         hora = random.randint(1, 12)
         mensaje = random.choice(string.ascii_uppercase)
@@ -927,10 +927,20 @@ for i in range(1, 10):
 barrido2(l7)
 
 # Parte A
+
 aux = l7.inicio
 while aux is not None:
-    aux1 = 
-
+    aux1 = aux.lista.inicio
+    mayor = tamanio2(aux1)
+    while aux1 is not None:
+        if aux1.tamanio > mayor:
+            mayor = aux1.tamanio
+            print(mayor)
+        aux1 = aux1.sig
+    aux = aux.sig
+print('mostrando mayor')
+print(mayor)
+'''
 
 
 
