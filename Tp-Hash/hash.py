@@ -30,7 +30,7 @@ def barrido_cerrada(tabla):
 
 def eliminar_palabra(tabla, palabra):
     indice = hash(palabra)
-    if busqueda_campo(tabla[indice], palabra, 0) is not None:
+    if busquedaListaCampo(tabla[indice], palabra, 0) is not None:
         eliminar_por_campo(tabla[indice], palabra, 0)
 
 
@@ -55,7 +55,7 @@ def hash(palabra):
     return clave
 
 
-'''def hash_1(clave):
+def hash_1(clave):
     indice = 0
     for elemento in clave:
         indice += ord(elemento)
@@ -65,12 +65,12 @@ def hash(palabra):
 def insert_palabra(tabla, palabra, descripcion):
     clave = hash(palabra)
     indice = clave % len(tabla)
-    insertar_por_campo(tabla[indice], [palabra, descripcion], 0)
+    campos(tabla[indice], [palabra, descripcion], 0)
 
 
 def busq_palabra(tabla, palabra):
     indice = hash(palabra)
-    return busqueda_campo(tabla[indice], palabra, 0)
+    return busquedaListaCampo(tabla[indice], palabra, 0)
 
 
 def telefono():
@@ -106,4 +106,4 @@ def busq_catedra(tabla, catedra):
     indice = clave % len(tabla)
     if tabla[indice][1] != catedra[1]:
         indice = rehash(tabla, indice)
-    return indice'''
+    return indice
