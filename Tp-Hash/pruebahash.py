@@ -204,10 +204,11 @@ barrido_abierta(t)
 
 #Ej 7 -
 t_tipo = crear_tabla_cerrada(30)
+t_pokemon = crear_tabla_abierta(15)
 tipos = ['fuego', 'agua', 'planta', 'normal', 'electrico', 'hielo',
         'lucha', 'veneno', 'tierra', 'volador']
 
-def pokemon(numero):
+def pokemon(numero=0):
     numero = numero
     nombre = 'Nombre ' + [i]
     canttipo = random.randint(1,2)
