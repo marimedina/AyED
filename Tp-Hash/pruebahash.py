@@ -1,7 +1,7 @@
 from hash import crear_tabla_abierta, insert_palabra, barrido_abierta
 from hash import busq_palabra, eliminar_palabra, telefono
 from hash import crear_tabla_cerrada, rehash, nueva_catedra, barrido_cerrada
-from hash import busq_catedra, docente, hash_1, insertar_contacto
+from hash import busq_catedra, docente, hash_1, insertar_contacto, insertar_tablaCerrada
 from tdalista import *
 import random
 import string
@@ -208,15 +208,25 @@ t_pokemon = crear_tabla_abierta(15)
 tipos = ['fuego', 'agua', 'planta', 'normal', 'electrico', 'hielo',
         'lucha', 'veneno', 'tierra', 'volador']
 
-def pokemon(numero=0):
-    numero = numero
-    nombre = 'Nombre ' + [i]
-    canttipo = random.randint(1,2)
+
+
+
+
+def insertar_pokemon(tabla, pokemon):
+    indice = hash(pokemon)
+    indice = indice % len(t)
+    if tabla[indice] is not None:
+        indice = rehash(tabla, indice)
+    tabla[indice] = pokemon
+
+    return tabla
+
+for i in range(0,10):
+    numero = str([i])
+    nombre = 'Nombre ' + str([i])
     tipo = random.choice(tipos)
-
-    if canttipo == 2:
-        tipo += '-' + random.choice(tipos)
-
     nivel = random.randint(1,100)
+    pokemon = [numero, nombre, tipo, nivel]
+    insertar_pokemon(t_tipo, pokemon)
 
-    return [numero, nombre, tipo, nivel]
+barrido_cerrada(t_tipo)

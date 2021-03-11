@@ -62,6 +62,26 @@ def hash_1(clave):
     return indice
 
 
+def insertar_tablaCerrada(tabla, hash, dato):
+    '''Agrega elementos a una tabla cerrada'''
+    pos = hash(dato, tabla)
+    if tabla[pos] is None:
+        tabla[pos] = dato
+    else:
+        if pos == len(tabla)-1:
+            pos = -1
+        pos_aux = pos
+        while tabla[pos+1] is not None and hash(tabla[pos+1], tabla) == pos_aux:
+            pos += 1
+            if pos == len(tabla)-1:
+                pos = -1
+        if tabla[pos+1] is None:
+            tabla[pos+1] = dato
+        else:
+            pass
+            # print('hacer rehashing')
+
+
 def insert_palabra(tabla, palabra, descripcion):
     clave = hash(palabra)
     indice = clave % len(tabla)
