@@ -72,7 +72,7 @@ def insertar(raiz, dato):
             raiz.der = insertar(raiz.der, dato)
     act_altura(raiz)
     raiz = balancear(raiz)
-    
+
     return raiz
 
 
@@ -111,6 +111,7 @@ def postorden(raiz):
 
 
 def reemplazar(raiz):
+    aux = None
     if raiz.der is not None:
         raiz.der == reemplazar(raiz.der)
     else:
@@ -129,10 +130,9 @@ def eliminar(raiz, clave):
         else:
             x = raiz.info
             if raiz.izq is None:
-                x = raiz.info
                 raiz = raiz.der
             elif raiz.der is None:
-                x == raiz.info
+                x = raiz.info
                 raiz = raiz.izq
             else:
                 raiz.izq, aux = reemplazar(raiz.izq)
