@@ -125,7 +125,25 @@ def eliminar(raiz, clave):
     if raiz is not None:
         if raiz.info > clave:
             raiz.izq, x = eliminar(raiz.izq, clave)
-        elif raiz.info < clave:
+        else:
+            if raiz.info < clave:
+                raiz.der, x = eliminar(raiz.der, clave)
+            else:
+                if raiz.izq is None:
+                    x = raiz.info
+                    raiz = raiz.der
+                else:
+                    if raiz.der is None:
+                        x = raiz.info
+                        raiz = raiz.izq
+                    else:
+                        raiz.izq, aux = reemplazar(raiz.izq)
+                        raiz.info = aux.info
+    return(raiz, x)
+
+
+
+'''elif raiz.info < clave:
             raiz.der, x = eliminar(raiz.der, clave)
         else:
             x = raiz.info
@@ -138,3 +156,26 @@ def eliminar(raiz, clave):
                 raiz.izq, aux = reemplazar(raiz.izq)
                 raiz.info = aux.info
         return(raiz, x)
+        #
+        else:'''
+
+
+# Para ejercicio 1E #
+def nodoRepetido(raiz):
+    if raiz is not None:
+        if busqueda(raiz.izq, raiz.info) is not None:
+            print('Se repite', raiz.info)
+        if busqueda(raiz.der, raiz.info) is not None:
+            print('Se repite', raiz.info)
+        nodoRepetido(raiz.izq)
+        nodoRepetido(raiz.der)
+
+# Para ejercicio 1F #
+def numParImpar(raiz):
+    if raiz is not None:
+        if raiz.info % 2 == 0:
+            return(1 + numParImpar(raiz.izq)[0] + numParImpar(raiz.der)[0], 0 + numParImpar(raiz.izq)[1] + numParImpar(raiz.der)[1])
+        else:
+            return(0 + numParImpar(raiz.izq)[0] + numParImpar(raiz.der)[0], 1 + numParImpar(raiz.izq)[1] + numParImpar(raiz.der)[1])
+    else:
+        return 0,0
