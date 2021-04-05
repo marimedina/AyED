@@ -4,6 +4,12 @@ from tdaarbol import balancear, rot_doble, rot_simple
 from tdaarbol import *
 import random
 
+
+
+# FALTA
+
+# 3 - Indice de Summerville
+
 '''
 r = None
 r = insertar(r, 4)
@@ -19,8 +25,8 @@ preorden(r)'''
 # 4,6,3,10,1,8,15,12,5
 
 
-# Ej 1 - Desarrollar un algoritmo que permita cargar 1000 numero enteros –generados de manera
-# aleatoria–
+# Ej 1 - Desarrollar un algoritmo que permita cargar 1000 numero enteros generados de manera
+# aleatoria
 '''
 r = None
 for i in range(0, 10):
@@ -78,18 +84,90 @@ print('Numeros pares: ' + str(par), 'Numeros impares: ' + str(impar))
 '''
 
 
+#Ej 2 - Implementar un funcion que permita cargar una expresion
+# matematica en un arbol binario
+'''
+# EXPRESION ((5+8)*2) + 5
+def expresion(r=None):
+    r = NodoArbol("+")
+    r.der = NodoArbol(5)
+    r.izq = NodoArbol("*")
+    r.izq.der = NodoArbol(2)
+    r.izq.izq = NodoArbol("+")
+    r.izq.izq.izq = NodoArbol(5)
+    r.izq.izq.der = NodoArbol(8)
+
+    return r
+
+raiz = expresion()
+'''
+#Parte A - Determine cual de los barridos muestra la expresion en el orden correcto.
+'''
+inorden(raiz)
+'''
+
+#Parte B - Resuelva la expresion matematica y muestre el resultado.
+'''
+def operacion(op, izq, der):
+    resultado = 0
+    if op == "+":
+        resultado = izq + der
+    elif op == "-":
+        resultado = izq - der
+    elif op == "*":
+        resultado = izq * der
+    elif opr == "/":
+        resultado = izq / der
+
+    return resultado
+
+def calculo(raiz):
+    if esHoja(raiz):
+        return raiz.info
+    else:
+        return operacion(raiz.info, calculo(raiz.izq), calculo(raiz.der))
+
+print('El resultado de la expresion es:')
+print(calculo(raiz))
+'''
 
 
+# Ej 4 - Implementar un algoritmo que contemple dos funciones, la primera que devuelva el hijo
+# derecho de un nodo y la segunda que devuelva el hijo izquierdo.
+'''
+r = None
+for i in range(0, 10):
+    r = insertar(r, random.randint(0, 100))
+inorden(r)
 
 
+print('Arbol derecho')
+postorden(hijoDerecho(r))
+print('Arbol izquierdo')
+postorden(hijoIzquierdo(r))
+'''
 
 
 # ej5
-'''r = None
+r = None
 "True heroe, false villano"
 super = ["Ironman ", "Spiderman ", "CapitanAmerica ", "Dr.Strange ",
         "Hulk ", "BlackPanter "]
+
+# Parte A - En cada nodo del arbol se almacenara un campo booleano que indica si es un heroe o un villano
 for elemento in super:
     r = insertar(r, random.choice(super) + str(random.choice([True, False])))
-preorden(r)'''
+preorden(r)
+
+# Parte B - Listar los villanos ordenados alfabeticamente
+print('')
+print(EsVillano(r))
+
+
+
+# Parte C
+
+
+
+
 # Parte D

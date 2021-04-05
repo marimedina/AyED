@@ -143,6 +143,8 @@ def eliminar(raiz, clave):
 
 
 
+
+
 '''elif raiz.info < clave:
             raiz.der, x = eliminar(raiz.der, clave)
         else:
@@ -160,7 +162,8 @@ def eliminar(raiz, clave):
         else:'''
 
 
-# Para ejercicio 1E #
+# --------------- PARA EJERCICIO 1 ------------------
+
 def nodoRepetido(raiz):
     if raiz is not None:
         if busqueda(raiz.izq, raiz.info) is not None:
@@ -170,7 +173,6 @@ def nodoRepetido(raiz):
         nodoRepetido(raiz.izq)
         nodoRepetido(raiz.der)
 
-# Para ejercicio 1F #
 def numParImpar(raiz):
     if raiz is not None:
         if raiz.info % 2 == 0:
@@ -179,3 +181,26 @@ def numParImpar(raiz):
             return(0 + numParImpar(raiz.izq)[0] + numParImpar(raiz.der)[0], 1 + numParImpar(raiz.izq)[1] + numParImpar(raiz.der)[1])
     else:
         return 0,0
+
+# --------------- PARA EJERCICIO 2 ------------------
+
+def esHoja(raiz):
+    if (raiz.izq is None) and (raiz.der is None):
+        return True
+
+# --------------- PARA EJERCICIO 4 ------------------
+
+def hijoDerecho(raiz):
+    return raiz.der
+
+def hijoIzquierdo(raiz):
+    return raiz.izq
+
+
+# --------------- PARA EJERCICIO 5 ------------------
+def EsVillano(raiz):
+    if raiz is not None:
+        EsVillano(raiz.izq)
+        if not raiz.info[1]:
+            print(raiz.info)
+        EsVillano(raiz.der)
