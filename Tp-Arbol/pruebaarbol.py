@@ -83,6 +83,7 @@ print('Numeros pares: ' + str(par), 'Numeros impares: ' + str(impar))
 
 
 
+
 # ej5
 '''r = None
 "True heroe, false villano"
