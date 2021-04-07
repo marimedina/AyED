@@ -198,9 +198,38 @@ def hijoIzquierdo(raiz):
 
 
 # --------------- PARA EJERCICIO 5 ------------------
+
 def EsVillano(raiz):
     if raiz is not None:
         EsVillano(raiz.izq)
-        if not raiz.info[1]:
+        if raiz.info[1] is False:
             print(raiz.info)
         EsVillano(raiz.der)
+
+def superheroesConC(raiz):
+    if raiz is not None:
+        superheroesConC(raiz.izq)
+        if (raiz.info[0][0] == 'C') and (raiz.info[1]):
+            print(raiz.info)
+        superheroesConC(raiz.der)
+
+def cantidadSuperheroes(raiz):
+    if raiz is not None:
+        if raiz.info[1]:
+            return (1 + cantidadSuperheroes(raiz.izq) + cantidadSuperheroes(raiz.der))
+        else:
+            return (0 + cantidadSuperheroes(raiz.izq) + cantidadSuperheroes(raiz.der))
+    else:
+        return 0
+
+# --------------- PARA EJERCICIO 7 ------------------
+
+def nodoMaximo(raiz):
+    if raiz.der is not None:
+        raiz = nodoMaximo(raiz.der)
+    return raiz
+
+def nodoMinimo(raiz):
+    if raiz.izq is not None:
+        raiz = nodoMinimo(raiz.izq)
+    return raiz

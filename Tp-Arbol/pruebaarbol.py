@@ -9,6 +9,7 @@ import random
 # FALTA
 
 # 3 - Indice de Summerville
+# 5 - Heroes/Villanos
 
 '''
 r = None
@@ -149,28 +150,43 @@ postorden(hijoIzquierdo(r))
 
 
 # ej5
+'''
+# Parte A - En cada nodo del arbol se almacenara un campo booleano que indica si es un heroe o un villano
 r = None
 "True heroe, false villano"
 super = ["Ironman ", "Spiderman ", "CapitanAmerica ", "Dr.Strange ",
         "Hulk ", "BlackPanter "]
 
-# Parte A - En cada nodo del arbol se almacenara un campo booleano que indica si es un heroe o un villano
+
 for elemento in super:
     r = insertar(r, random.choice(super) + str(random.choice([True, False])))
 preorden(r)
 
-# Parte B - Listar los villanos ordenados alfabeticamente
+# Parte B -
+
 print('')
-print(EsVillano(r))
+EsVillano(r)
 
+# Parte C - Mostar todos los superheroes que empiezan con C
 
-
-
-
-
-# Parte C
-
-
+print('')
+print('Superheroes que comienzan con C:')
+superheroesConC(r)
 
 
 # Parte D
+
+#print('')
+#print(cantidadSuperheroes(r))
+'''
+
+
+# Ej 7
+
+r = None
+for i in range(0, 6):
+    r = insertar(r, random.randint(0, 100))
+inorden(r)
+
+print('')
+nodoMaximo(r)
