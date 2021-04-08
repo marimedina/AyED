@@ -150,39 +150,45 @@ postorden(hijoIzquierdo(r))
 
 
 # ej5
-'''
+
 # Parte A - En cada nodo del arbol se almacenara un campo booleano que indica si es un heroe o un villano
 r = None
-"True heroe, false villano"
-super = ["Ironman ", "Spiderman ", "CapitanAmerica ", "Dr.Strange ",
-        "Hulk ", "BlackPanter "]
+heroes = ["Ironman ", "Spiderman ", "CapitanAmerica ", "Dr.Strange ",
+        "Hulk", "BlackPanter "]
+villanos = ["Thanos", "Loki", "Ultron", "Vulture"]
 
 
-for elemento in super:
-    r = insertar(r, random.choice(super) + str(random.choice([True, False])))
+for i in range(6):
+    r = insertar(r, [random.choice(heroes), True])
+    r = insertar(r, [random.choice(villanos), False])
 preorden(r)
 
-# Parte B -
-
+# Parte B - Mostar todos los superheroes que empiezan con C
+'''
 print('')
-EsVillano(r)
+print('Villanos ordenados alfabeticamente:')
+Villanos(r)
+'''
 
 # Parte C - Mostar todos los superheroes que empiezan con C
-
+'''
 print('')
 print('Superheroes que comienzan con C:')
 superheroesConC(r)
-
-
-# Parte D
-
-#print('')
-#print(cantidadSuperheroes(r))
 '''
+
+# Parte D - Determinar cua|ntos superheroes hay el arbol
+'''
+print('')
+print(cantidadSuperheroes(r))
+'''
+
+# Parte E -
+buscado = busqProx(r, "Dr.Strange")
 
 
 # Ej 7
-
+'''
 r = None
 for i in range(0, 6):
     r = insertar(r, random.randint(0, 100))
@@ -190,3 +196,4 @@ inorden(r)
 
 print('')
 nodoMaximo(r)
+'''

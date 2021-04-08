@@ -142,24 +142,16 @@ def eliminar(raiz, clave):
     return(raiz, x)
 
 
-
-
-
-'''elif raiz.info < clave:
-            raiz.der, x = eliminar(raiz.der, clave)
+def busqProx(raiz, buscado):
+    aux = None
+    if raiz is not None:
+        if buscado in raiz.info:
+            return raiz
         else:
-            x = raiz.info
-            if raiz.izq is None:
-                raiz = raiz.der
-            elif raiz.der is None:
-                x = raiz.info
-                raiz = raiz.izq
-            else:
-                raiz.izq, aux = reemplazar(raiz.izq)
-                raiz.info = aux.info
-        return(raiz, x)
-        #
-        else:'''
+            aux = busqProx(raiz.izq, buscado)
+            if aux is None:
+                aux = busqProx(raiz.der, buscado)
+    return aux
 
 
 # --------------- PARA EJERCICIO 1 ------------------
@@ -199,17 +191,17 @@ def hijoIzquierdo(raiz):
 
 # --------------- PARA EJERCICIO 5 ------------------
 
-def EsVillano(raiz):
+def Villanos(raiz):
     if raiz is not None:
-        EsVillano(raiz.izq)
-        if raiz.info[1] is False:
+        Villanos(raiz.izq)
+        if not raiz.info[1]:
             print(raiz.info)
-        EsVillano(raiz.der)
+        Villanos(raiz.der)
 
 def superheroesConC(raiz):
     if raiz is not None:
         superheroesConC(raiz.izq)
-        if (raiz.info[0][0] == 'C') and (raiz.info[1]):
+        if (raiz.info[0][0] == 'C') and (raiz.info[1] is True):
             print(raiz.info)
         superheroesConC(raiz.der)
 
