@@ -13,6 +13,7 @@ p2 = Pila()
 p3 = Pila()
 
 
+
 # pruebadebarrido
 '''
 cargautomatica(p)
