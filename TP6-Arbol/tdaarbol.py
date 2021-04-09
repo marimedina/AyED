@@ -189,6 +189,7 @@ def nodosPorNivel(raiz, nivel, nivelAct=0):
     else:
         return 0
 
+'''TIRA ERROR EN POW'''
 def cantNodosCompletarNivel(nivel):
     # Nodos que deberia haber para que el nivel este completo
     return pow(2, nivel)
