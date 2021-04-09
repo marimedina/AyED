@@ -9,7 +9,8 @@ import random
 # FALTA
 
 # 3 - Indice de Summerville
-# 5 - Heroes/Villanos
+# 6 - Indices/Directorios/Archivos/Knuth
+# 8 - Poe Dameron/escuadro negro
 
 '''
 r = None
@@ -149,20 +150,21 @@ postorden(hijoIzquierdo(r))
 '''
 
 
-# ej5
+# Ej 5 - Dado un arbol con los nombre de los superheroes y villanos de la saga Marvel Cinematic Universe
 
 # Parte A - En cada nodo del arbol se almacenara un campo booleano que indica si es un heroe o un villano
+'''
 r = None
 heroes = ["Ironman ", "Spiderman ", "CapitanAmerica ", "Dr.Strange ",
         "Hulk", "BlackPanter "]
 villanos = ["Thanos", "Loki", "Ultron", "Vulture"]
 
 
-for i in range(6):
+for i in range(7):
     r = insertar(r, [random.choice(heroes), True])
     r = insertar(r, [random.choice(villanos), False])
 preorden(r)
-
+'''
 # Parte B - Mostar todos los superheroes que empiezan con C
 '''
 print('')
@@ -183,11 +185,56 @@ print('')
 print(cantidadSuperheroes(r))
 '''
 
-# Parte E -
-buscado = busqProx(r, "Dr.Strange")
+# Parte E - Doctor Strange en realidad esta mal cargado, utilice una busqueda por proximidad
+# para encontrarlo en el arbol y modificar su nombre.
+'''
+b = 'Dr.Strange'
+buscado = busqProxCampo(r, b, 0)
+if buscado is not None:
+    nombre = buscado.info[0]
+    buscado.info[0] = "Doctor Strange"
+else:
+    print('El personaje no fue encontrado')
+
+print('')
+inorden(r)
+'''
+
+# Parte F - Listar los superheroes ordenados de manera descendente.
+'''
+print('Superheroes ordenamos alfabeticamente descendente')
+inordenInvertido(r)
+'''
+
+# Parte G - Generar un bosque a partir de este arbol, un arbol debe contener a los
+# superheroes y otro a los villanos.
+'''
+print('')
+bosque = [None, None]
+ArmarBosque(r, bosque)
+
+#Corroboro que armo ambos arboles
+#inorden(bosque[0])
+#inorden(bosque[1])
+
+# i
+print('Cantidad de nodos en el bosque de los heroes')
+print(peso(bosque[0]))
+print('Cantidad de nodos en el bosque de los villanos')
+print(peso(bosque[1]))
+
+# ii
+print('')
+print('Heroes ordenados alfabeticamente:')
+inorden(bosque[0])
+print('Villanos ordenados alfabeticamente:')
+inorden(bosque[1])
+'''
 
 
-# Ej 7
+
+# Ej 7 - Desarrollar un algoritmo que implemente dos funciones, una para obtener el minimo nodo
+# del arbol y la segunda para obtener el maximo.
 '''
 r = None
 for i in range(0, 6):
@@ -195,5 +242,23 @@ for i in range(0, 6):
 inorden(r)
 
 print('')
-nodoMaximo(r)
+print('El nodo maximo es:')
+print(nodoMaximo(r).info)
+print('El nodo minimo es:')
+print(nodoMinimo(r).info)
 '''
+
+
+# Ej 9 -
+r = None
+for i in range(0, 6):
+    r = insertar(r, random.randint(0, 100))
+inorden(r)
+
+for i in range(altura(r)):
+    cant = nodosPorNivel(r, i,)
+    aux = cantNodosCompletarNivel(r)
+    if cant == aux:
+        print('El nivel' + i + 'esta completo')
+    else:
+        print('Para completar este nivel, faltan' + aux + 'nodos')

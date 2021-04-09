@@ -12,6 +12,11 @@ def altura(raiz):
     else:
         return raiz.altura
 
+def peso(raiz):
+    if raiz is not None:
+        return 1 + peso(raiz.izq) + peso(raiz.der)
+    else:
+        return 0
 
 def act_altura(raiz):
     if altura(raiz.izq) > altura(raiz.der):
@@ -110,6 +115,13 @@ def postorden(raiz):
         postorden(raiz.izq)
 
 
+def inordenInvertido(raiz):
+    if raiz is not None:
+        inordenInvertido(raiz.der)
+        print(raiz.info)
+        inordenInvertido(raiz.izq)
+
+
 def reemplazar(raiz):
     aux = None
     if raiz.der is not None:
@@ -153,7 +165,46 @@ def busqProx(raiz, buscado):
                 aux = busqProx(raiz.der, buscado)
     return aux
 
+def busqProxCampo(raiz, buscado, campo):
+    aux = None
+    if raiz is not None:
+        if buscado in raiz.info[campo]:
+            return raiz
+        else:
+            aux = busqProxCampo(raiz.izq, buscado, campo)
+            if aux is None:
+                aux = busqProxCampo(raiz.der, buscado, campo)
+    return aux
 
+def nodosPorNivel(raiz, nivel, nivelAct=0):
+    #Cantidad de nodos por nivel
+    cant = 0
+    if raiz is not None:
+        if nivel == nivelAct:
+            cant += 1
+        nivelAct += 1
+        cant += nodosPorNivel(raiz.izq, nivel, nivelAct)
+        cant += nodosPorNivel(raiz.der, nivel, nivelAct)
+        return cant
+    else:
+        return 0
+
+def cantNodosCompletarNivel(nivel):
+    # Nodos que deberia haber para que el nivel este completo
+    return pow(2, nivel)
+
+# --------------- ARBOL HUFFMAN ------------------
+# ------------------------------------------------
+'''
+class NodoArbolHuffman():
+    def __init__(self, valor, dato, izq, der):
+        self.izq = izq
+        self.der = der
+        self.info = dato
+        self.valor = valor
+
+def arbolHuffman()
+'''
 # --------------- PARA EJERCICIO 1 ------------------
 
 def nodoRepetido(raiz):
@@ -197,6 +248,14 @@ def Villanos(raiz):
         if not raiz.info[1]:
             print(raiz.info)
         Villanos(raiz.der)
+'''
+def Heroes(raiz):
+    if raiz is not None:
+        Heroes(raiz.der)
+        if raiz.info[0] is True:
+            print(raiz.info)
+        Heroes(raiz.izq)
+'''
 
 def superheroesConC(raiz):
     if raiz is not None:
@@ -213,6 +272,16 @@ def cantidadSuperheroes(raiz):
             return (0 + cantidadSuperheroes(raiz.izq) + cantidadSuperheroes(raiz.der))
     else:
         return 0
+
+def ArmarBosque(raiz, bosque):
+    if raiz is not None:
+        ArmarBosque(raiz.izq, bosque)
+        ArmarBosque(raiz.der, bosque)
+        if raiz.info[1] is False:
+            bosque[1] = insertar(bosque[1], raiz.info)
+        else:
+            bosque[0] = insertar(bosque[0], raiz.info)
+
 
 # --------------- PARA EJERCICIO 7 ------------------
 
