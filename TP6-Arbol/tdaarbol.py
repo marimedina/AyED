@@ -1,3 +1,4 @@
+import random
 class NodoArbol():
     def __init__(self, info):
         self.izq = None
@@ -252,6 +253,14 @@ def obtenerPadre(raiz, buscado):
                 aux = obtenerPadre(raiz.der, buscado)
     return aux
 
+
+def arbolDeXNiveles(niveles):
+    raiz = None
+    raiz = insertar(raiz, random.randint(0, 100))
+    while raiz.altura-1 != niveles:
+        raiz = insertar(raiz, random.randint(0, 100))
+
+    return raiz
 
 # --------------- ARBOL HUFFMAN ------------------
 # ------------------------------------------------

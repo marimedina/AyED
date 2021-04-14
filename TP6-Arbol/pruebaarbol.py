@@ -346,3 +346,6 @@ print('La altura del arbol es :' + str(r.altura))
 
 
 # Ej 11
+r = arbolDeXNiveles(5)
+imprimir(r)
+print(r.altura)
