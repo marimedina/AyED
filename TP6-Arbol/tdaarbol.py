@@ -12,11 +12,13 @@ def altura(raiz):
     else:
         return raiz.altura
 
+
 def peso(raiz):
     if raiz is not None:
         return 1 + peso(raiz.izq) + peso(raiz.der)
     else:
         return 0
+
 
 def act_altura(raiz):
     if altura(raiz.izq) > altura(raiz.der):
@@ -122,6 +124,14 @@ def inordenInvertido(raiz):
         inordenInvertido(raiz.izq)
 
 
+def imprimir(raiz, espacios=0):
+    if raiz is not None:
+        espacios += 5
+        imprimir(raiz.der, espacios)
+        print(' ' * espacios, str(raiz.info))
+        imprimir(raiz.izq, espacios)
+
+
 def reemplazar(raiz):
     aux = None
     if raiz.der is not None:
@@ -165,6 +175,7 @@ def busqProx(raiz, buscado):
                 aux = busqProx(raiz.der, buscado)
     return aux
 
+
 def busqProxCampo(raiz, buscado, campo):
     aux = None
     if raiz is not None:
@@ -175,6 +186,7 @@ def busqProxCampo(raiz, buscado, campo):
             if aux is None:
                 aux = busqProxCampo(raiz.der, buscado, campo)
     return aux
+
 
 def nodosPorNivel(raiz, nivel, nivelAct=0):
     #Cantidad de nodos por nivel
@@ -189,23 +201,132 @@ def nodosPorNivel(raiz, nivel, nivelAct=0):
     else:
         return 0
 
+
 '''TIRA ERROR EN POW'''
 def cantNodosCompletarNivel(nivel):
     # Nodos que deberia haber para que el nivel este completo
     return pow(2, nivel)
 
+
+def esHoja(raiz):
+    if (raiz.izq is None) and (raiz.der is None):
+        return True
+
+
+def mostrarHojas(raiz):
+    if raiz is not None:
+        mostrarHojas(raiz.izq)
+        if esHoja(raiz):
+            print(raiz.info)
+        mostrarHojas(raiz.der)
+
+
+def cantHojasArbol(raiz):
+    if raiz is not None:
+        if (raiz.izq is None) and (raiz.der is None):
+            return 1
+        else:
+            return cantHojasArbol(raiz.izq) + cantHojasArbol(raiz.der)
+    else:
+        return 0
+
+
+def cantNodosArbol(raiz):
+    if raiz is None:
+        return 0
+    else:
+        return 1 + cantNodosArbol(raiz.izq) + cantNodosArbol(raiz.der)
+
+
+def obtenerPadre(raiz, buscado):
+    aux = None
+    if raiz is not None:
+        if raiz.info == buscado:
+            aux = buscado
+        elif ((raiz.izq is not None) and (raiz.izq.info == buscado)) or ((raiz.der is not None) and (raiz.der.info == buscado)):
+            aux = raiz
+        else:
+            if buscado < raiz.info:
+                aux = obtenerPadre(raiz.izq, buscado)
+            else:
+                aux = obtenerPadre(raiz.der, buscado)
+    return aux
+
+
 # --------------- ARBOL HUFFMAN ------------------
 # ------------------------------------------------
-'''
+
 class NodoArbolHuffman():
-    def __init__(self, valor, dato, izq, der):
+    def __init__(self, valor, dato, izq=None, der=None):
         self.izq = izq
         self.der = der
         self.info = dato
         self.valor = valor
 
-def arbolHuffman()
-'''
+
+def arbolHuffman(tabla, comparacion=None):
+    lista = []
+
+    for i in tabla:
+        nodo = NodoArbolHuffman(i[0], i[1])
+        lista.append(nodo)
+    while len(lista) > 1:
+        nodo1 = lista.pop(0)
+        nodo2 = lista.pop(0)
+
+        nueva_frecuencia = nodo1.valor + nodo2.valor
+        nodo3 = NodoArbolHuffman(nueva_frecuencia, None, nodo1, nodo2)
+        lista.append(nodo3)
+
+    if comparacion:
+        lista.sort(key=comparacion)
+    else:
+        lista.sort(key=lambda x:x.valor)
+
+    return lista[0]
+
+
+def deHuffmanADiccionario(raiz, diccionario, codif=''):
+    if not esHoja(raiz):
+        if hijoIzquierdo(raiz) is not None:
+            deHuffmanADiccionario(raiz.izq, diccionario, codif+'0')
+        if hijoDerecho(raiz) is not None:
+            deHuffmanADiccionario(raiz.der, diccionario, codif+'1')
+    else:
+        diccionario.setdefault(raiz.info, codif)
+
+
+def comprimir(arbol, mensaje):
+    msjCod = ''
+    diccCodificado = {}
+    deHuffmanADiccionario(arbol, diccCodificado)
+
+    for caracter in mensaje:
+        msjCod += diccCodificado.get(caracter)
+
+    return msjCod
+
+
+def descomprimir(arbol, mensaje):
+    msjDescodificado = ''
+    raiz = arbol
+
+    while len(mensaje) >= 1:
+        while not esHoja(raiz):
+            if len(mensaje) > 0:
+                caracter = mensaje[0]
+                mensaje = mensaje[1:]
+            if caracter == '0':
+                raiz = raiz.izq
+            else:
+                raiz = raiz.der
+        msjDescodificado += raiz.info
+        raiz = arbol
+
+    return msjDescodificado
+
+
+
 # --------------- PARA EJERCICIO 1 ------------------
 
 def nodoRepetido(raiz):
@@ -226,11 +347,6 @@ def numParImpar(raiz):
     else:
         return 0,0
 
-# --------------- PARA EJERCICIO 2 ------------------
-
-def esHoja(raiz):
-    if (raiz.izq is None) and (raiz.der is None):
-        return True
 
 # --------------- PARA EJERCICIO 4 ------------------
 

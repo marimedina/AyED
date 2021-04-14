@@ -10,7 +10,7 @@ import random
 
 # 3 - Indice de Summerville
 # 6 - Indices/Directorios/Archivos/Knuth
-# 8 - Poe Dameron/escuadro negro
+# 9 - Numero de nodos en nivel
 
 '''
 r = None
@@ -249,7 +249,37 @@ print(nodoMinimo(r).info)
 '''
 
 
+
+# Ej 8 - desarrollar un algoritmo que permita comprimir los mensaje para
+# enviarlo mas rapidos y no puedan ser interceptado
+'''
+tabla = [
+        [0.2, "A"],
+        [0.17, "F"],
+        [0.13, "1"],
+        [0.21, "3"],
+        [0.05, "0"],
+        [0.09, "M"],
+        [0.15, "T"]
+    ]
+
+# Parte A - Crear un arbol de Huffman a partir de la tabla
+r = arbolHuffman(tabla)
+imprimir(r)
+
+# Parte B - Desarrollar las funcionas para comprimir y descomprimir un mensaje
+print('')
+msj = 'AF130MT'
+msj_comprimido = comprimir(r, msj)
+print('Mensaje comprimido: ', msj_comprimido)
+msj_descomprimido = descomprimir(r, msj_comprimido)
+print('Mensaje descomprimido: ', msj_descomprimido)
+'''
+
+
+
 # Ej 9 -
+'''
 r = None
 for i in range(0, 6):
     r = insertar(r, random.randint(0, 100))
@@ -262,3 +292,57 @@ for i in range(altura(r)):
         print('El nivel' + i + 'esta completo')
     else:
         print('Para completar este nivel, faltan' + aux + 'nodos')
+'''
+
+
+# Ej 10 - Escribir un algoritmo que permita resolver las siguientes actividades:
+'''
+r = None
+for i in range(0, 6):
+    r = insertar(r, random.randint(0, 100))
+preorden(r)
+'''
+
+# Parte A - Contar el numero de nodos del arbol
+'''
+print('')
+print('Cantidad de nodos del arbol:')
+print(cantNodosArbol(r))
+'''
+
+# Parte B - Determinar el numero de hojas del arbol
+'''
+print('')
+print('Cantidad de hojas del arbol')
+print(cantHojasArbol(r))
+'''
+
+# Parte C - Mostrar la informacion de los nodos hojas
+'''
+print('')
+print('Informacion de las hojas del arbol')
+print(mostrarHojas(r))
+'''
+
+# Parte D - Determinar el padre de un nodo
+'''
+print('')
+busc = 25
+padre = obtenerPadre(r, busc)
+if padre != busc:
+    if padre is not None:
+        print('El padre de ' + str(busc) + ' es ' + str(padre.info))
+    else:
+        print('No se encontro a ' + str(busc))
+else:
+    print(str(busc) + ' es raiz')
+'''
+
+# Parte E - Determinar la altura de un arbol
+'''
+print('')
+print('La altura del arbol es :' + str(r.altura))
+'''
+
+
+# Ej 11
