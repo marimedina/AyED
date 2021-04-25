@@ -346,6 +346,21 @@ print('La altura del arbol es :' + str(r.altura))
 
 
 # Ej 11
+
 r = arbolDeXNiveles(5)
-imprimir(r)
+preorden(r)
 print(r.altura)
+
+
+# Parte A - Generar un bosque cortando los tres primeros niveles del arbol
+'''
+print('')
+bosque = []
+recortarArbol(r, bosque, 3)
+
+for arbol in bosque:
+    print("---------------------")
+    imprimir(arbol)
+'''
+
+# Parte B

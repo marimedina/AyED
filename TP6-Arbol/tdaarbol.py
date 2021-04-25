@@ -171,7 +171,7 @@ def busqProx(raiz, buscado):
         if buscado in raiz.info:
             return raiz
         else:
-            aux = busqProx(raiz.izq, buscado)
+            aux = busqPprint()rox(raiz.izq, buscado)
             if aux is None:
                 aux = busqProx(raiz.der, buscado)
     return aux
@@ -254,13 +254,21 @@ def obtenerPadre(raiz, buscado):
     return aux
 
 
-def arbolDeXNiveles(niveles):
+def arbolDeXNiveles(niveles=0):
     raiz = None
     raiz = insertar(raiz, random.randint(0, 100))
     while raiz.altura-1 != niveles:
         raiz = insertar(raiz, random.randint(0, 100))
 
     return raiz
+
+
+def recortarArbol(raiz, bosque, nivACortar, nivelac=0):
+    if raiz is not None and nivelac <= nivACortar:
+        if nivelac == nivACortar:
+            bosque.append(raiz)
+        recortarArbol(raiz.izq, bosque, nivACortar, nivelac+1)
+        recortarArbol(raiz.der, bosque, nivACortar, nivelac+1)
 
 # --------------- ARBOL HUFFMAN ------------------
 # ------------------------------------------------
