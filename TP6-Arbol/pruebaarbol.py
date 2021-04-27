@@ -11,6 +11,7 @@ import random
 # 3 - Indice de Summerville
 # 6 - Indices/Directorios/Archivos/Knuth
 # 9 - Numero de nodos en nivel
+# 14 - Consulta a archivos
 
 '''
 r = None
@@ -345,15 +346,16 @@ print('La altura del arbol es :' + str(r.altura))
 '''
 
 
-# Ej 11
-
+# Ej 11 - Generar un arbol binario que tenga nueve niveles, luego disenar los algoritmos necesarios
+# para resolver las siguientes actividades:
+'''
 r = arbolDeXNiveles(5)
 preorden(r)
-print(r.altura)
+print('')
 
 
 # Parte A - Generar un bosque cortando los tres primeros niveles del arbol
-'''
+
 print('')
 bosque = []
 recortarArbol(r, bosque, 3)
@@ -363,4 +365,184 @@ for arbol in bosque:
     imprimir(arbol)
 '''
 
-# Parte B
+# Parte B - Contar cuantos nodos tiene cada arbol del bosque
+'''
+for arbol in bosque:
+    print('')
+    print('Raiz:', arbol.info, ' Cantidad de nodos: ', peso(arbol))
+'''
+
+# Parte C - Realizar un barrido preorden de cada arbol del bosque
+'''
+for i in range(len(bosque)):
+    print('')
+    print("Barrido arbol " + str(i+1))
+    preorden(bosque[i])
+'''
+
+# Parte D - Determinar cual es el arbol con mayor cantidad de nodos
+'''
+if len(bosque) == 0:
+    print('Bosque vacio')
+else:
+    mayor = bosque[0]
+    cant = peso(mayor)
+    for arbol in bosque:
+        if cant <= peso(arbol):
+            mayor = arbol
+            cant = peso(arbol)
+print('')
+print('El arbol con mayor cantidad de nodos es el de raiz ', mayor.info, ' con ', cant, ' nodos')
+'''
+
+# Parte E - Indicar que arboles del bosque estan llenos
+'''
+for arbol in bosque:
+    if arbolLleno(arbol):
+        print('El arbol cuya raiz es ', arbol.info, ' esta lleno')
+    else:
+        print('El arbol cuya raiz es ', arbol.info, ' no esta lleno')
+'''
+
+
+# Ej 12 - Nick Fury lider de la agencia S.H.I.E.L.D. tiene la dificil tarea de decidir que vengador
+# asignara a cada nueva mision por lo que nos solicita desarrollar un arbol de decision para resolver esta
+# tarea
+'''
+superheroes = ['Guardianes de las galaxias','Ant-Man','Hulk','Capitan America',
+                'Capitana Marvel','Spiderman','Black Widow','Iron Man', 'Dr. Strange',
+                'Thor']
+
+asignacion = [
+    {'mision': 'Intergalactica', 'peso': 1000, 'asignado': ["Guardianes de las galaxias", "Capitana Marvel"]},
+    {'mision': 'En equipo', 'peso': 2000, 'asignado': ["Guardinaes de las galaxias"]},
+    {'mision': 'Recuperacion', 'peso': 3000, 'asignado': ["Ant-Man", "Capitan America", "Black Widow"]},
+    {'mision': 'Destruccion', 'peso': 4000, 'asignado': ["Hulk", "Thor"]},
+    {'mision': 'Defensa', 'peso': 5000, 'asignado': ["Capitan America", "Spiderman", "Iron Man"]},
+    {'mision': 'Poderoso', 'peso': 6000, 'asignado': ["Capitana Marbel", "Thor"]},
+    {'mision': 'Estretegica', 'peso': 7000, 'asignado': ["Iron Man", "Dr. Strange"]}
+]
+
+arbolDec = arbolDecision(asignacion)
+print('Los heroes asignados para la mision Intergalactica son:')
+heroes = asignarHeroe('Intergalactica', arbolDec)
+if heroes:
+    print(heroes)
+'''
+
+
+# Ej 13 - Desarrollar un algoritmo que permita decodificar mensajes en codigo morse.
+'''
+l_morse = [ ['E', 850000],
+                ['T', 2450000],
+                ['I', 450000],
+                ['A', 1250000],
+                ['N', 2050000],
+                ['M', 2850000],
+                ['S', 250000],
+                ['U', 650000],
+                ['R', 1050000],
+                ['W', 1450000],
+                ['D', 1850000],
+                ['K', 2250000],
+                ['G', 2650000],
+                ['O', 3050000],
+                ['H', 150000],
+                ['V', 350000],
+                ['F', 550000],
+                [' ', 750000],
+                ['L', 950000],
+                [' ', 1150000],
+                ['P', 1350000],
+                ['J', 1550000],
+                ['B', 1750000],
+                ['X', 1950000],
+                ['C', 2150000],
+                ['Y', 2350000],
+                ['Z', 2550000],
+                ['Q', 2750000],
+                [' ', 2950000],
+                [' ', 3150000],
+                ['5', 100000],
+                ['4', 200000],
+                [' ', 300000],
+                ['3', 400000],
+                [' ', 500000],
+                [' ', 600000],
+                [' ', 700000],
+                ['2', 800000],
+                [' ', 900000],
+                [' ', 1000000],
+                [' ', 1100000],
+                [' ', 1200000],
+                [' ', 1300000],
+                [' ', 1400000],
+                [' ', 1500000],
+                ['1', 1600000],
+                ['6', 1700000],
+                [' ', 1800000],
+                [' ', 1900000],
+                [' ', 2000000],
+                [' ', 2100000],
+                [' ', 2200000],
+                [' ', 2300000],
+                [' ', 2400000],
+                ['7', 2500000],
+                [' ', 2600000],
+                [' ', 2700000],
+                [' ', 2800000],
+                ['8', 2900000],
+                [' ', 3000000],
+                ['9', 3100000],
+                ['0', 3200000]
+            ]
+
+msj1 = '.--. .- ... . / .-.. --- / --.- ..- . / .--. .- ... . / -- .- .- -. .- / .--. .-. --- -- . - . -- . / .- .-.. --. --- /--.- ..- . / ...- .- / ... . --. ..- .. .-. / ... .. . -. -.. --- / ..- ... - . -.. / -. --- / ..- -. / ... --- .-.. -.. .- -.. --- / .--. . .-. ..-. . -.-. - --- / ... .. -. --- / ..- -. / -... ..- . -. /.... --- -- -... .-. . .-.-.'
+msj2 = '-. --- ... --- - .-. --- ... / ... --- -- --- ... / .-.. --- ... / -- .- .-.. -.. .. - --- ... / --. ..- .- .-. -.. .. .- -. . ... / -.. . / .-.. .- / --. .- .-.. .- -..- .. .- .-.-.'
+msj3 = '-.-- --- / ... --- .-.. --- / .- -.-. - ..- --- / -.-. --- -- --- / ... .. / . -. / ...- . .-. -.. .- -.. / .-.. --- / ... ..- .--. .. . .-. .- / - --- -.. --- .-.-.'
+msj4 = '-.-. .... .. -.-. --- ... / . ... - --- -.-- / .-.. .-.. . ...- .- -. -.. --- / .-.. .- / ..-. .. . ... - .- / .... .- -.-. .. .- / ..- ... - . -.. . ... .-.-.'
+msj5 = '.--. --- -.. .-. .. .- / .... .-  -.-. . .-. / . ... - --- / - --- -.. --- / . .-.. / -.. .. .- .-.-.'
+
+a = arbolMorse(l_morse)
+
+print('Mensaje 1:')
+print(decodificarMsj(a, msj1))
+print('Mensaje 2:')
+print(decodificarMsj(a, msj2))
+print('Mensaje 3:')
+print(decodificarMsj(a, msj3))
+print('Mensaje 4:')
+print(decodificarMsj(a, msj4))
+print('Mensaje 5:')
+print(decodificarMsj(a, msj5))
+'''
+
+
+# Ej 14 -
+
+
+
+# Ej 15 - Una empresa de nano satelites dedicada al monitoreo de lotes campo destinados al agro,
+# tiene problemas para la transmision de los datos recolectados, dado que la ventana de
+# tiempo que dispone para enviar los datos antes de una nueva medicion es muy corta, por
+# lo que nos solicita desarrollar un algoritmo que permita comprimir la informacion para
+# poder enviarla mas rapida.
+'''
+tabla = [
+            [0.22, "Despejado"], [0.15, "Nublado"], [0.03, "Lluvia"],
+            [0.26, "Baja"], [0.14, "Alta"], [0.05, "1"], [0.01, "2"],
+            [0.035, "3"], [0.06, "5"], [0.02, "7"], [0.025, "8"]
+        ]
+# Parte B - Desarrollar un arbol de Huffman que permita comprimir la informacion para transmitirla
+r = arbolHuffman(tabla)
+
+# Parte C - Comprimir un mensaje y descomprimirlo
+msj_original = nanoMensaje()
+print(msj_original)
+print('Mensaje comprimido:')
+msj_comprimido = comprimirMed(r, msj_original)
+print(msj_comprimido)
+print('Mensaje descomprimido:')
+msj_descomprimido = descomprimirMed(r, msj_comprimido)
+print(msj_descomprimido)
+'''
