@@ -100,19 +100,6 @@ def insertarCampo(raiz, dato, campo=0):
     return raiz
 
 
-def busqueda(raiz, buscado):
-    pos = None
-    if raiz is not None:
-        if raiz.info == buscado:
-            pos = raiz
-        else:
-            if buscado < raiz.info:
-                pos = busqueda(raiz.izq, buscado)
-            else:
-                pos = busqueda(raiz.der, buscado)
-    return pos
-
-
 def preorden(raiz):
     if raiz is not None:
         print(raiz.info)
@@ -180,6 +167,29 @@ def eliminar(raiz, clave):
                         raiz.info = aux.info
     return(raiz, x)
 
+def busquedaCampo(raiz, buscado, campo=0):
+    aux = None
+    if (raiz is not None):
+        if (raiz.info[campo] == buscado):
+            aux = raiz
+        else:
+            if (buscado < raiz.info[campo]):
+                aux = busquedaCampo(raiz.izq, buscado, campo)
+            else:
+                aux = busquedaCampo(raiz.der, buscado, campo)
+    return aux
+
+def busqueda(raiz, buscado):
+    pos = None
+    if raiz is not None:
+        if raiz.info == buscado:
+            pos = raiz
+        else:
+            if buscado < raiz.info:
+                pos = busqueda(raiz.izq, buscado)
+            else:
+                pos = busqueda(raiz.der, buscado)
+    return pos
 
 def busqProx(raiz, buscado):
     aux = None
@@ -622,14 +632,43 @@ def descomprimirMed(arbol, mensaje):
     return '-'.join(segmentos)
 
 
-# --------------- PARA EJERCICIO 16------------------
-class Pokemon():
-    def __init__(self, nombre="", nro=-1, tipos=[], debilidades=[]):
-        self.nombre = nombre
-        self.nro = nro
-        self.tipos = tipos
-        self.debilidades = debilidades
+# --------------- PARA EJERCICIO 17------------------
+def generarRegistro(codigo=0):
+    grs = ['Kylo Ren', 'Hux', 'Capitana Phasma']
+    soldados = ['Imperial Stromtrooper', 'Imperial Scout Trooper', 'Imperial Death Trooper',
+    'Sith Trooper', 'First Order Stromtrooper']
+    fechas = ['01/01/2001', '02/02/2002', '03/03/2003', '04/04/2004', '05/05/2005', '06/06/2006',
+    '07/07/2007', '08/08/2008', '09/09/2009', '10/10/2010', '11/11/2011', '12/12/2012']
+    general = random.choice(grs)
+    fecha_mision = random.choice(fechas)
+    '''True = no fallo, False = si fallo'''
+    estado = random.choice([True, False])
+    soldado = random.choice(soldados)
 
-    def __str__(self):
-        return 'Nombre: ' + str(self.nombre) + ' - Nro: ' + str(self.nro) +
-        ' - Tipo/s:' + str(self.tipos) + ' - Debilidades:' + str(self.debilidades)
+    reg_mision = [general, fecha_mision, codigo, estado, soldado]
+
+    return reg_mision
+
+def obtenerNombre(arbol, nombre, lista):
+    if (arbol is not None) and (arbol.info[0] == nombre):
+        lista.append(arbol.info)
+        obtenerNombre(arbol.izq, nombre, lista)
+        obtenerNombre(arbol.der, nombre, lista)
+
+def listarXNombre(arbol, nombre):
+    aux = busquedaCampo(arbol, nombre, 0)
+    list = []
+    if aux:
+        obtenerNombre(aux, nombre, list)
+
+    return list
+
+def armasFalladas(arbol):
+    grs = ['Kylo Ren', 'Hux', 'Capitana Phasma']
+    for gr in grs:
+        regs = listarXNombre(arbol, gr)
+        fallas = 0
+        for reg in regs:
+            if not reg[3]:
+                fallas += 1
+        print('La cantidad de armas del general ', gr, 'que fallaron fueron ', fallas)

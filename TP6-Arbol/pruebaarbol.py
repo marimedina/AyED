@@ -11,7 +11,9 @@ import random
 # 3 - Indice de Summerville
 # 6 - Indices/Directorios/Archivos/Knuth
 # 9 - Numero de nodos en nivel
-# 14 - Consulta a archivos
+
+# 14 - Consulta a archivos NH
+# 16 - Pokemons NH
 
 '''
 r = None
@@ -546,3 +548,26 @@ print('Mensaje descomprimido:')
 msj_descomprimido = descomprimirMed(r, msj_comprimido)
 print(msj_descomprimido)
 '''
+
+
+# Ej 17 -
+
+# Parte A - Se debe registrar el nombre del general a cargo de la mision, fecha de la mision,
+# codigo de blaster generado de manera aleatoria, estado del blaster (si fallo o no) y el
+# tipo de soldado que portaba el blaster Imperial Stromtrooper, Imperial Scout Trooper,
+# Imperial Death Trooper, Sith Trooper y First Order Stromtrooper.
+
+'''funcion realizada en TDA'''
+
+# Parte B - Debe generar y cargar al menos 10000 registros.
+
+'''cambiar range(10) por 10.000'''
+arbol = None
+for i in range(10):
+    reg = generarRegistro(i)
+    arbol = insertarCampo(arbol, reg, 0)
+preorden(arbol)
+
+# Parte C - Determinar el total de armas que fallaron por general.
+print('')
+armasFalladas(arbol)
