@@ -560,14 +560,51 @@ print(msj_descomprimido)
 '''funcion realizada en TDA'''
 
 # Parte B - Debe generar y cargar al menos 10000 registros.
-
-'''cambiar range(10) por 10.000'''
+'''
+# cambiar range(10) por 10.000
 arbol = None
 for i in range(10):
     reg = generarRegistro(i)
     arbol = insertarCampo(arbol, reg, 0)
 preorden(arbol)
+'''
 
 # Parte C - Determinar el total de armas que fallaron por general.
+'''
 print('')
 armasFalladas(arbol)
+'''
+
+# Parte D - Indicar la cantidad y tipo de soldado de las misiones de Kylo Ren
+'''
+print('')
+cantSoldados(arbol, 'Kylo Ren')
+'''
+
+# Parte E - Determinar cuantos Sith Troopers salieron en misiones y a cuantos les fallaron los blasters
+'''
+print('')
+Sith_Fallas(arbol)
+'''
+
+# Parte F - Listar los codigos de los blasters de las misiones de una determinada fecha,
+# indicando ademas el porcentaje de armas que fallaron.
+'''
+print('')
+codMision(arbol, '01/01/2001')
+'''
+
+
+
+# Ej 18 -
+ruta_file = 'Libros/libros'
+initFileLibros()
+a_Titulo = generarArbolLibro(ruta_file, 'titulo')
+a_ISBN = generarArbolLibro(ruta_file, 'isbn')
+a_Autores = generarArbolLibro(ruta_file, 'autores')
+
+imprimir(a_Titulo)
+print('')
+imprimir(a_Autores)
+print('')
+imprimir(a_ISBN)

@@ -664,6 +664,7 @@ def listarXNombre(arbol, nombre):
     return list
 
 def armasFalladas(arbol):
+    '''True si no fallaron, false si fallaron'''
     grs = ['Kylo Ren', 'Hux', 'Capitana Phasma']
     for gr in grs:
         regs = listarXNombre(arbol, gr)
@@ -672,3 +673,167 @@ def armasFalladas(arbol):
             if not reg[3]:
                 fallas += 1
         print('La cantidad de armas del general ', gr, 'que fallaron fueron ', fallas)
+
+
+def cantSoldados(arbol, general):
+    tipos = ['Imperial Stromtrooper', 'Imperial Scout Trooper', 'Imprerial Death Trooper',
+        'Sith Trooper', 'First Order Stromtrooper']
+    reportes = listarXNombre(arbol, general)
+    cantidad = {}
+    for soldado in tipos:
+        cantidad.setdefault(str(soldado), 0)
+    for reporte in reportes:
+        soldado = reporte[4]
+        cantidad[soldado] += 1
+    print(cantidad)
+
+
+def cantSoldados(arbol, soldado, cant_soldado=0, cant_fallas=0):
+    if arbol is not None:
+        cant_soldado, cant_fallas = cantSoldados(arbol.izq, soldado, cant_soldado, cant_fallas)
+        if arbol.info[4] == soldado:
+            if arbol.info[3]:
+                cant_fallas += 1
+            cant_soldado += 1
+        cant_soldado, cant_fallas = cantSoldados(arbol.der, soldado, cant_soldado, cant_fallas)
+    return cant_soldado, cant_fallas
+
+
+def Sith_Fallas(arbol):
+    cant_sith, cant_fallas = cantSoldados(arbol, 'Sith Trooper')
+    print('La cantidad de Sith en las misiones son ', cant_sith, ' y a ', cant_fallas, ' le fallaron los blasters')
+
+
+def obtenerFecha(arbol, fecha, lista):
+    if (arbol is not None) and (arbol.info[1] == fecha):
+        lista.append(arbol.info)
+        obtenerFecha(arbol.izq, fecha, lista)
+        obtenerFecha(arbol.der, fecha, lista)
+
+
+def listadoPorFecha(arbol, fecha):
+    puntero_resultado = busquedaCampo(arbol, fecha, 1)
+    lista = []
+    if puntero_resultado:
+        obtenerFecha(puntero_resultado, fecha, lista)
+    return lista
+
+
+def codMision(arbol, fecha_buscada):
+    l_reportes = listadoPorFecha(arbol, fecha_buscada)
+
+    for reporte in l_reportes:
+        print('Codigo de blasters de mision: ', reporte[2])
+
+
+
+# --------------- PARA EJERCICIO 18------------------
+class Libro():
+    def __init__(self, titulo, isbn, autores, editorial, cant_pag):
+        self.titulo = titulo
+        self.isbn = isbn
+        self.autores = autores
+        self.editorial = editorial
+        self.cant_pag = cant_pag
+
+    def __str__(self):
+        return ('Titulo: ' + str(self.titulo) + ' - ISBN: ' + str(self.isbn) + ' - Autores: '
+                + str(self.autores) + ' - Editorial: ' + str(self.editorial) + ' - Paginas: ' + str(self.cant_pag))
+
+def definirAutores(autores):
+    lista_autores = []
+
+    cant = randint(1, 3)
+    while (len(lista_autores) < cant):
+        nuevo_autor = choice(autores)
+        if nuevo_autor not in lista_autores:
+            lista_autores.append(nuevo_autor)
+
+    return lista_autores
+
+def initFileLibros():
+    ruta_file = 'Libros/libros'
+    titulos = ['Algoritmos', 'Algol', 'Mineria de Datos', 'Base de Datos', 'Sistemas y organizaciones', 'Calculo', 'Redes']
+    autores = ['autor1', 'autor2', 'autor3', 'autor4', 'autor5', 'autor6', 'autor7', 'Tanenbaum', 'Connolly', 'Rowling', 'Riordan']
+    editoriales = ['edit1', 'edit2', 'edit3', 'edit4', 'edit5']
+
+    archivo = abrir(ruta_file)
+    limpiar(archivo)
+
+    for i in range(100):
+        titulo = choice(titulos)
+        isbn = i
+        autor = definirAutores(autores)
+
+        editorial = choice(editoriales)
+        cant_pag = randint(100, 2000)
+
+        libro = Libro(titulo, isbn, autor, editorial, cant_pag)
+        guardar(archivo, libro)
+
+    cerrar(archivo)
+
+def generarArbolLibro(ruta_file, tipo_gen):
+    raiz = None
+    dataLibros = fileToArray(ruta_file)
+    for item in dataLibros:
+        libro = item[0]
+        indice = item[1]
+        if tipo_gen == 'titulo':
+            dato = libro.titulo
+        elif tipo_gen == 'isbn':
+            dato = libro.isbn
+        elif tipo_gen == 'autores':
+            dato = libro.autores
+        elif tipo_gen == 'paginas':
+            dato = libro.cant_pag
+        nuevo_libro = [dato, indice]
+        raiz = insertarCampo(raiz, nuevo_libro, 0)
+    return raiz
+
+
+def busquedaPorISBN(arbol, buscado):
+    resultado = busquedaCampo(arbol, buscado, 0)
+    if resultado:
+        return resultado.info
+    else:
+        return None
+
+
+def proximidadAutor(arbol, buscado, lista=[]):
+    if arbol is not None:
+        if buscado in arbol.info[0]:
+            lista.append(arbol.info)
+        proximidadAutor(arbol.izq, buscado, lista)
+        proximidadAutor(arbol.der, buscado, lista)
+
+
+def busquedaPorAutor(arbol, buscado):
+    lista_con_autor = []
+    proximidadAutor(arbol, buscado, lista_con_autor)
+    return lista_con_autor
+
+
+def proximidadTitulo(arbol, buscado, lista=[]):
+    if arbol is not None:
+        if(arbol.info[0][0:len(buscado)].lower() == buscado.lower()):
+            lista.append(arbol.info)
+        proximidadTitulo(arbol.izq, buscado, lista)
+        proximidadTitulo(arbol.der, buscado, lista)
+    return lista
+
+
+def busquedaPorCoincidenciaTitulo(arbol, buscado):
+    lista_coincidenca_inicio = []
+    proximidadTitulo(arbol, buscado, lista_coincidenca_inicio)
+
+    return lista_coincidenca_inicio
+
+
+def busqPag(arbol, cantidad, lista=[]):
+    if (arbol is not None):
+        libro = arbol.info
+        if libro[0] > cantidad:
+            lista.append(libro[1])
+        busqPag(arbol.izq, cantidad, lista)
+        busqPag(arbol.der, cantidad, lista)
