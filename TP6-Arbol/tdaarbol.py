@@ -167,6 +167,27 @@ def eliminar(raiz, clave):
                         raiz.info = aux.info
     return(raiz, x)
 
+def eliminarCampo(raiz, clave, campo):
+    x = None
+    if (raiz is not None):
+        if (raiz.info[campo] > clave):
+            raiz.izq, x = eliminarCampo(raiz.izq, clave, campo)
+        else:
+            if(raiz.info[campo] < clave):
+                raiz.der, x = eliminarCampo(raiz.der, clave, campo)
+            else:  # Si es igual
+                if (raiz.izq is None):
+                    x = raiz.info
+                    raiz = raiz.der
+                else:
+                    if(raiz.der is None):
+                        x = raiz.info
+                        raiz = raiz.izq
+                    else:
+                        raiz.izq, aux = reemplazar(raiz.izq)
+                        raiz.info = aux.info
+    return (raiz, x)
+
 def busquedaCampo(raiz, buscado, campo=0):
     aux = None
     if (raiz is not None):
@@ -837,3 +858,169 @@ def busqPag(arbol, cantidad, lista=[]):
             lista.append(libro[1])
         busqPag(arbol.izq, cantidad, lista)
         busqPag(arbol.der, cantidad, lista)
+
+
+# --------------- PARA EJERCICIO 19 ------------------
+class RegistroMeteorologico():
+
+    def __init__(self, temp, presion, humedad, visibilidad, viento):
+        self.temp = temp
+        self.presion = presion
+        self.humedad = humedad
+        self.visibilidad = visibilidad
+        self.viento = viento
+
+    def __str__(self):
+        return "Temp: {} - Presion: {} - Humedad: {} - Visib: {} - Viento: {}".format(self.temp, self.presion, self.humedad, self.visibilidad, self.viento)
+
+
+def genRegistroMeteorologico():
+    temp = round(random.uniform(2,40), 2)
+    presion = round(random.uniform(900, 1100), 2)
+    humedad = random.randint(50, 99)
+    visibilidad = round(random.uniform(5, 20), 2)
+    viento = round(random.uniform(1, 15), 2)
+    return RegistroMeteorologico(temp, presion, humedad, visibilidad, viento)
+
+def genArbolMeteorologico():
+    arbol = None
+    datos = [['Visibilidad', 15], ['Humedad', 70], 'Despejado', ['Viento', 8.7], ['Visibilidad', 8], ['Viento', 5], 'Parcialmente Nublado', ['Presion', 1013], ['Humedad', 92], 'Despejado', 'Nublado',
+    ['Humedad', 96], ['Viento', 7.2], ['Visibilidad', 12], ['Viento', 12.2], 'Nublado', 'Mayormente Nublado', ['Presion', 1018], 'Nublado', 'Despejado', 'Mayormente Nublado', 'Lluvia', 'Nublado', ['Visibilidad', 1], 'Nublado', 'Lluvia', 'Mayormente Nublado']
+    codigo = [3000, 2000, 3010, 1000, 2800, 800, 1500, 2500, 2960, 700, 900, 2400, 2700, 2950, 2990, 2300, 2450, 2600, 2750, 2925, 2955, 2980, 2995, 2550, 2650, 2525, 2578]
+    for i in range(len(datos)):
+        arbol = insertarCampo(arbol, [datos[i], codigo[i]], 1)
+
+    return arbol
+
+def asignarValorRegistro(registro, key):
+    valor = 0
+    if key == 'Temperatura':
+        valor = registro.temp
+    elif key == 'Presion':
+        valor = registro.presion
+    elif key == 'Humedad':
+        valor = registro.humedad
+    elif key == 'Visibilidad':
+        valor = registro.visibilidad
+    elif key == 'Viento':
+        valor = registro.viento
+    return valor
+
+def definirPronostico(arbol, registro):
+    while arbol is not None:
+        if esHoja(arbol):
+            return arbol.info[0]
+        else:
+            key = arbol.info[0][0]
+            umbral = arbol.info[0][1]
+
+            valor = asignarValorRegistro(registro, key)
+            if valor <= umbral:
+                arbol = arbol.izq
+            else:
+                arbol = arbol.der
+    return arbol[0]
+
+
+# --------------- PARA EJERCICIO 21 ------------------
+
+def agregarDescripcion(arbol, criatura, descripcion):
+    res = busquedaCampo(arbol, criatura, 0)
+    if res:
+        res.info[2] = descripcion
+    else:
+        print('Error, critura no encontrada')
+
+def arbolToArrayCriaturas(arbol, lista=[]):
+    if arbol is not None:
+        if arbol.info[1] != '':
+            lista.append(arbol.info)
+        arbolToArrayCriaturas(arbol.izq, lista)
+        arbolToArrayCriaturas(arbol.der, lista)
+
+def eliminarDuplicados(lista):
+    lista_aux = []
+    for item in lista:
+        if item not in lista_aux:
+            lista_aux.append(item)
+    return lista_aux
+
+def vencedores(arbol):
+    criaturas_derrotadas = []
+    arbolToArrayCriaturas(arbol, criaturas_derrotadas)
+
+    vencedores = []
+    for criatura in criaturas_derrotadas:
+        vencedores.append(criatura[1])
+
+    return vencedores
+
+def criaturasDerrotadasPor(arbol, heroe, lista=[]):
+    if arbol is not None:
+        if arbol.info[1] == heroe:
+            lista.append(arbol.info)
+        criaturasDerrotadasPor(arbol.izq, heroe, lista)
+        criaturasDerrotadasPor(arbol.der, heroe, lista)
+
+
+def busquedaProximidadCriatura(raiz, buscado, lista=[]):
+    if (raiz is not None):
+        if (buscado.lower() in raiz.info[0].lower()):
+            lista.append(raiz.info)
+        busquedaProximidadCriatura(raiz.izq, buscado, lista)
+        busquedaProximidadCriatura(raiz.der, buscado, lista)
+
+
+def modificarDerrotadoPor(arbol, criatura, nombre):
+    res = busquedaCampo(arbol, criatura, 0)
+    if res:
+        res.info[1] = nombre
+    else:
+        print('Error, criatura no encontrada')
+
+def modificarnombreCriatura(arbol, nombre_old, nombre_new):
+    res = busquedaCampo(arbol, nombre_old, 0)
+    if res:
+        res.info[0] = nombre_new
+    else:
+        print('Error, criatura no encontrada')
+
+
+# --------------- PARA EJERCICIO 22 ------------------
+
+def formatearTablaParaHuffman(tabla):
+    tabla_para_huffman = []
+
+    for elemento in tabla:
+        nuevo = [elemento[2], elemento[0]]
+        tabla_para_huffman.append(nuevo)
+
+    tabla_para_huffman.sort(key=lambda x: x[0])
+    return tabla_para_huffman
+
+def obtenerLargoTotal(tabla):
+    total = 0
+    for item in tabla:
+        total += item[1]
+    return total
+
+def asignarFrecuencias(tabla):
+    largo_total = obtenerLargoTotal(tabla)
+
+    for item in tabla:
+        item[2] = item[1] / largo_total
+
+def descomprimir2(arbol, cadena):
+    msj_decodificado = ''
+    raiz_aux = arbol
+    pos = 0
+    while(pos < len(cadena)):
+        if(cadena[pos] == '0'):
+            raiz_aux = raiz_aux.izq
+        else:
+            raiz_aux = raiz_aux.der
+        pos += 1
+        if(raiz_aux.izq is None):
+            msj_decodificado += raiz_aux.info
+            raiz_aux = arbol
+    return msj_decodificado

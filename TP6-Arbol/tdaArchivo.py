@@ -17,7 +17,6 @@ def leer(archivo, pos):
         return None
 
 def leerIndices(archivo, indices=[]):
-    '''Devuelve una lista de los elementos del archivo que pudo leer en las posiciones dadas'''
     resultados = []
     for indice in indices:
         resultados.append(leer(archivo, indice))

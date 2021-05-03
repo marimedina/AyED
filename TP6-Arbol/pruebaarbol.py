@@ -14,6 +14,9 @@ import random
 
 # 14 - Consulta a archivos NH
 # 16 - Pokemons NH
+# 18 - Libros
+# 20 - Dioses
+
 
 '''
 r = None
@@ -597,6 +600,7 @@ codMision(arbol, '01/01/2001')
 
 
 # Ej 18 -
+'''
 ruta_file = 'Libros/libros'
 initFileLibros()
 a_Titulo = generarArbolLibro(ruta_file, 'titulo')
@@ -608,3 +612,204 @@ print('')
 imprimir(a_Autores)
 print('')
 imprimir(a_ISBN)
+
+
+# Parte A -
+libros_tanenbaum = busquedaPorAutor(arbolAutores, "Tanenbaum")
+libros_connolly = busquedaPorAutor(arbolAutores, "Connolly")
+libros_rowling = busquedaPorAutor(arbolAutores, "Rowling")
+libros_roirdan = busquedaPorAutor(arbolAutores, "Roirdan")
+
+# Parte B -
+libros_mineria = busquedaPorCoincidenciaTitulo(arbolTitulo, "Mineria de Datos")
+libros_algoritmos = busquedaPorCoincidenciaTitulo(arbolTitulo, "Algoritmos")
+libros_bbdd = busquedaPorCoincidenciaTitulo(arbolTitulo, "Base de Datos")
+'''
+
+# Ej 19 - Implementar un algoritmo que permita generar un arbol de decision meteorologico para
+# la prediccion del estado del tiempo basado reglas.
+'''
+Ar_reg = genArbolMeteorologico()
+reg = genRegistroMeteorologico()
+print("Registro analizado:", reg)
+pronostico = definirPronostico(Ar_reg, reg)
+print('Pronostico:', pronostico)
+'''
+
+# Ej 21 -
+criaturaDerrotado = [
+            ['Ceto', '', ''],
+            ['Tifon', 'Zeus', ''],
+            ['Equidna', 'Argos Panoptes', ''],
+            ['Dino', '', ''],
+            ['Pefredo', '', ''],
+            ['Enio', '', ''],
+            ['Escila', '', ''],
+            ['Caribdis', '', ''],
+            ['Euriale', '', ''],
+            ['Esteno', '', ''],
+            ['Medusa', 'Perseo', ''],
+            ['Ladon', 'Heracles', ''],
+            ['Aguila del Caucaso', '', ''],
+            ['Quimera', 'Belerofonte', ''],
+            ['Hidra de Lerna', 'Heracles', ''],
+            ['Leon de Nemea', 'Heracles', ''],
+            ['Esfinge', 'Edipo', ''],
+            ['Dragon de la Colquida', '', ''],
+            ['Cerbero', '', ''],
+            ['Cerda de Cromion', 'Teseo', ''],
+            ['Ortro', 'Heracles', ''],
+            ['Toro de Creta', 'Teseo', ''],
+            ['Jabali de Calidon', 'Atalanta', ''],
+            ['Carcinos ', '', ''],
+            ['Gerion', 'Heracles', ''],
+            ['Cloto', '', ''],
+            ['Laquesis', '', ''],
+            ['Atropos', '', ''],
+            ['Minotauro de Creta', 'Teseo', ''],
+            ['Harpias', '', ''],
+            ['Argos Panoptes', 'Hermes', ''],
+            ['Aves del Estinfalo', '', ''],
+            ['Talos', 'Medea', ''],
+            ['Sirenas', '', ''],
+            ['Piton', 'Apolo', ''],
+            ['Cierva de Cerinea', '', ''],
+            ['Basilisco', '', ''],
+            ['Jabali de Erimanto', '', '']
+        ]
+arbolC = None
+for criatura in criaturaDerrotado:
+    arbolC = insertarCampo(arbolC, criatura, 0)
+
+# Parte A - Listado inorden de las criaturas y quienes la derrotaron
+'''
+# Posicion 0 criatura, posicion 1 quien la derroto
+inorden(arbolC)
+'''
+
+# Parte B - Se debe permitir cargar una breve descripcion sobre cada criatura
+'''
+criatura = 'Tifon'
+aux = busquedaCampo(arbolC, criatura, 0)
+if aux is not None:
+    agregarDescripcion(arbolC, criatura, 'Criatura x')
+    print("Nombre:", aux.info[0])
+    print("Derrotado por:", aux.info[1])
+    print("Descripcion:", aux.info[2])
+'''
+
+# Parte C - Mostrar toda la informacion de la criatura Talos
+'''
+criatura = 'Talos'
+aux = busquedaCampo(arbolC, criatura, 0)
+print('Nombre:', aux.info[0])
+print('Derrotado por:', aux.info[1])
+print('Descripcion:', aux.info[2])
+'''
+
+# Parte D - Determinar los 3 heroes o dioses que derrotaron mayor cantidad de criaturas
+'''
+lista_vencedores = vencedores(arbolC)
+vencedores = sorted(lista_vencedores, key=lambda x: lista_vencedores.count(x), reverse=True)
+mayores_vencedores = eliminarDuplicados(vencedores)
+
+print('Mayores 3 vencedores:')
+for i in range(3):
+    print(mayores_vencedores[i])
+'''
+
+# Parte E - Listar las criaturas derrotadas por Heracles
+'''
+nombre = 'Heracles'
+heroes = []
+criaturasDerrotadasPor(arbolC, nombre, heroes)
+print('Criaturas derrotadas por Heracles:')
+for criatura in heroes:
+    print(criatura[0])
+'''
+
+# Parte F - Listar las criaturas que no han sido derrotadas
+'''
+aux = []
+criaturasDerrotadasPor(arbolC, '', aux)
+print('Criaturas que nunca fueron derrotadas:')
+for criatura in aux:
+    print(criatura[0])
+'''
+
+# Parte G - Se debe permitir busquedas por coincidencia
+'''
+nombre = 'Ce'
+encontradas = []
+busquedaProximidadCriatura(arbolC, nombre, encontradas)
+for criatura in encontradas:
+    print(criatura[0])
+'''
+
+# Parte H - Eliminar al Basilisco y a las Sirenas
+'''
+nom1 = 'Basilisco'
+nom2 = 'Sirenas'
+eliminarCampo(arbolC, nom1, 0)
+eliminarCampo(arbolC, nom2, 0)
+print('Arbol sin Basilisco y Sirenas')
+inorden(arbolC)
+'''
+
+# Parte I - Modificar el nodo que contiene a las Aves del Estinfalo, agregando que Heracles
+# derroto a varias
+'''
+nombre = 'Aves del Estinfalo'
+modificarDerrotadoPor(arbolC, nombre , 'Heracles')
+'''
+
+# Parte J - Modifique el nombre de la criatura Ladon por Dragon Ladon
+'''
+nomre_act = 'Ladon'
+nombre_nuevo = 'Dragon Ladon'
+modificarnombreCriatura(arbolC, nomre_act, nombre_nuevo)
+inorden(arbolC)
+'''
+
+
+# Ej 22 - Desarrollar los algoritmos necesarios para generar un árbol de Huffman a partir de la
+# siguiente tabla –para lo cual deberá calcular primero las frecuencias de cada carácter a
+# partir de la cantidad de apariciones del mismo–,
+'''
+tabla = [
+    ["A", 11, 0],
+    ["B", 2, 0],
+    ["C", 4, 0],
+    ["D", 3, 0],
+    ["E", 14, 0],
+    ["G", 3, 0],
+    ["I", 6, 0],
+    ["L", 6, 0],
+    ["M", 3, 0],
+    ["N", 6, 0],
+    ["O", 7, 0],
+    ["P", 4, 0],
+    ["Q", 1, 0],
+    ["R", 10, 0],
+    ["S", 4, 0],
+    ["T", 3, 0],
+    ["U", 4, 0],
+    ["V", 2, 0],
+    [" ", 17, 0],
+    [",", 2, 0]
+]
+
+asignarFrecuencias(tabla)
+tabla_para_huffman = formatearTablaParaHuffman(tabla)
+arbol_huffman = arbolHuffman(tabla_para_huffman)
+'''
+# Parte B - Descomprimir los siguientes mensajes
+'''
+mensaje1 = '10001011101011000010111010001110000011011000000111100111101001011000011010011100110100010111010111111101000011110011111100111101000110001100000010110101111011111110111010110110111001110110111100111111100101001010010100000101101011000101100110100011100100101100001100100011010110101011111111111011011101110010000100101011000111111100010001110110011001011010001101111101011010001101110000000111001001010100011111100001100101101011100110011110100011000110000001011010111110011100'
+mensaje2 = '0110101011011100101000111101011100110111010110110100001000111010100101111010011111110111001010001111010111001101110101100001100010011010001110010010001100010110011001110010010000111101111010'
+
+msj1 = descomprimir2(arbol_huffman, mensaje1)
+print(msj1)
+msj2 = descomprimir2(arbol_huffman, mensaje2)
+print(msj2)
+'''
