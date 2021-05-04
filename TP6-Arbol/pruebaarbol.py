@@ -7,15 +7,7 @@ import random
 
 
 # FALTA
-
 # 3 - Indice de Summerville
-# 6 - Indices/Directorios/Archivos/Knuth
-# 9 - Numero de nodos en nivel
-
-# 14 - Consulta a archivos NH
-# 16 - Pokemons NH
-# 18 - Libros
-# 20 - Dioses
 
 
 '''
