@@ -6,10 +6,6 @@ import random
 
 
 
-# FALTA
-# 3 - Indice de Summerville
-
-
 '''
 r = None
 r = insertar(r, 4)
@@ -132,6 +128,46 @@ print(calculo(raiz))
 '''
 
 
+# Ej 3 - Desarrollar un algoritmo que permita cargar el indice del libro Ingenieria de Software de
+# Ian Summerville de manera automatica desde un archivo de texto, transformando el arbol
+# n-ario del indice en un arbol binario no balanceado mediante el uso de la transformada deKnuth
+
+'''
+txtToDat("IndicesSummerville/indice_summerville.txt", "IndicesSummerville/indice_summerville")
+
+a_indices = abrir("Indices/indice_summerville")
+arbol_nario = fileToNario(a_indices)
+cerrar(a_indices)
+arbol_b = transformarKnuth(arbol_nario)
+'''
+# Parte A - Listar el indice en su orden original
+'''
+barridoKnuth(arbol_b)
+'''
+
+# Parte B - Mostrar la parte del indice correspondiente al subtitulo Disenio de software de tiempo real
+'''
+mostrarParte(arbol_b, '15. Disenio de software de tiempo real 309')
+'''
+
+# Parte D - Determinar cuantos capitulos tiene
+'''
+cantidad_capitulos = contarCantidadCapitulos(arbol_b)
+print(cantidad_capitulos)
+'''
+
+# Parte E - Determinar todos los temas que contengan las palabras modelo y metrica
+'''
+lista_coincidencias = []
+buscados = ["modelo", "metrica"]
+for buscado in buscados:
+    busquedaCoincidenciasKnuth(arbol_b, buscado, lista_coincidencias)
+if len(lista_coincidencias) > 0:
+    for nodo_coincidente in lista_coincidencias:
+        print(nodo_coincidente.info)
+'''
+
+
 # Ej 4 - Implementar un algoritmo que contemple dos funciones, la primera que devuelva el hijo
 # derecho de un nodo y la segunda que devuelva el hijo izquierdo.
 '''
@@ -163,6 +199,7 @@ for i in range(7):
     r = insertar(r, [random.choice(villanos), False])
 preorden(r)
 '''
+
 # Parte B - Mostar todos los superheroes que empiezan con C
 '''
 print('')
@@ -230,7 +267,6 @@ inorden(bosque[1])
 '''
 
 
-
 # Ej 7 - Desarrollar un algoritmo que implemente dos funciones, una para obtener el minimo nodo
 # del arbol y la segunda para obtener el maximo.
 '''
@@ -276,7 +312,8 @@ print('Mensaje descomprimido: ', msj_descomprimido)
 
 
 
-# Ej 9 -
+# Ej 9 - Desarrollar dos algoritmos el primero que permita calcular en el numero de nodos de un
+# nivel del arbol  y la segunda que cuente los nodos que hay en dicho nivel
 '''
 r = None
 for i in range(0, 6):
@@ -515,8 +552,40 @@ print(decodificarMsj(a, msj5))
 '''
 
 
-# Ej 14 -
+# Ej 14 - Desarrollar un algoritmo que permita implementar un arbol como indice para hacer
+# consultas a un archivo, el cual contiene personajes de la saga de Star Wars de los cuales se
+# sabe su nombre, altura y peso
+'''
+ruta = 'SW/personajesStarWars'
+arbol_nombres = generarArbolPersonajesNombre(ruta)
+'''
 
+# Parte B - Se debe poder cargar un nuevo personaje, modificarlo (cualquiera de sus campos)
+# y darlo de baja
+'''
+arbol_nombres = altaPersonaje(arbol_nombres, ruta)
+arbol_nombres = modificarPersonaje(arbol_nombres, ruta)
+arbol_nombres = bajaPeronsaje(arbol_nombres, ruta)
+'''
+
+# Parte C - Mostrar toda la informacion de Yoda y Boba Fett
+'''
+consultaPersonaje(arbol_nombres, "Yoda", ruta)
+consultaPersonaje(arbol_nombres, "Boba Fett", ruta)
+'''
+
+# Parte D - Mostrar un listado ordenado alfabeticamente de los personajes que miden mas de
+# 1 metro.
+'''
+archivo = abrir(ruta)
+listadoIndicesAltura(arbol_nombres, archivo)
+'''
+
+# Parte E - Mostrar un listado ordenado alfabeticamente de los personajes que pesan menos
+# de 75 kilos.
+'''
+listadoIndicesPeso(arbol_nombres, archivo)
+'''
 
 
 # Ej 15 - Una empresa de nano satelites dedicada al monitoreo de lotes campo destinados al agro,
@@ -545,7 +614,9 @@ print(msj_descomprimido)
 '''
 
 
-# Ej 17 -
+# Ej 17 - La armeria de la base Starkiller, central de la primera orden, almacena los registros de los
+# reportes de fallos armas de las tropas de su principales generales Kylo Ren, general Hux y
+# capitana Phasma para lo cual se solicita desarrollar un algoritmo
 
 # Parte A - Se debe registrar el nombre del general a cargo de la mision, fecha de la mision,
 # codigo de blaster generado de manera aleatoria, estado del blaster (si fallo o no) y el
@@ -591,7 +662,8 @@ codMision(arbol, '01/01/2001')
 
 
 
-# Ej 18 -
+# Ej 18 - Desarrollar los algoritmo necesarios que permitan almacenar libros de los cuales se
+# conoce su titulo, ISBN, autores, editorial y cantidad paginas
 '''
 ruta_file = 'Libros/libros'
 initFileLibros()
@@ -604,18 +676,85 @@ print('')
 imprimir(a_Autores)
 print('')
 imprimir(a_ISBN)
+'''
 
-
-# Parte A -
+# Parte A - Los libros de los autores Tanenbaum, Connolly, Rowling, Riordan
+'''
 libros_tanenbaum = busquedaPorAutor(arbolAutores, "Tanenbaum")
 libros_connolly = busquedaPorAutor(arbolAutores, "Connolly")
 libros_rowling = busquedaPorAutor(arbolAutores, "Rowling")
 libros_roirdan = busquedaPorAutor(arbolAutores, "Roirdan")
 
-# Parte B -
+libros = libros_tanenbaum + libros_connolly + libros_rowling + libros_roirdan
+
+indices = set()
+for libro in libros:
+    indices.add(libro[1])
+
+archivo = abrir(ruta_file)
+libros_deseados = leerIndices(archivo, indices)
+cerrar(archivo)
+
+for libro in libros_deseados:
+    print(libro)
+'''
+
+# Parte B - Mostrar los libros de Mineria de Datos, Algoritmos y Bases de Datos
+'''
 libros_mineria = busquedaPorCoincidenciaTitulo(arbolTitulo, "Mineria de Datos")
 libros_algoritmos = busquedaPorCoincidenciaTitulo(arbolTitulo, "Algoritmos")
 libros_bbdd = busquedaPorCoincidenciaTitulo(arbolTitulo, "Base de Datos")
+
+libros = libros_mineria + libros_algoritmos + libros_bbdd
+
+indices = set()
+for libro in libros:
+    indices.add(libro[1])
+
+archivo = abrir(ruta_file)
+libros_deseados = leerIndices(archivo, indices)
+cerrar(archivo)
+
+for libro in libros_deseados:
+    print(libro)
+'''
+
+# Parte C - Mostrar los libros de mss de 873 paginas
+'''
+arbolPaginas = generarArbolLibro(ruta_file, "paginas")
+paginas_deseadas = 873
+indices_a_buscar = []
+busqPag(arbolPaginas, paginas_deseadas, indices_a_buscar)
+
+libros = []
+archivo = abrir(ruta_file)
+for indice in indices_a_buscar:
+    libros.append(leer(archivo, indice))
+cerrar(archivo)
+
+for libro in libros:
+    print(libro)
+'''
+
+# Parte D - Mostrar los datos del libro ISBN 9788420546391
+'''
+isbn_buscado = 9788420546391
+
+nuevo_libro = Libro("PuntoD", isbn_buscado, ["autorRandom"], "edit2", 203)
+archivo = abrir(ruta_file)
+guardar(archivo, nuevo_libro)
+cerrar(archivo)
+arbolTitulo = generarArbolLibro(ruta_file, "titulo")
+arbolISBN = generarArbolLibro(ruta_file, "isbn")
+arbolAutores = generarArbolLibro(ruta_file, "autores")
+
+res = busquedaPorISBN(arbolISBN, isbn_buscado)
+if res:
+    indice = res[1]
+    archivo = abrir(ruta_file)
+    libro = leer(archivo, indice)
+    cerrar(archivo)
+    print(libro)
 '''
 
 # Ej 19 - Implementar un algoritmo que permita generar un arbol de decision meteorologico para
@@ -628,7 +767,9 @@ pronostico = definirPronostico(Ar_reg, reg)
 print('Pronostico:', pronostico)
 '''
 
-# Ej 21 -
+# Ej 21 - Implementar un algoritmo que permita generar un arbol con los datos de la siguiente
+# tabla y resuelva
+'''
 criaturaDerrotado = [
             ['Ceto', '', ''],
             ['Tifon', 'Zeus', ''],
@@ -672,10 +813,9 @@ criaturaDerrotado = [
 arbolC = None
 for criatura in criaturaDerrotado:
     arbolC = insertarCampo(arbolC, criatura, 0)
-
+'''
 # Parte A - Listado inorden de las criaturas y quienes la derrotaron
 '''
-# Posicion 0 criatura, posicion 1 quien la derroto
 inorden(arbolC)
 '''
 
@@ -764,9 +904,9 @@ inorden(arbolC)
 '''
 
 
-# Ej 22 - Desarrollar los algoritmos necesarios para generar un árbol de Huffman a partir de la
-# siguiente tabla –para lo cual deberá calcular primero las frecuencias de cada carácter a
-# partir de la cantidad de apariciones del mismo–,
+# Ej 22 - Desarrollar los algoritmos necesarios para generar un arbol de Huffman a partir de la
+# siguiente tabla para lo cual debera calcular primero las frecuencias de cada caracter a
+# partir de la cantidad de apariciones del mismo
 '''
 tabla = [
     ["A", 11, 0],

@@ -1,0 +1,309 @@
+1. Introduccion 3
+1.1. Preguntas frecuentes sobre la ingenieria del software 5
+1.1.1. ¿Que es software? 5
+1.1.2. ¿Que es la ingenieria del software? 6
+1.1.3. ¿Cual es la diferencia entre ingenieria del software y ciencia de la computacion? 7
+1.1.4. ¿Cual es la diferencia entre ingenieria del software e ingenieria de sistemas? 7
+1.1.5. ¿Que es un proceso del software? 7
+1.1.6. ¿Que es un modelo de procesos del software? 8
+1.1.7. ¿Cuales son los costos de la ingenieria del software? 9
+1.1.8. ¿Que son los metodos de la ingenieria del software? 10
+1.1.9. ¿Que es CASE? 11
+1.1.10. ¿Cuales son los atributos de un buen software? 11
+1.1.11. ¿Cuales son los retos fundamentales que afronta la ingenieria del software? 12
+1.2. Responsabilidad profesional y etica 12
+
+2. Sistemas socio-tecnicos 19
+2.1. Propiedades emergentes de los sistemas 21
+2.2. Ingenieria de sistemas 23
+2.2.1. Definicion de requerimientos del sistema 24
+2.2.2. Disenio del sistema 26
+2.2.3. Modelado de sistemas 28
+2.2.4. Desarrollo de los subsistemas 29
+2.2.5. Integracion del sistema 30
+2.2.6. Evolucion del sistema 30
+2.2.7. Desmantelamiento del sistema 31
+2.3. Organizaciones, personas y sistemas informaticos 31
+2.3.1. Procesos organizacionales 32
+2.4. Sistemas heredados 35
+
+3. Sistemas criticos 39
+3.1. Un sistema de seguridad critico sencillo 41
+3.2. Confiabilidad de un sistema 43
+3.3. Disponibilidad y Habilidad 46
+3.4. Seguridad 50
+3.5. Proteccion 53
+
+4. Procesos del software 59
+4.1. Modelos del proceso del software 60
+4.1.1. El modelo en cascada 62
+4.1.2. Desarrollo evolutivo 63
+4.1.3. Ingenieria del software basada en componentes 64
+4.2. Iteracion de procesos 66
+4.2.1. Entrega incrementa! 66
+4.2.2. Desarrollo en espiral 68
+4.3. Actividades del proceso 69
+4.3.1. Especificacion del software 69
+4.3.2. Disenio e implementacion del software 71
+4.3.3. Validacion del software 74
+4.3.4. Evolucion del software 75
+4.4. El Proceso Unificado de Rational 76
+4.5. Ingenieria del Software Asistida por computadora 79
+4.5.1. Clasificacion de CASE 79
+
+5. Gestion de proyectos 85
+5.1. Actividades de gestion 87
+5.2. Planificacion del proyecto 88
+5.2.1. El plan del proyecto 89
+5.2.2. Hitos y entregas 90
+5.3. Calendarizacion del proyecto 91
+5.3.1. Graficos de barras y redes de actividades 92
+5.4. Gestion de riesgos 95
+5.4.1. Identificacion de riesgos 97
+5.4.2. Analisis de riesgos 98
+5.4.3. Planificacion de riesgos 100
+5.4.4. Supervision de riesgos 100
+
+6. Requerimientos del software 107
+6.1. Requerimientos funcionales y no funcionales 109
+6.1.1. Requerimientos funcionales 110
+6.1.2. Requerimientos no funcionales 111
+6.1.3. Los requerimientos del dominio 115
+6.2. Requerimientos del usuario 116
+6.3. Requerimientos del sistema 118
+6.3.1. Especificaciones en lenguaje estructurado 120
+6.4. Especificacion de la interfaz 122
+6.5. El documento de requerimientos del software 123
+
+7. Procesos de la ingenieri a de requerimientos 129
+7.1. Estudios de viabilidad 131
+7.2. Obtencion y analisis de requerimientos 132
+7.2.1. Descubrimiento de requerimientos 135
+7.2.2. Etnografia 142
+7.3. Validacion de requerimientos 144
+7.3.1. Revisiones de requerimientos 145
+7.4. Gestion de requerimientos 146
+7.4.1. Requerimientos duraderos y volatiles 147
+7.4.2. Planificacion de la gestion de requerimientos 147
+7.4.3. Gestion del cambio de los requerimientos 150
+
+8. Modelos del sistema 153
+8.1. Modelos de contexto 155
+8.2. Modelos de comportamiento 156
+8.2.1. Modelos de flujo de datos 157
+8.2.2. Modelos de maquina de estados 159
+8.3. Modelos de datos 161
+8.4. Modelos de objetos 164
+8.4.1. Modelos de herencia 165
+8.4.2. Agregacion de objetos 168
+8.4.3. Modelado de comportamiento de objetos 169
+8.5. Metodos estructurados 170
+
+9. Especificacion de sistemas criticos 175
+9.1. Especificacion dirigida por riesgos 177
+9.1.1. Identificacion de riesgos 178
+9.1.2. Analisis y clasificacion de riesgos 178
+9.1.3. Descomposicion de riesgos 181
+9.1.4. Valoracion de la reduccion de riesgos 182
+9.2. Especificacion de la seguridad 183
+9.3. Especificacion de la proteccion 186
+9.4. Especificacion de la Habilidad del software 188
+9.4.1. Metricas de Habilidad 189
+9.4.2. Requerimientos de Habilidad no funcionales 191
+
+10. Especificacion formal 197
+10.1. Especificacion formal en el proceso del software 199
+10.2. Especificacion de interfaces de subsistemas 202
+10.3. Especificacion del comportamiento 208
+
+11. Disenio arquitectonico 219
+11.1. Decisiones de disenio arquitectonico 222
+11.2. Organizacion del sistema 224
+11.2.1. El modelo de repositorio 225
+11.2.2. El modelo cliente-servidor 226
+11.2.3. Ei modelo de capas 227
+11.3. Estilos de descomposicion modular 229
+11.3.1. Descomposicion orientada a objetos 230
+11.3.2. Descomposicion orientada a flujos de funciones 231
+11.4. Estilos de control 232
+11.4.1. Control centralizado 233
+11.4.2. Sistemas dirigidos por eventos 234
+11.5. Arquitecturas de referencia 236
+
+12. Arquitecturas de sistemas distribuidos 241
+12.1. Arquitecturas multiprocesador 244
+12.2. Arquitecturas cliente-servidor 245
+12.3. Arquitecturas de objetos distribuidos 249
+12.3.1. Corba 252
+12.4. Computacion distribuida interorganizacional 256
+12.4.1. Arquitecturas peer-to-peer 256
+12.4.2. Arquitectura de sistemas orientados a servicios 258
+
+13. Arquitecturas de aplicaciones 265
+13.1. Sistemas de procesamiento de datos 268
+13.2. Sistemas de procesamiento de transacciones 270
+13.2.1. Sistemas de informacion y de gestion de recursos 272
+13.3. Sistemas de procesamiento de eventos 276
+13.4. Sistemas de procesamiento de lenguajes 279
+
+14. Disenio orientado a objetos 285
+14.1. Objetos y clases 288
+14.1.1. Objetos concurrentes 290
+14.2. Un proceso de disenio orientado a objetos 292
+14.2.1. Contexto del sistema y modelos de utilizacion 294
+14.2.2. Disenio de la arquitectura 296
+14.2.3. Identificacion de objetos 297
+14.2.4. Modelos de disenio 299
+14.2.5. Especificacion de la interfaz de los objetos 303
+14.3. Evolucion del disenio 304
+
+15. Disenio de software de tiempo real 309
+15.1. Disenio del sistema 312
+15.1.1. Modelado de sistemas de tiempo real 314
+15.2. Sistemas operativos de tiempo real 315
+15.2.1. Gestion de procesos 316
+15.3. Sistemas de monitorizacion y control 318
+15.4. Sistemas de adquisicion de datos 323
+
+16. Disenio de interfaces de usuario 331
+16.1. Asuntos de disenio 335
+16.1.1. Interaccion del usuario 335
+16.1.2. Presentacion de la informacion 338
+16.2. El proceso de disenio de la interfaz de usuario 344
+16.3. Analisis del usuario 345
+16.3.1. Tecnicas de analisis 346
+16.4. Prototipado de la interfaz de usuario 348
+16.5. Evaluacion de la interfaz 350
+
+17. Desarrollo 357
+17.1. Metodos agiles 361
+17.2. Programacion extrema 364
+17.2.1. Pruebas en XP 366
+17.2.2. Programacion en parejas 369
+17.3. Desarrollo rapido de aplicaciones 370
+17.4. Prototipado del software 373
+
+18. Reutilizacion del software 379
+18.1. El campo de la reutilizacion 382
+18.2. Patrones de disenio 384
+18.3. Reutilizacion basada en generadores 387
+18.4. Marcos de trabajo de aplicaciones 389
+18.5. Reutilizacion de sistemas de aplicaciones 391
+18.5.1. Reutilizacion de productos COTS 391
+18.5.2. Lineas de productos software 394
+
+19. Ingenieria del software basada en componentes 401
+19.1. Componentes y modelos de componentes 404
+19.1.1. Modelos de componentes 407
+19.1.2. Desarrollo de componentes para reutilizacion 409
+19.2. El proceso CBSE 411
+19.3. Composicion de componentes 414
+
+20. Desarrollo de sistemas criticos 423
+20.1. Procesos confiables 427
+20.2. Programacion confiable 428
+20.2.1. Informacion protegida 428
+20.2.2. Programacion segura 430
+20.2.3. Manejo de excepciones 432
+20.3. Tolerancia a defectos 435
+20.3.1. Deteccion de defectos y evaluacion de danios 435
+20.3.2. Recuperacion y reparacion de defectos 440
+20.4. Arquitecturas tolerantes a defectos 441
+
+21. Evolucion del software 447
+21.1. Dinamica de evolucion de los programas 449
+21.2. Mantenimiento del software 451
+21.2.1. Prediccion del mantenimiento 454
+21.3. Procesos de evolucion 456
+21.3.1. Reingenieria de sistemas 459
+21.4. Evolucion de sistemas heredados 461
+
+22. Verificacion y validacion 471
+22.1. Planificacion de la verificacion y validacion 475
+22.2. Inspecciones de software 477
+22.2.1. El proceso de inspeccion de programas 478
+22.3. Analisis estatico automatizado 482
+22.4. Verificacion y metodos formales 485
+22.4.1. Desarrollo de software de Sala Limpia 486
+
+23. Pruebas del software 491
+23.1. Pruebas del sistema 494
+23.1.1. Pruebas de integracion 495
+23.1.2. Pruebas de entregas 497
+23.1.3. Pruebas de rendimiento 500
+23.2. Pruebas de componentes 501
+23.2.1. Pruebas de interfaces 502
+23.3. Disenio de casos de prueba 504
+23.3.1. Pruebas basadas en requerimientos 505
+23.3.2. Pruebas de particiones 506
+23.3.3. Pruebas estructurales 509
+23.3.4. Pruebas de caminos 511
+23.4. Automatizacion de las pruebas 513
+
+24. Validacion de sistemas criticos 519
+24.1. Validacion de la fiabilidad 521
+24.1.1. Perfiles operacionales 522
+24.1.2. Prediccion de la fiabilidad 523
+24.2. Garantia de la seguridad 526
+24.2.1. Argumentos de segundad 527
+24.2.2. Garantia del proceso 530
+24.2.3. Comprobaciones de seguridad en tiempo de ejecucion 531
+24.3. Valoracion de la proteccion 532
+24.4. Argumentos de confiabilidad y de seguridad 534
+
+25. Gestion de personal 543
+25.1. Seleccion de personal 544
+25.2. Motivacion 547
+25.3. Gestionando grupos 550
+25.3.1. La composicion del grupo 551
+25.3.2. Cohesion 552
+25.3.3. Las comunicaciones del grupo 554
+25.3.4. La organizacion del grupo 555
+25.3.5. Entornos de trabajo 556
+25.4. El Modelo de Madurez de la Capacidad del Personal 558
+
+26. Estimacion de costes del software 561
+26.1. Productividad 563
+26.2. Tecnicas de estimacion 567
+26.3. Modelado algoritmico de costes 570
+26.3.1. El modelo de COCOMO 572
+26.3.2. Modelos algoritmicos de costes en la planificacion 580
+26.4. Duracion y personal del proyecto 582
+
+27. Gestion de calidad 587
+27.1. Calidad de proceso y producto 589
+27.2. Garantia de la calidad y estandares 591
+27.2.1. ISO NUEVEMIL 593
+27.2.2. Estandares de documentacion 594
+27.3. Planificacion de la calidad 596
+27.4. Control de la calidad 597
+27.4.1. Revisiones de la calidad 597
+27.5. Medicion y metricas del software 598
+27.5.1. El proceso de medicion 601
+27.5.2. Metricas de producto 602
+27.5.3. Analisis de las mediciones 604
+
+28. Mejor a de procesos 626
+28.1. Calidad de producto y de proceso 609
+28.2. Clasificacion de los procesos 611
+28.3. Medicion del proceso 613
+28.4. Analisis y modelado de procesos 614
+28.4.1. Excepciones del proceso 618
+28.5. Cambio en los procesos 618
+28.6. El marco de trabajo para la mejora de procesos CMM I 619
+28.6.1. El modelo CMM I en etapas 623
+28.6.2. El modelo CMM I continuo 624
+
+29. Gestion de configuraciones 627
+29.1. Planificacion de la gestion de configuraciones 630
+29.1.1. Identificacion de los elementos de configuracion 630
+29.1.2. La base de datos de configuraciones 632
+29.2. Gestion del cambio 633
+29.3. Gestion de versiones y entregas 636
+29.3.1. Identificacion de versiones 636
+29.3.2. Gestion de entregas 639
+29.4. Construccion del sistema 641
+29.5. Herramientas CAS E para gestion de configuraciones 642
+29.5.1. Apoyo a la gestion de cambios 643
+29.5.2. Soporte para gestion de versiones 643
+29.5.3. Apoyo a la construccion del sistema 644

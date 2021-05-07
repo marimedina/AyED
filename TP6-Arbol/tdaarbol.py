@@ -401,6 +401,88 @@ def descomprimir(arbol, mensaje):
 
     return msjDescodificado
 
+def busquedaKnuth(raiz, buscado):
+    aux = None
+    if raiz is not None:
+        if raiz.info == buscado:
+            return raiz
+        else:
+            aux = busquedaKnuth(raiz.izq, buscado)
+            if not aux:
+                aux = busquedaKnuth(raiz.der, buscado)
+    return aux
+
+
+def busquedaCoincidenciasKnuth(raiz, buscado, lista_coincidencias=[]):
+    if raiz is not None:
+        if buscado in raiz.info:
+            lista_coincidencias.append(raiz)
+        busquedaCoincidenciasKnuth(raiz.izq, buscado, lista_coincidencias)
+        busquedaCoincidenciasKnuth(raiz.der, buscado, lista_coincidencias)
+
+
+def busquedaCoincidenciasKnuthCampo(raiz, buscado, campo,lista_coincidencias=[]):
+    if raiz is not None:
+        if buscado in raiz.info[campo]:
+            lista_coincidencias.append(raiz)
+        busquedaCoincidenciasKnuthCampo(raiz.izq, buscado, campo, lista_coincidencias)
+        busquedaCoincidenciasKnuthCampo(raiz.der, buscado, campo, lista_coincidencias)
+
+
+def busquedaCampoKnuth(raiz, buscado, campo=0):
+    aux = None
+    if raiz is not None:
+        if raiz.info[campo] == buscado:
+            return raiz
+        else:
+            aux = busquedaCampoKnuth(raiz.izq, buscado, campo)
+            if not aux:
+                aux = busquedaCampoKnuth(raiz.der, buscado, campo)
+    return aux
+
+
+def getHijosEnlazados(nodo_nario):
+    inicio, aux = None, None
+
+    if len(nodo_nario.hijos) > 0:
+        info_hijo = nodo_nario.hijos.pop(0).info
+        nodo_b = NodoArbol(info_hijo)
+
+        inicio = nodo_b
+        aux = inicio
+
+    for hijo_restante in nodo_nario.hijos:
+        info = hijo_restante.info
+        nodo_b = NodoArbol(info)
+
+        aux.der = nodo_b
+        aux = nodo_b
+    return inicio
+
+
+def transformarKnuth(raiz_nario):
+    arbol_k = NodoArbol(raiz_nario.info)
+    cola = Cola()
+    narioToCola(raiz_nario, cola)
+    nodos_n = colaToList(cola)
+
+    for nodo in nodos_n:
+        hijos_puntero_inicio = getHijosEnlazados(nodo)
+
+        if hijos:
+            respuesta = busquedaKnuth(arbol_k, nodo.info)
+
+            if respuesta:
+                respuesta.izq = hijos_puntero_inicio
+
+    return arbol_k
+
+
+def barridoKnuth(arbol):
+    if arbol is not None:
+        print(arbol.info)
+        barridoKnuth(arbol.izq)
+        barridoKnuth(arbol.der)
 
 # --------------- ARBOL DE DEcISION ------------------
 # ----------------------------------------------------
@@ -425,7 +507,101 @@ def insertarArbolDec(raiz, dato, peso):
     return raiz
 
 
+# --------------- ARBOL N-ARIO ------------------
+# ----------------------------------------------------
 
+class NodoNario(object):
+
+    def __init__(self, info):
+        self.info = info
+        self.hijos = []
+
+
+def esTitulo1(linea):
+    return linea[:10].count(".") == 1
+
+
+def esTitulo2(linea):
+    return linea[:10].count(".") == 2
+
+
+def esTitulo3(linea):
+    return linea[:10].count(".") == 3
+
+
+def insertarNario(raiz, info_padre, info):
+    if raiz is None:
+        raiz = NodoNario(info)
+    else:
+        nodo_padre = busquedaNario(raiz, info_padre)
+
+        if nodo_padre:
+            hijo = NodoNario(info)
+            nodo_padre.hijos.append(hijo)
+
+    return raiz
+
+
+def busquedaNario(raiz, buscado, aux=None):
+
+    if (raiz is not None) and (aux is None):
+        if (raiz.info == buscado):
+            aux = raiz
+        else:
+            for hijo in raiz.hijos:
+                aux = busquedaNario(hijo, buscado, aux)
+    return aux
+
+
+def barridoNario(raiz):
+    if raiz is not None:
+        print(raiz.info)
+        for hijo in raiz.hijos:
+            barridoNario(hijo)
+
+
+def fileToNario(archivo):
+    arbol = None
+    pos = 0
+
+    arbol = insertarNario(arbol, None, "INDICE")
+    largo_archivo = len(archivo)
+
+    ultimo_titulo1 = None
+    ultimo_titulo2 = None
+
+
+    while pos < largo_archivo:
+        line = leer(archivo, pos)
+        line = line.replace("\n", "")
+
+        if esTitulo1(line):
+            arbol = insertarNario(arbol, arbol.info, line)
+
+            ultimo_titulo1 = line
+
+        if esTitulo2(line):
+            padre = ultimo_titulo1
+            arbol = insertarNario(arbol, padre, line)
+
+            ultimo_titulo2 = line
+
+        if esTitulo3(line):
+            padre = ultimo_titulo2
+            arbol = insertarNario(arbol, padre, line)
+
+        pos += 1
+        line = leer(archivo, pos)
+
+    return arbol
+
+
+def narioToCola(arbol_n, cola):
+    if arbol_n is not None:
+        arribo(cola, arbol_n)
+
+        for hijo in arbol_n.hijos:
+            narioToCola(hijo, cola)
 
 # --------------- PARA EJERCICIO 1 ------------------
 
@@ -446,6 +622,43 @@ def numParImpar(raiz):
             return(0 + numParImpar(raiz.izq)[0] + numParImpar(raiz.der)[0], 1 + numParImpar(raiz.izq)[1] + numParImpar(raiz.der)[1])
     else:
         return 0,0
+
+# --------------- PARA EJERCICIO 3 ------------------
+
+def recDer(nodo):
+    aux = nodo
+    while aux:
+        print(aux.info)
+        aux = aux.der
+
+
+def mostrarParte(arbol, buscado):
+    respuesta = busquedaKnuth(arbol, buscado)
+    if respuesta:
+        print(respuesta.info)
+        barridoKnuth(respuesta.izq)
+
+def getPagina(arbol, buscado):
+    respuesta = busquedaKnuth(arbol, buscado)
+    if respuesta:
+        info = respuesta.info
+        fragmentos = info.split(" ")
+        pagina = fragmentos[-1]
+        if pagina.isnumeric():
+            return pagina
+        else:
+            return -1
+    else:
+        return -1
+
+def contarCantidadCapitulos(inicio_indice):
+    cantidad = 0
+
+    aux = inicio_indice.izq
+    while aux is not None:
+        cantidad += 1
+        aux = aux.der
+    return cantidad
 
 
 # --------------- PARA EJERCICIO 4 ------------------
@@ -577,7 +790,7 @@ def decodificarMsj(arbol, codigo):
 
 
 # --------------- PARA EJERCICIO 14 ------------------
-class PersonajeSW():
+class PersonajeStarWars():
     def __init__ (self, nombre='', altura=0, peso=0):
         self.nombre = nombre
         self.altura = altura
@@ -585,7 +798,7 @@ class PersonajeSW():
         self.estado = True
 
 
-def iniciarArchivoPersonajes(ruta):
+def initArchivoPersonajes(ruta):
     arch_sw = abrir(ruta)
     limpiar(arch_sw)
     personajes = ['Chewbacca', 'Darth Vader', 'Yoda', 'Luke Skywalker', 'R2-D2', 'C3PO', 'Obi-Wan Kenobi', 'Boba Fett']
@@ -593,10 +806,10 @@ def iniciarArchivoPersonajes(ruta):
     pesos = [200, 136, 17, 73, 0.37, 85.2, 80, 78.2]
 
     for i in range(len(personajes)):
-        nuevo_personaje = PersonajeSW(personajes[i], alturas[i], pesos[i])
+        nuevo_personaje = PersonajeStarWars(personajes[i], alturas[i], pesos[i])
         guardar(arc_sw, nuevo_personaje)
 
-def extraerDatos(ruta):
+def extraerDataPersonajes(ruta):
     archivo = abrir(ruta)
     array = []
     pos = 0
@@ -608,13 +821,145 @@ def extraerDatos(ruta):
 
 
 def generarArbolPersonajesNombre(ruta):
-    dato_personajes = extraerDatos(ruta)
+    dato_personajes = extraerDataPersonajes(ruta)
     raiz = None
     for item in dato_personajes:
         dato = [item[0].nombre, item[1]]
         raiz = insertarCampo(raiz, dato, 0)
     return raiz
 
+
+def obtenerIndice(arbol, buscado):
+    resultado = busquedaCampo(arbol, buscado, 0)
+    if resultado:
+        return resultado.info[1]
+    else:
+        return -1
+
+
+def altaPersonaje(arbol, ruta_archivo):
+    nombre = input('Ingrese el nombre del personaje: ')
+    altura = float(input('Ingrese la altura del personaje: '))
+    peso = float(input('Ingrese el peso del personaje: '))
+
+    personaje = PersonajeStarWars(nombre, altura, peso)
+
+    archivo = abrir(ruta_archivo)
+    guardar(archivo, personaje)
+    cerrar(archivo)
+
+    arbol = generarArbolPersonajesNombre(ruta_archivo)
+
+    return arbol
+
+
+def modificarPersonaje(arbol, ruta_archivo):
+    archivo = abrir(ruta_archivo)
+
+    buscado = input("Nombre del personaje buscado: ")
+
+    indice = obtenerIndice(arbol, buscado)
+
+    if indice == -1:
+        print("Personaje no encontrado")
+    else:
+        personaje = leer(archivo, indice)
+
+        print("1- Nombre:", personaje.nombre)
+        print("2- Altura:", personaje.altura)
+        print("3- Peso:", personaje.peso)
+        opcion = input("Seleccione campo a modificar: ")
+        print()
+
+        if (opcion in ["1", "2", "3"]):
+            nuevo_valor = input("Nuevo valor: ")
+
+            if opcion == "1":
+                personaje.nombre = nuevo_valor
+            elif opcion == "2":
+                personaje.altura = float(nuevo_valor)
+            elif opcion == "3":
+                personaje.peso = float(nuevo_valor)
+
+            modificar(archivo, personaje, indice)
+            cerrar(archivo)
+
+            arbol = generarArbolPersonajesNombre(ruta_archivo)
+            print("Personaje Guardado")
+        else:
+            print("Opcion seleccionada incorrecta")
+
+    return arbol
+
+
+def bajaPersonaje(arbol, ruta_archivo):
+    archivo = abrir(ruta_archivo)
+
+    buscado = input("Nombre del personaje buscado: ")
+
+    indice = obtenerIndice(arbol, buscado)
+
+    if indice == -1:
+        print("Personaje no encontrado")
+    else:
+        personaje = leer(archivo, indice)
+        personaje.estado = False
+
+        modificar(archivo, personaje, indice)
+        cerrar(archivo)
+
+        print("Personaje dado de baja")
+
+        arbol = generarArbolPersonajesNombre(ruta_archivo)
+
+    return arbol
+
+
+def consultaPersonaje(arbol, buscado, ruta_archivo):
+    archivo = abrir(ruta_archivo)
+
+    indice = obtenerIndice(arbol, buscado)
+
+    if indice == -1:
+        print("El personaje buscado no se encuentra")
+    else:
+        personaje = leer(archivo, indice)
+        print("Nombre:", personaje.nombre)
+        print("Altura:", personaje.altura)
+        print("Peso:", personaje.peso)
+        print()
+
+
+def listadoIndicesAltura(arbol, archivo):
+    if arbol is not None:
+        listadoIndicesAltura(arbol.izq, archivo)
+
+        indice = obtenerIndice(arbol, arbol.info[0])
+        if indice != -1:
+            personaje = leer(archivo, indice)
+            if (personaje.estado) and (personaje.altura > 1):
+                print("Nombre:", personaje.nombre)
+                print("Altura:", personaje.altura)
+                print("Peso:", personaje.peso)
+                print()
+
+        listadoIndicesAltura(arbol.der, archivo)
+
+
+def listadoIndicesPeso(arbol, archivo):
+    if arbol is not None:
+        listadoIndicesPeso(arbol.izq, archivo)
+
+        indice = obtenerIndice(arbol, arbol.info[0])
+        if indice != -1:
+            personaje = leer(archivo, indice)
+            if (personaje.estado) and (personaje.peso < 75):
+                print("Nombre:", personaje.nombre)
+                print("Altura:", personaje.altura)
+                print("Peso:", personaje.peso)
+                print()
+
+        listadoIndicesPeso(arbol.der, archivo)
 
 # --------------- PARA EJERCICIO 15 ------------------
 def nanoMensaje():
